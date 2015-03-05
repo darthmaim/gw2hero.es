@@ -1,1 +1,1 @@
-# gw2hero.es
+<p align="center"><img src="https://io.darthmaim-cdn.de/gw2heroes/assets/logo.png"></p>

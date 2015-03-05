@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: GW2Heroes
+        psr4_prefix: GW2Heroes
+        src_path: app
