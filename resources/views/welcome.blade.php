@@ -1,6 +1,8 @@
 @extends('layout.wrapper')
 
-@section('title')soon&trade;@stop
+@section('title')
+<title>Guildwars2 Heroes &bull; soon&trade;</title>
+@stop
 
 @section('styles')
 <style>

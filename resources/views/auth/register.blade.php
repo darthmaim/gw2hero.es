@@ -1,65 +1,41 @@
-@extends('app')
+@extends('layout.wrapper')
+
+@section('title')
+	<title>@lang('auth.register-header')</title>
+@overwrite
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
-								</button>
-							</div>
-						</div>
-					</form>
+	<div>
+		<h2>@lang('auth.register-header')</h2>
+		<div>
+			@include('layout.form-errors')
+		</div>
+		<div>
+			{!! Form::open() !!}
+				<div>
+					{!! Form::label('name', trans('auth.name')) !!}
+					{!! Form::text('name', old('name'), ['placeholder' => trans('auth.name-placeholder')]) !!}
 				</div>
-			</div>
+				<div>
+					{!! Form::label('email', trans('auth.email')) !!}
+					{!! Form::email('email', old('email'), ['placeholder' => trans('auth.email-placeholder')]) !!}
+				</div>
+				<div>
+					{!! Form::label('password', trans('auth.password')) !!}
+					{!! Form::password('password') !!}
+				</div>
+				<div>
+					{!! Form::label('password_confirmation', trans('auth.password-confirm')) !!}
+					{!! Form::password('password_confirmation') !!}
+				</div>
+
+				<div>
+					{!! Form::button(trans('auth.register-button'), ['type' => 'submit']) !!}
+				</div>
+				<div>
+					<a href="{{ url('/auth/login') }}">@lang('auth.login-hint')</a>
+				</div>
+			{!! Form::close() !!}
 		</div>
 	</div>
-</div>
-@endsection
+@stop

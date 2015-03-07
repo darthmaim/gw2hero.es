@@ -1,17 +1,13 @@
-@extends('app')
+@extends('layout.wrapper')
+
+@section('title')
+	<title>lang.home-header</title>
+@overwrite
 
 @section('content')
-<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">Home</div>
+	<h2>lang.home-header</h2>
 
-				<div class="panel-body">
-					You are logged in!
-				</div>
-			</div>
-		</div>
+	<div>
+		You are logged in!
 	</div>
-</div>
-@endsection
+@stop

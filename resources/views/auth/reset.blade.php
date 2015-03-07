@@ -1,59 +1,34 @@
-@extends('app')
+@extends('layout.wrapper')
+
+@section('title')
+	<title>@lang('auth.password-reset-header')</title>
+@overwrite
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="hidden" name="token" value="{{ $token }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Reset Password
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
+	<div>
+		<h2>@lang('auth.password-reset-header')</h2>
+		<div>
+			@include('layout.form-errors')
+		</div>
+		<div>
+			{!! Form::open() !!}
+				{!! Form::hidden('token', $token) !!}
+			<div>
+				{!! Form::label('email', trans('auth.email')) !!}
+				{!! Form::email('email', old('email'), ['placeholder' => trans('auth.email-placeholder')]) !!}
 			</div>
+			<div>
+				{!! Form::label('password', trans('auth.password')) !!}
+				{!! Form::password('password') !!}
+			</div>
+			<div>
+				{!! Form::label('password_confirmation', trans('auth.password-confirm')) !!}
+				{!! Form::password('password_confirmation') !!}
+			</div>
+			<div>
+				{!! Form::button(trans('auth.password-reset-button'), ['type' => 'submit']) !!}
+			</div>
+			{!! Form::close() !!}
 		</div>
 	</div>
-</div>
-@endsection
+@stop
