@@ -35,9 +35,11 @@ gulp.task('images', function() {
 // === CSS ===
 
 gulp.task('copy:normalize', function () {
+    var minify = require('gulp-minify-css');
     var changed = require('gulp-changed');
     return gulp.src( 'node_modules/normalize.css/normalize.css' )
         .pipe( changed( paths.css.dest ))
+        .pipe( minify() )
         .pipe( gulp.dest( paths.css.dest ));
 });
 
