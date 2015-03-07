@@ -15,9 +15,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="robots" content="index,follow" />
 	<meta name="google-site-verification" content="{{ env('GOOGLE_WEBMASTERTOOLS', '') }}" />
-	<link rel="shortcut icon" type="image/png" href="{{ asset('/images/favicon.png', true) }}" />
-	<link rel="stylesheet" href="{{ asset('/css/normalize.css', true) }}" />
-	<link rel="stylesheet" href="{{ asset('/css/main.css', true) }}" />
+	<link rel="shortcut icon" type="image/png" href="{{ asset('/images/favicon.png') }}" />
+	<link rel="stylesheet" href="{{ asset('/css/normalize.css') }}" />
+	<link rel="stylesheet" href="{{ asset('/css/main.css') }}" />
 	@yield('styles')
 </head>
 <body>

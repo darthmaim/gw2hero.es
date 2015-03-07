@@ -6,7 +6,7 @@
 <style>
 	body {
 		margin: 0;
-		background: #f2f2f2 url("{{ asset('/images/background.png', true) }}");
+		background: #f2f2f2 url("{{ asset('/images/background.png') }}");
 		text-align: center;
 	}
 	img {
@@ -23,6 +23,6 @@
 @stop
 
 @section('content')
-	<img id="logo" src="{{ asset('/images/logo.png', true) }}" width="500" height="300" alt="Guildwars2 Heroes"><br>
-	<img id="soon" src="{{ asset('/images/soon.png', true) }}" width="120" height="65"  alt="soon&trade;">
+	<img id="logo" src="{{ asset('/images/logo.png') }}" width="500" height="300" alt="Guildwars2 Heroes"><br>
+	<img id="soon" src="{{ asset('/images/soon.png') }}" width="120" height="65"  alt="soon&trade;">
 @stop
