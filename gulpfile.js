@@ -2,6 +2,13 @@
 
 var gulp = require('gulp');
 
+var paths = {
+    images: {
+        src: 'resources/assets/images/*',
+        dest: 'public/images'
+    }
+};
+
 var images = function( source ) {
     var imagemin = require('gulp-imagemin')({
         progressive: true,
@@ -10,29 +17,29 @@ var images = function( source ) {
     var changed = require('gulp-changed');
 
     return source
-        .pipe( changed( 'public/images' ))
+        .pipe( changed( paths.images.dest ))
         .pipe( imagemin )
-        .pipe( gulp.dest( 'public/images' ));
+        .pipe( gulp.dest( paths.images.dest ));
 };
 
 gulp.task('images', function() {
-    return images( gulp.src( 'resources/assets/images/*'));
+    return images( gulp.src( paths.images.src ));
 });
 
 gulp.task('watch', function() {
     var watch = require('gulp-watch');
-    var plumber = require( 'gulp-plumber');
+    var plumber = require('gulp-plumber');
 
-    images( gulp.src( 'resources/assets/images/*' )
-            .pipe( watch( 'resources/assets/images/*' ))
-            .pipe( plumber() )
+    images( gulp.src( paths.images.src )
+        .pipe( watch( paths.images.src ))
+        .pipe( plumber() )
     );
 });
 
 gulp.task('clean', function( callback ) {
     var del = require('del');
     del([
-        'public/images'
+        paths.images.dest
     ], callback);
 });
 gulp.task('build', ['images']);
