@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://gw2hero.es/">
-    <img src="https://io.darthmaim-cdn.de/gw2heroes/assets/logo.png" width="500">
+    <img src="https://raw.githubusercontent.com/chillerlan/gw2hero.es/master/public/images/logo.png" width="500">
   </a>
 </p>
 
