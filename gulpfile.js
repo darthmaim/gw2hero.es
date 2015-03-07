@@ -56,7 +56,7 @@ gulp.task('watch', function() {
 gulp.task('clean', function( callback ) {
     var del = require('del');
     del([
-        paths.images.dest
+        'public/assets'
     ], callback);
 });
 gulp.task('build', ['images', 'copy:normalize']);
