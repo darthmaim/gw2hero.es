@@ -6,10 +6,11 @@
 
 # Setup
 
-1. Clone this repository
-2. Run `composer install`
-3. Copy `.env.example` to `.env`
-4. Run `./artisan key:generate` (`artisan key:generate` on windows).
-5. Update the contents of `.env` with your database config.
-6. Run `./artisan migrate` (`artisan migrate` on windows)
-7. *To be continued*
+1. Clone this repository.
+2. Run `composer install --dev`.
+3. Run `npm install`
+4. Make sure the directory `storage` is writeable.
+5. Copy `.env.example` to `.env`.
+6. Run `./artisan key:generate` (`artisan key:generate` on windows).
+7. Update the contents of `.env` with your database config (Create a new database and a new user if you haven't already).
+8. Run `./artisan migrate` (`artisan migrate` on windows).
