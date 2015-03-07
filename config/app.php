@@ -145,6 +145,8 @@ return [
 		'GW2Heroes\Providers\EventServiceProvider',
 		'GW2Heroes\Providers\RouteServiceProvider',
 
+		'Illuminate\Html\HtmlServiceProvider',
+
 		'Artdarek\OAuth\OAuthServiceProvider',
 
 	],
@@ -194,6 +196,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		'Form'      => 'Illuminate\Html\FormFacade',
+		'HTML'      => 'Illuminate\Html\HtmlFacade',
+		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
 
 		'OAuth'     => 'Artdarek\OAuth\Facade\OAuth',
 

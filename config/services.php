@@ -34,4 +34,29 @@ return [
 		'secret' => '',
 	],
 
+	'facebook' => [
+		'client_id'     => env('OAUTH2_ID_FACEBOOK', ''),
+		'client_secret' => env('OAUTH2_SECRET_FACEBOOK', ''),
+		'redirect'      => '',
+	],
+
+	'github' => [
+		'client_id'     => env('OAUTH2_ID_GITHUB', ''),
+		'client_secret' => env('OAUTH2_SECRET_GITHUB', ''),
+		'redirect'      => '',
+	],
+
+	'google' => [
+		'client_id'     => env('OAUTH2_ID_GOOGLE', ''),
+		'client_secret' => env('OAUTH2_SECRET_GOOGLE', ''),
+		'redirect'      => '',
+	],
+
+	'twitter' => [
+		'client_id'     => env('OAUTH2_ID_TWITTER', ''),
+		'client_secret' => env('OAUTH2_SECRET_TWITTER', ''),
+		'redirect'      => '',
+	],
+
+
 ];
