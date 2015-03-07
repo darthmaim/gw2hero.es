@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var paths = {
     images: {
         src: 'resources/assets/images/*',
-        dest: 'public/images'
+        dest: 'public/assets/images'
     }
 };
 
