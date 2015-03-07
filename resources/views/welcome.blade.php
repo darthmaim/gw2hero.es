@@ -23,6 +23,6 @@
 @stop
 
 @section('content')
-	<img id="logo" src="{{ asset('/images/logo.png') }}" width="500" height="300" alt="Guildwars2 Heroes"><br>
-	<img id="soon" src="{{ asset('/images/soon.png') }}" width="120" height="65"  alt="soon&trade;">
+	<img id="logo" src="{{ asset('/assets/images/logo.png') }}" width="500" height="300" alt="Guildwars2 Heroes"><br>
+	<img id="soon" src="{{ asset('/assets/images/soon.png') }}" width="120" height="65"  alt="soon&trade;">
 @stop
