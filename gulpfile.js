@@ -6,8 +6,14 @@ var paths = {
     images: {
         src: 'resources/assets/images/*',
         dest: 'public/assets/images'
+    },
+    css: {
+        src: 'resources/assets/css/*',
+        dest: 'public/assets/css'
     }
 };
+
+// === IMAGES ===
 
 var images = function( source ) {
     var imagemin = require('gulp-imagemin')({
@@ -26,6 +32,17 @@ gulp.task('images', function() {
     return images( gulp.src( paths.images.src ));
 });
 
+// === CSS ===
+
+gulp.task('copy:normalize', function () {
+    var changed = require('gulp-changed');
+    return gulp.src( 'node_modules/normalize.css/normalize.css' )
+        .pipe( changed( paths.css.dest ))
+        .pipe( gulp.dest( paths.css.dest ));
+});
+
+// === GENERAL ===
+
 gulp.task('watch', function() {
     var watch = require('gulp-watch');
     var plumber = require('gulp-plumber');
@@ -42,7 +59,7 @@ gulp.task('clean', function( callback ) {
         paths.images.dest
     ], callback);
 });
-gulp.task('build', ['images']);
+gulp.task('build', ['images', 'copy:normalize']);
 gulp.task('build-clean', ['clean'], function() {
     gulp.start( 'build' );
 });
