@@ -34,6 +34,21 @@ gulp.task('images', function() {
 
 // === CSS ===
 
+gulp.task('css', function() {
+    var sass = require('gulp-sass');
+    var autoprefixer = require('gulp-autoprefixer');
+    var minify = require('gulp-minify-css');
+    var sourcemaps = require('gulp-sourcemaps');
+
+    return gulp.src( paths.css.src )
+        .pipe( sourcemaps.init() )
+        .pipe( sass() )
+        .pipe( autoprefixer() )
+        .pipe( minify() )
+        .pipe( sourcemaps.write( '.' ))
+        .pipe( gulp.dest( paths.css.dest ))
+});
+
 gulp.task('copy:normalize', function () {
     var minify = require('gulp-minify-css');
     var changed = require('gulp-changed');
@@ -48,6 +63,11 @@ gulp.task('copy:normalize', function () {
 gulp.task('watch', function() {
     var watch = require('gulp-watch');
     var plumber = require('gulp-plumber');
+
+    gulp.start( 'css' );
+    watch( paths.css.src, function() {
+        gulp.start( 'css' );
+    });
 
     images( gulp.src( paths.images.src )
         .pipe( watch( paths.images.src ))
