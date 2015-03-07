@@ -28,3 +28,16 @@ gulp.task('watch', function() {
             .pipe( plumber() )
     );
 });
+
+gulp.task('clean', function( callback ) {
+    var del = require('del');
+    del([
+        'public/images'
+    ], callback);
+});
+gulp.task('build', ['images']);
+gulp.task('build-clean', ['clean'], function() {
+    gulp.start( 'build' );
+});
+
+gulp.task('default', ['build']);
