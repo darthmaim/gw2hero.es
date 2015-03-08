@@ -149,7 +149,7 @@ return [
 
 		'Artdarek\OAuth\OAuthServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-
+		'Zizaco\Entrust\EntrustServiceProvider',
 	],
 
 	/*
@@ -203,6 +203,7 @@ return [
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
 
 		'OAuth'     => 'Artdarek\OAuth\Facade\OAuth',
+		'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
 
 	],
 
