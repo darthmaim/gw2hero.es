@@ -8,7 +8,7 @@
 <style>
 	body {
 		margin: 0;
-		background: #f2f2f2 url("{{ asset('/images/background.png') }}");
+		background: #f2f2f2 url("{{ asset('/assets/images/background.png') }}");
 		text-align: center;
 	}
 	img {
