@@ -148,6 +148,7 @@ return [
 		'Illuminate\Html\HtmlServiceProvider',
 
 		'Artdarek\OAuth\OAuthServiceProvider',
+		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 	],
 
