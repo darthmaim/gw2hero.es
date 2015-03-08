@@ -42,8 +42,12 @@ var styles = {
     dest: 'public/assets/css',
 
     build: function() {
-        styles.buildCss();
-        styles.normalizeCss();
+        var merge = require('merge-stream');
+
+        return merge(
+            styles.buildCss(),
+            styles.normalizeCss()
+        );
     },
     buildCss: function() {
         var sass = require('gulp-sass');
@@ -80,8 +84,12 @@ var general = {
     dest: 'public/assets',
 
     build: function() {
-        images.build();
-        styles.build();
+        var merge = require('merge-stream');
+
+        return merge(
+            images.build(),
+            styles.build()
+        );
     },
     clean: function( cb ) {
         var del = require('del');
