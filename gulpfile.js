@@ -1,6 +1,16 @@
 'use strict';
 
 var gulp = require('gulp');
+var gutil = require('gulp-util');
+
+var log = function( head, msg ) {
+    gutil.log( '[' + gutil.colors.blue( head ) + ']', msg );
+};
+var logger = function( head ) {
+    return function( msg ) {
+        log( head, msg );
+    };
+};
 
 // === IMAGES ===
 
@@ -77,6 +87,68 @@ var styles = {
     }
 };
 
+// === JS ===
+
+var js = {
+    src: './resources/assets/js/*',
+    dest: './public/assets/js',
+    entry: './resources/assets/js/gw2heroes.js',
+
+    config: {
+        entries: './resources/assets/js/gw2heroes.js',
+        dest: './public/assets/js',
+        outputName: 'gw2heroes.js',
+        paths: [ './node_modules', './resources/assets/js/' ],
+        fullPaths: false,
+        debug: true
+    },
+
+    build: function() {
+        var browserify = require('browserify');
+        var babelify = require('babelify');
+
+        var bundle = browserify( js.config )
+            .transform( babelify );
+
+        return js.handle( bundle, js.config );
+    },
+    watch: function() {
+        var browserify = require('browserify');
+        var watchify = require('watchify');
+        var babelify = require('babelify');
+        var extend = require('lodash/object/extend');
+
+        var config = extend( js.config, watchify.args );
+        var bundle = watchify( browserify( config ))
+            .transform( babelify );
+
+        bundle.on('update', function() {
+            js.handle( bundle, config );
+        });
+        bundle.on( 'log', logger('js') );
+
+        return js.handle( bundle, config )
+    },
+    handle: function( bundle, config ) {
+        var sourcemaps = require('gulp-sourcemaps');
+        var uglify = require('gulp-uglify');
+        var source = require('vinyl-source-stream');
+        var buffer = require('gulp-buffer');
+
+        return bundle
+            .bundle()
+            .on( 'error', function( err ) {
+                log( 'js', gutil.colors.red('Error: ') + err );
+            })
+            .pipe( source( config.outputName ))
+            .pipe( buffer() )
+            .pipe( sourcemaps.init({ loadMaps: true }) )
+            .pipe( uglify() )
+            .pipe( sourcemaps.write( '.' ))
+            .pipe( gulp.dest( config.dest ));
+    }
+};
+
 // === GENERAL ===
 
 var general = {
@@ -88,7 +160,8 @@ var general = {
 
         return merge(
             images.build(),
-            styles.build()
+            styles.build(),
+            js.build()
         );
     },
     clean: function( cb ) {
@@ -96,16 +169,20 @@ var general = {
         del( general.dest, cb );
     },
     watch: function() {
-        general.build();
-
+        styles.build();
         styles.watch();
+
+        images.build();
         images.watch();
+
+        js.watch();
     }
 };
 
 gulp.task( 'watch', general.watch );
 gulp.task( 'clean', general.clean );
 gulp.task( 'build', general.build );
+gulp.task( 'build:js', js.build );
 gulp.task( 'build:css', styles.build );
 gulp.task( 'build:images', images.build );
 gulp.task( 'build-clean', ['clean'], general.build );
