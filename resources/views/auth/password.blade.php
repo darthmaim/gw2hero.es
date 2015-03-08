@@ -1,12 +1,12 @@
 @extends('layout.wrapper')
 
 @section('title')
-	<title>@lang('auth.password-reset-header')</title>
+	<title>@lang('auth.password.header')</title>
 @overwrite
 
 @section('content')
 	<div>
-		<h2>@lang('auth.password-reset-header')</h2>
+		<h2>@lang('auth.password.header')</h2>
 		<div>
 			@if(session('status'))
 				<div>
@@ -19,14 +19,14 @@
 		<div>
 			{!! Form::open() !!}
 				<div>
-					{!! Form::label('email', trans('auth.email')) !!}
-					{!! Form::email('email', old('email'), ['placeholder' => trans('auth.email-placeholder')]) !!}
+					{!! Form::label('email', trans('auth.email.label')) !!}
+					{!! Form::email('email', old('email'), ['placeholder' => trans('auth.email.placeholder')]) !!}
 				</div>
 				<div>
-					{!! Form::button(trans('auth.password-reset-mail-button'), ['type' => 'submit']) !!}
+					{!! Form::button(trans('auth.password.mail-button'), ['type' => 'submit']) !!}
 				</div>
 				<div>
-					<a href="{{ url('/auth/login') }}">@lang('auth.login-hint')</a>
+					<a href="{{ url('/auth/login') }}">@lang('auth.login.hint')</a>
 				</div>
 			{!! Form::close() !!}
 		</div>

@@ -1,6 +1,6 @@
 @if(count($errors) > 0)
     <div>
-        @lang('auth.input-errors')<br />
+        @lang('auth.errors')<br />
         <ul>
             @foreach($errors->all() as $error)
                 <li>{{ $error }}</li>
