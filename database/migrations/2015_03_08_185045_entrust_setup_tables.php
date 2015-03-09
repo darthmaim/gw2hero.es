@@ -12,7 +12,7 @@ class EntrustSetupTables extends Migration
     public function up()
     {
         // Create table for storing roles
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create(Config::get('entrust.roles_table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 160)->unique();
             $table->string('display_name')->nullable();
@@ -21,7 +21,7 @@ class EntrustSetupTables extends Migration
         });
 
         // Create table for associating roles to users (Many-to-Many)
-        Schema::create('role_user', function (Blueprint $table) {
+        Schema::create(Config::get('entrust.role_user_table'), function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
 
@@ -34,7 +34,7 @@ class EntrustSetupTables extends Migration
         });
 
         // Create table for storing permissions
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create(Config::get('entrust.permissions_table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 160)->unique();
             $table->string('display_name')->nullable();
@@ -43,7 +43,7 @@ class EntrustSetupTables extends Migration
         });
 
         // Create table for associating permissions to roles (Many-to-Many)
-        Schema::create('permission_role', function (Blueprint $table) {
+        Schema::create(Config::get('entrust.permission_role_table'), function (Blueprint $table) {
             $table->integer('permission_id')->unsigned();
             $table->integer('role_id')->unsigned();
 
@@ -63,9 +63,9 @@ class EntrustSetupTables extends Migration
      */
     public function down()
     {
-        Schema::drop('permission_role');
-        Schema::drop('permissions');
-        Schema::drop('role_user');
-        Schema::drop('roles');
+        Schema::drop(Config::get('entrust.permission_role_table'));
+        Schema::drop(Config::get('entrust.permissions_table'));
+        Schema::drop(Config::get('entrust.role_user_table'));
+        Schema::drop(Config::get('entrust.roles_table'));
     }
 }
