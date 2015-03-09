@@ -32,4 +32,74 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	/**
+	 * Attach one or multiple roles to a user
+	 *
+	 * @param mixed $roles
+	 */
+	public function attachRoles($roles){
+		if(is_array($roles) && !isset($roles['id'])){
+			foreach($roles as $role){
+				$this->attachRoles($role);
+			}
+		}
+		else{
+			if(is_object($roles)){
+				$roles = $roles->getKey();
+			}
+
+			if(is_array($roles)){
+				$roles = $roles['id'];
+			}
+
+			if(is_int($roles)){
+				$this->roles()->attach($roles);
+			}
+		}
+	}
+
+	/**
+	 * Detach multiple roles from a user
+	 *
+	 * @param mixed $roles
+	 */
+	public function detachRoles($roles){
+		if(is_array($roles) && !isset($roles['id'])){
+			foreach($roles as $role){
+				$this->detachRoles($role);
+			}
+		}
+		else{
+			if(is_object($roles)){
+				$roles = $roles->getKey();
+			}
+
+			if(is_array($roles)){
+				$roles = $roles['id'];
+			}
+
+			if(is_int($roles)){
+				$this->roles()->attach($roles);
+			}
+		}
+	}
+
+	/**
+	 * Alias to eloquent many-to-many relation's attach() method.
+	 *
+	 * @param mixed $role
+	 */
+	public function attachRole($role){
+		$this->detachRoles($role);
+	}
+
+	/**
+	 * Alias to eloquent many-to-many relation's detach() method.
+	 *
+	 * @param mixed $role
+	 */
+	public function detachRole($role){
+		$this->attachRoles($role);
+	}
+
 }
