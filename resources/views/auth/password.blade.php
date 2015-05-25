@@ -1,8 +1,6 @@
 @extends('layout.wrapper')
 
-@section('title')
-	<title>@lang('auth.password.header')</title>
-@overwrite
+@section('title', trans('auth.password.header'))
 
 @section('content')
 	<div>
@@ -18,14 +16,14 @@
 		</div>
 		<div>
 			{!! Form::open() !!}
-				<div>
+				<div class="form__field">
 					{!! Form::label('email', trans('auth.email.label')) !!}
 					{!! Form::email('email', old('email'), ['placeholder' => trans('auth.email.placeholder')]) !!}
 				</div>
-				<div>
+				<div class="form__field">
 					{!! Form::button(trans('auth.password.mail-button'), ['type' => 'submit']) !!}
 				</div>
-				<div>
+				<div class="form__field">
 					<a href="{{ url('/auth/login') }}">@lang('auth.login.hint')</a>
 				</div>
 			{!! Form::close() !!}

@@ -1,5 +1,4 @@
-@import "mixin";
+@import "colors", "config", "mixin";
 
-body {
-    background: #f2f2f2 url( asset('images/background.png' ));
-}
+@import "layout/base";
+

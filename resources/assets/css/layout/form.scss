@@ -1,0 +1,37 @@
+input:not([type]),
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="text"],
+.input--text {
+    border: 1px solid #bbb;
+    padding: 12px 16px;
+    width: 250px;
+    max-width: 100%;
+}
+
+input[type="submit"],
+input[type="button"],
+button,
+.input--button {
+    border: none;
+    padding: 12px 32px;
+    background: $brand;
+    color: $fontLight;
+    font-weight: bold;
+    border-radius: 1.5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.2);
+}
+
+
+.form__field {
+    margin: 8px 0;
+
+    label {
+        display: block;
+        padding: 8px 0;
+    }
+}

@@ -1,8 +1,6 @@
 @extends('layout.wrapper')
 
-@section('title')
-	<title>@lang('auth.register.header')</title>
-@overwrite
+@section('title', trans('auth.register.header'))
 
 @section('content')
 	<div>
@@ -12,27 +10,27 @@
 		</div>
 		<div>
 			{!! Form::open() !!}
-				<div>
+				<div class="form__field">
 					{!! Form::label('name', trans('auth.name.label')) !!}
 					{!! Form::text('name', old('name'), ['placeholder' => trans('auth.name.placeholder')]) !!}
 				</div>
-				<div>
+				<div class="form__field">
 					{!! Form::label('email', trans('auth.email.label')) !!}
 					{!! Form::email('email', old('email'), ['placeholder' => trans('auth.email.placeholder')]) !!}
 				</div>
-				<div>
+				<div class="form__field">
 					{!! Form::label('password', trans('auth.password.label')) !!}
 					{!! Form::password('password') !!}
 				</div>
-				<div>
+				<div class="form__field">
 					{!! Form::label('password_confirmation', trans('auth.password.confirm')) !!}
 					{!! Form::password('password_confirmation') !!}
 				</div>
 
-				<div>
+				<div class="form__field">
 					{!! Form::button(trans('auth.register.button'), ['type' => 'submit']) !!}
 				</div>
-				<div>
+				<div class="form__field">
 					<a href="{{ url('/auth/login') }}">@lang('auth.login.hint')</a>
 				</div>
 			{!! Form::close() !!}

@@ -1,30 +1,17 @@
 @extends('layout.wrapper')
 
-@section('title')
-<title>Guildwars2 Heroes &bull; soon&trade;</title>
-@stop
-
-@section('styles')
-<style>
-	body {
-		margin: 0;
-		background: #f2f2f2 url("{{ asset('/assets/images/background.png') }}");
-		text-align: center;
-	}
-	img {
-		max-width: 100%;
-		height: auto;
-	}
-	#logo { margin-top: 200px; }
-	#soon { margin-top: 100px; }
-	@media( max-height: 700px ) {
-		#logo { margin-top: 100px; }
-		#soon { margin-top: 75px; }
-	}
-</style>
-@stop
+@section('title', 'gw2hero.es &bull; soon&trade;')
 
 @section('content')
-	<img id="logo" src="{{ asset('/assets/images/logo.png') }}" width="500" height="300" alt="Guildwars2 Heroes"><br>
-	<img id="soon" src="{{ asset('/assets/images/soon.png') }}" width="120" height="65"  alt="soon&trade;">
+    <h2>Welcome!</h2>
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+
+    <p>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
 @stop

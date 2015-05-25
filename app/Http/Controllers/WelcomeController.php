@@ -1,5 +1,7 @@
 <?php namespace GW2Heroes\Http\Controllers;
 
+use Response;
+
 class WelcomeController extends Controller{
 
 	/*

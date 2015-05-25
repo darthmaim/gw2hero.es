@@ -8,6 +8,6 @@
 	<h2>lang.home-header</h2>
 
 	<div>
-		You are logged in!
+		You are logged in! <a href="{{ action('Auth\AuthController@getLogout') }}">Logout</a>
 	</div>
 @stop

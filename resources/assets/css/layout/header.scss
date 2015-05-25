@@ -1,0 +1,79 @@
+@import "colors", "config", "mixin";
+
+.header {
+    $height: 48px;
+
+    height: $height;
+    line-height: $height;
+
+    background: $brand;
+    color: $fontLight;
+    box-shadow: 0 1px 1px rgba(0,0,0,.2);
+
+    white-space: nowrap;
+
+    &__content {
+        max-width: $width;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    &__left {
+        position: absolute;
+        left: 0; right: 50%;
+        margin-right: 50px;
+
+        text-align: left;
+    }
+
+    &__right {
+        position: absolute;
+        left: 50%; right: 0;
+        margin-left: 50px;
+
+        text-align: right;
+    }
+
+    &__center {
+        position: absolute;
+        left: 50%;
+        margin-left: -66px;
+
+        text-align: center;
+        width: 132px;
+    }
+
+    &__logo {
+        display: inline-block;
+        padding: 0 16px;
+
+        img {
+            vertical-align: middle;
+        }
+
+        &:hover {
+            background: rgba(255,255,255,.3);
+            text-decoration: none;
+        }
+        &:focus {
+            outline: none;
+            background: rgba(255,255,255,.3);
+            text-decoration: none;
+        }
+    }
+
+    &__button {
+        display: inline-block;
+        padding: 0 16px;
+
+        &:hover {
+            background: rgba(255,255,255,.3);
+            text-decoration: none;
+        }
+        &:focus {
+            outline: none;
+            text-decoration: underline;
+        }
+    }
+}
+

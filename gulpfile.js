@@ -48,8 +48,11 @@ var images = {
 // === STYLES ===
 
 var styles = {
-    src: 'resources/assets/css/*',
-    dest: 'public/assets/css',
+    paths: {
+        src: 'resources/assets/css/*.{scss,sass,css}',
+        watch: 'resources/assets/css/**/*.{scss,sass,css}',
+        dest: 'public/assets/css'
+    },
 
     build: function() {
         var merge = require('merge-stream');
@@ -65,25 +68,27 @@ var styles = {
         var minify = require('gulp-minify-css');
         var sourcemaps = require('gulp-sourcemaps');
 
-        return gulp.src( styles.src )
+        log('css', 'build');
+
+        return gulp.src( styles.paths.src )
             .pipe( sourcemaps.init() )
             .pipe( sass() )
             .pipe( autoprefixer() )
             .pipe( minify() )
             .pipe( sourcemaps.write( '.' ))
-            .pipe( gulp.dest( styles.dest ))
+            .pipe( gulp.dest( styles.paths.dest ))
     },
     normalizeCss: function () {
         var minify = require('gulp-minify-css');
         var changed = require('gulp-changed');
         return gulp.src('node_modules/normalize.css/normalize.css')
-            .pipe( changed( styles.dest ))
+            .pipe( changed( styles.paths.dest ))
             .pipe( minify() )
-            .pipe( gulp.dest( styles.dest ));
+            .pipe( gulp.dest( styles.paths.dest ));
     },
     watch: function() {
         var watch = require('gulp-watch');
-        return watch( styles.src, styles.buildCss );
+        return watch( styles.paths.watch, styles.buildCss );
     }
 };
 

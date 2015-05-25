@@ -1,0 +1,13 @@
+@import "colors", "config", "mixin";
+
+.footer {
+    max-width: $width;
+    margin: 32px auto;
+
+    padding: 0 16px;
+
+    font-size: 12px;
+//    color: mix( $fontLight, $brand, 75% );
+    color: #aaa;
+    text-align: center;
+}
