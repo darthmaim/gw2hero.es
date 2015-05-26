@@ -2,6 +2,7 @@
 
 use Auth;
 use GW2Heroes\Account;
+use GW2Heroes\Character;
 use GW2Treasures\GW2Api\GW2Api;
 use Input;
 
@@ -33,7 +34,7 @@ class HomeController extends Controller{
 	 * @return Response
 	 */
 	public function index() {
-        $accounts = Auth::user()->accounts;
+        $accounts = Auth::user()->accounts()->with('characters')->get();
 		return view('home', compact('accounts'));
 	}
 
@@ -51,6 +52,21 @@ class HomeController extends Controller{
         ]);
 
         Auth::user()->accounts()->save( $account );
+
+        $characterInfos = $api->characters($api_key)->all();
+        $characters = [];
+
+        foreach( $characterInfos as $char ) {
+            $characters[] = Character::create([
+                'name' => $char->name,
+                'race' => $char->race,
+                'gender' => $char->gender,
+                'profession' => $char->profession,
+                'level' => $char->level
+            ]);
+        }
+
+        $account->characters()->saveMany( $characters );
 
         return redirect( action('HomeController@index') );
     }

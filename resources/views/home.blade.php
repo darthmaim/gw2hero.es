@@ -14,7 +14,16 @@
     <h3>Accounts</h3>
     <ul>
         @forelse($accounts as $acc)
-            <li>@include('helper.accountName', [ 'accountName' => $acc->name ])</li>
+            <li>
+                @include('helper.accountName', [ 'accountName' => $acc->name ])
+                <ul>
+                    @forelse( $acc->characters as $char )
+                        <li>{{ $char->name }} (Level {{ $char->level }} {{ $char->race }} {{ $char->profession }})</li>
+                    @empty
+                        <li>No characters</li>
+                    @endforelse
+                </ul>
+            </li>
         @empty
             <li>No accounts added yet.</li>
         @endforelse

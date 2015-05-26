@@ -22,4 +22,8 @@ class Account extends Model {
     public function user() {
         return $this->belongsTo('\GW2Heroes\User');
     }
+
+    public function characters() {
+        return $this->hasMany('\GW2Heroes\Character');
+    }
 }
