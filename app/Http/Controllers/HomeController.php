@@ -1,5 +1,10 @@
 <?php namespace GW2Heroes\Http\Controllers;
 
+use Auth;
+use GW2Heroes\Account;
+use GW2Treasures\GW2Api\GW2Api;
+use Input;
+
 class HomeController extends Controller{
 
 	/*
@@ -27,8 +32,27 @@ class HomeController extends Controller{
 	 *
 	 * @return Response
 	 */
-	public function index(){
-		return view('home');
+	public function index() {
+        $accounts = Auth::user()->accounts;
+		return view('home', compact('accounts'));
 	}
+
+    public function addAccount() {
+        $api_key = Input::get('api_key');
+
+        $api = new GW2Api();
+        $accountInfo = $api->account($api_key)->info();
+
+        $account = Account::create([
+            'guid' => $accountInfo->id,
+            'name' => $accountInfo->name,
+            'world' => $accountInfo->world,
+            'api_key' => $api_key
+        ]);
+
+        Auth::user()->accounts()->save( $account );
+
+        return redirect( action('HomeController@index') );
+    }
 
 }

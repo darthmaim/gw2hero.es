@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0944fd358a12030fba07a59f01d33d01",
+    "hash": "77d705d2e640728ee44e9d9094e23569",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -535,6 +535,53 @@
                 "stream"
             ],
             "time": "2014-10-12 19:18:40"
+        },
+        {
+            "name": "gw2treasures/gw2api",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GW2Treasures/gw2api.git",
+                "reference": "125d46c85f2d83c21dbcefee9ef6b5963aa5c909"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GW2Treasures/gw2api/zipball/125d46c85f2d83c21dbcefee9ef6b5963aa5c909",
+                "reference": "125d46c85f2d83c21dbcefee9ef6b5963aa5c909",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~5.2",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GW2Treasures\\GW2Api\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "darthmaim",
+                    "email": "darth.maim@arcor.de"
+                }
+            ],
+            "description": "PHP wrapper for the Guild Wars 2 API.",
+            "homepage": "https://github.com/GW2Treasures/gw2api",
+            "keywords": [
+                "api",
+                "guild wars 2",
+                "guildwars2",
+                "wrapper"
+            ],
+            "time": "2015-05-23 14:03:33"
         },
         {
             "name": "illuminate/html",
@@ -2495,7 +2542,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/83657286c328f25faf811c5a08c1d4ae0b7cb11a",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/804000c1c535221792b4e173ecdcc02b5681f5ec",
                 "reference": "83657286c328f25faf811c5a08c1d4ae0b7cb11a",
                 "shasum": ""
             },

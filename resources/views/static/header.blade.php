@@ -15,9 +15,16 @@
             @section('header.right')
                 <a class="header__button">Search</a>
                 @if(Auth::check())
-                    <a class="header__button">{{ Auth::user()->name }}</a>
+                    <div class="header__button--dropdown" tabindex="0">
+                        <a class="header__button--dropdown__link">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="header__button__dropdown">
+                            <a href="/settings">Settings</a>
+                        </div>
+                    </div>
                 @else
-                    <a class="header__button" href="{{ action('Auth\AuthController@getLogin') }}">Login</a>
+                    <a class="header__button--dropdown" href="{{ action('Auth\AuthController@getLogin') }}">Login</a>
                 @endif
             @show
         </div>

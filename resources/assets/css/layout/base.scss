@@ -2,7 +2,7 @@
 
 body {
 //    background: $brand;
-    background: #eee url(/assets/images/background.png);
+    background: #eee url( asset("images/background.png" ));
     font: 14px/1 $fontSansSerif;
 }
 
