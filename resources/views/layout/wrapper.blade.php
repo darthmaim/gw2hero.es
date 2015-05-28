@@ -23,7 +23,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#B7000D">
 
-	<link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}" />
+	<link rel="shortcut icon" href="{{ url('favicon.ico') }}" />
+    <link rel="icon" sizes="192x192" type="img/png" href="{{ asset('assets/images/favicon-192x192.png') }}">
+
 	<link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}" />
 	<link rel="stylesheet" href="{{ asset('assets/css/gw2heroes.css') }}" />
     <link href='http://fonts.googleapis.com/css?family=Bitter:700|Roboto:700,400' rel='stylesheet' type='text/css'>
