@@ -24,7 +24,16 @@
                         </div>
                     </div>
                 @else
-                    <a class="header__button--dropdown" href="{{ action('Auth\AuthController@getLogin') }}">Login</a>
+                    <div class="header__button--dropdown" tabindex="0">
+                        <a class="header__button--dropdown__link" href="{{ action('Auth\AuthController@getLogin') }}">
+                            Login
+                        </a>
+                        <div class="header__button__dropdown">
+                            {!! Form::open(['url' => action('Auth\AuthController@postLogin')]) !!}
+                                @include('auth.login.form-fields')
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
                 @endif
             @show
         </div>

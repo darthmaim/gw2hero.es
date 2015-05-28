@@ -124,8 +124,16 @@
         padding: 4px 0;
 
         a {
+            color: $brand;
+        }
+
+        & > a {
             padding: 8px;
             display: block;
+        }
+
+        & > form {
+            padding: 20px;
         }
     }
 }

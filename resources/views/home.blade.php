@@ -1,8 +1,6 @@
 @extends('layout.wrapper')
 
-@section('title')
-	<title>lang.home-header</title>
-@overwrite
+@section('title', 'home')
 
 @section('content')
 	<h2>lang.home-header</h2>
