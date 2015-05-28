@@ -1,0 +1,24 @@
+@import "colors", "config", "mixin";
+
+.body--red {
+    background: $brand;
+
+    .header {
+        box-shadow: none;
+    }
+
+    .footer {
+        color: mix( $fontLight, $brand, 50% );
+    }
+}
+
+.teaser {
+    max-width: $width;
+    margin: 0 auto;
+    border-top: 1px solid rgba(#fff, 0.3);
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}

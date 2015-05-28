@@ -1,7 +1,6 @@
 @import "colors", "config", "mixin";
 
 body {
-//    background: $brand;
     background: #eee url( asset("images/background.png" ));
     font: 14px/1 $fontSansSerif;
 }
@@ -43,3 +42,4 @@ h2 {
 @import "content";
 @import "footer";
 @import "form";
+@import "start";

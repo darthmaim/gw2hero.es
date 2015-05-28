@@ -30,7 +30,7 @@
 
 	@yield('styles')
 </head>
-<body>
+<body class="@yield('class', '')">
     @include('static.header')
     @include('static.content')
     @include('static.footer')
