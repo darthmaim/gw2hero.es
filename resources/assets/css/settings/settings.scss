@@ -1,0 +1,12 @@
+@import "accounts";
+
+
+dl.settings--definition-list {
+    & > dt {
+        margin: 4px 0;
+        font-weight: bold;
+    }
+    & > dd {
+        margin: 4px 0;
+    }
+}

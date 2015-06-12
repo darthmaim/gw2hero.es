@@ -17,6 +17,13 @@ Route::get('home', 'HomeController@index');
 
 Route::post('home/accounts/add', 'HomeController@addAccount');
 
+
+// settings
+Route::controllers([
+    'settings/accounts' => 'Settings\AccountsController'
+]);
+
+// authentication
 Route::controllers([
 	'auth'     => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

@@ -13,7 +13,7 @@
     <ul>
         @forelse($accounts as $acc)
             <li>
-                @include('helper.accountName', [ 'accountName' => $acc->name ])
+                @include('helper.accountName', [ 'account' => $acc ])
                 <ul>
                     @forelse( $acc->characters as $char )
                         <li>{{ $char->name }} (Level {{ $char->level }} {{ $char->race }} {{ $char->profession }})</li>

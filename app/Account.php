@@ -26,4 +26,8 @@ class Account extends Model {
     public function characters() {
         return $this->hasMany('\GW2Heroes\Character');
     }
+
+    public function getNameHtml() {
+        return view('helper.accountName', ['account' => $this]);
+    }
 }

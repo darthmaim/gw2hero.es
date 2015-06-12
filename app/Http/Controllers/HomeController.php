@@ -44,29 +44,28 @@ class HomeController extends Controller{
         $api = new GW2Api();
         $accountInfo = $api->account($api_key)->info();
 
-        $account = Account::create([
+        /** @var Account $account */
+        $account = Auth::user()->accounts()->create([
             'guid' => $accountInfo->id,
             'name' => $accountInfo->name,
             'world' => $accountInfo->world,
             'api_key' => $api_key
         ]);
 
-        Auth::user()->accounts()->save( $account );
-
         $characterInfos = $api->characters($api_key)->all();
         $characters = [];
 
         foreach( $characterInfos as $char ) {
-            $characters[] = Character::create([
+            $characters[] = [
                 'name' => $char->name,
                 'race' => $char->race,
                 'gender' => $char->gender,
                 'profession' => $char->profession,
                 'level' => $char->level
-            ]);
+            ];
         }
 
-        $account->characters()->saveMany( $characters );
+        $account->characters()->createMany($characters);
 
         return redirect( action('HomeController@index') );
     }
