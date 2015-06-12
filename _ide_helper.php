@@ -1,7 +1,7 @@
 <?php
 /**
- * An helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.0.16 on 2015-03-17.
+ * A helper file for Laravel 5, to provide autocomplete information to your IDE
+ * Generated for Laravel 5.1.1 (LTS) on 2015-06-12.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -127,6 +127,17 @@ namespace {
          */
         public static function databasePath(){
             return \Illuminate\Foundation\Application::databasePath();
+        }
+        
+        /**
+         * Set the database directory.
+         *
+         * @param string $path
+         * @return $this 
+         * @static 
+         */
+        public static function useDatabasePath($path){
+            return \Illuminate\Foundation\Application::useDatabasePath($path);
         }
         
         /**
@@ -440,6 +451,26 @@ namespace {
         }
         
         /**
+         * Get the path to the cached "compiled.php" file.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getCachedCompilePath(){
+            return \Illuminate\Foundation\Application::getCachedCompilePath();
+        }
+        
+        /**
+         * Get the path to the cached services.json file.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getCachedServicesPath(){
+            return \Illuminate\Foundation\Application::getCachedServicesPath();
+        }
+        
+        /**
          * Determine if the application is currently down for maintenance.
          *
          * @return bool 
@@ -447,17 +478,6 @@ namespace {
          */
         public static function isDownForMaintenance(){
             return \Illuminate\Foundation\Application::isDownForMaintenance();
-        }
-        
-        /**
-         * Register a maintenance mode event listener.
-         *
-         * @param \Closure $callback
-         * @return void 
-         * @static 
-         */
-        public static function down($callback){
-            \Illuminate\Foundation\Application::down($callback);
         }
         
         /**
@@ -506,6 +526,16 @@ namespace {
         }
         
         /**
+         * Get the application's deferred services.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getDeferredServices(){
+            return \Illuminate\Foundation\Application::getDeferredServices();
+        }
+        
+        /**
          * Set the application's deferred services.
          *
          * @param array $services
@@ -517,6 +547,17 @@ namespace {
         }
         
         /**
+         * Add an array of services to the application's deferred services.
+         *
+         * @param array $services
+         * @return void 
+         * @static 
+         */
+        public static function addDeferredServices($services){
+            \Illuminate\Foundation\Application::addDeferredServices($services);
+        }
+        
+        /**
          * Determine if the given service is a deferred service.
          *
          * @param string $service
@@ -525,6 +566,37 @@ namespace {
          */
         public static function isDeferredService($service){
             return \Illuminate\Foundation\Application::isDeferredService($service);
+        }
+        
+        /**
+         * Define a callback to be used to configure Monolog.
+         *
+         * @param callable $callback
+         * @return $this 
+         * @static 
+         */
+        public static function configureMonologUsing($callback){
+            return \Illuminate\Foundation\Application::configureMonologUsing($callback);
+        }
+        
+        /**
+         * Determine if the application has a custom Monolog configurator.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function hasMonologConfigurator(){
+            return \Illuminate\Foundation\Application::hasMonologConfigurator();
+        }
+        
+        /**
+         * Get the custom Monolog configurator for the application.
+         *
+         * @return callable 
+         * @static 
+         */
+        public static function getMonologConfigurator(){
+            return \Illuminate\Foundation\Application::getMonologConfigurator();
         }
         
         /**
@@ -566,6 +638,17 @@ namespace {
          */
         public static function flush(){
             \Illuminate\Foundation\Application::flush();
+        }
+        
+        /**
+         * Get the application namespace.
+         *
+         * @return string 
+         * @throws \RuntimeException
+         * @static 
+         */
+        public static function getNamespace(){
+            return \Illuminate\Foundation\Application::getNamespace();
         }
         
         /**
@@ -676,6 +759,7 @@ namespace {
          * @param string $abstract
          * @param \Closure $closure
          * @return void 
+         * @deprecated since version 5.1. Use singleton instead.
          * @static 
          */
         public static function bindShared($abstract, $closure){
@@ -808,7 +892,7 @@ namespace {
          * @param string $concrete
          * @param array $parameters
          * @return mixed 
-         * @throws BindingResolutionException
+         * @throws \Illuminate\Contracts\Container\BindingResolutionException
          * @static 
          */
         public static function build($concrete, $parameters = array()){
@@ -820,7 +904,7 @@ namespace {
          * Register a new resolving callback.
          *
          * @param string $abstract
-         * @param \Closure $callback
+         * @param \Closure|null $callback
          * @return void 
          * @static 
          */
@@ -833,7 +917,7 @@ namespace {
          * Register a new after resolving callback for all types.
          *
          * @param string $abstract
-         * @param \Closure $callback
+         * @param \Closure|null $callback
          * @return void 
          * @static 
          */
@@ -1320,7 +1404,7 @@ namespace {
         /**
          * Set the event dispatcher instance.
          *
-         * @param \Illuminate\Contracts\Events\Dispatcher
+         * @param \Illuminate\Contracts\Events\Dispatcher $events
          * @return void 
          * @static 
          */
@@ -1360,7 +1444,7 @@ namespace {
         }
         
         /**
-         * Return the currently cached user of the application.
+         * Return the currently cached user.
          *
          * @return \GW2Heroes\User|null 
          * @static 
@@ -1370,7 +1454,7 @@ namespace {
         }
         
         /**
-         * Set the current user of the application.
+         * Set the current user.
          *
          * @param \Illuminate\Contracts\Auth\Authenticatable $user
          * @return void 
@@ -1393,7 +1477,7 @@ namespace {
         /**
          * Set the current request instance.
          *
-         * @param \Symfony\Component\HttpFoundation\Request
+         * @param \Symfony\Component\HttpFoundation\Request $request
          * @return $this 
          * @static 
          */
@@ -1501,6 +1585,16 @@ namespace {
         }
         
         /**
+         * Get the extensions used by the compiler.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getExtensions(){
+            return \Illuminate\View\Compilers\BladeCompiler::getExtensions();
+        }
+        
+        /**
          * Register a custom Blade compiler.
          *
          * @param callable $compiler
@@ -1512,36 +1606,25 @@ namespace {
         }
         
         /**
-         * Get the regular expression for a generic Blade function.
+         * Register a handler for custom directives.
          *
-         * @param string $function
-         * @return string 
+         * @param string $name
+         * @param callable $handler
+         * @return void 
          * @static 
          */
-        public static function createMatcher($function){
-            return \Illuminate\View\Compilers\BladeCompiler::createMatcher($function);
+        public static function directive($name, $handler){
+            \Illuminate\View\Compilers\BladeCompiler::directive($name, $handler);
         }
         
         /**
-         * Get the regular expression for a generic Blade function.
+         * Gets the raw tags used by the compiler.
          *
-         * @param string $function
-         * @return string 
+         * @return array 
          * @static 
          */
-        public static function createOpenMatcher($function){
-            return \Illuminate\View\Compilers\BladeCompiler::createOpenMatcher($function);
-        }
-        
-        /**
-         * Create a plain Blade matcher.
-         *
-         * @param string $function
-         * @return string 
-         * @static 
-         */
-        public static function createPlainMatcher($function){
-            return \Illuminate\View\Compilers\BladeCompiler::createPlainMatcher($function);
+        public static function getRawTags(){
+            return \Illuminate\View\Compilers\BladeCompiler::getRawTags();
         }
         
         /**
@@ -1736,7 +1819,7 @@ namespace {
         }
         
         /**
-         * Register command to handler mappings.
+         * Register command-to-handler mappings.
          *
          * @param array $commands
          * @return void 
@@ -1771,7 +1854,7 @@ namespace {
         }
         
         /**
-         * Set the pipes commands should be piped through before dispatching.
+         * Set the pipes through which commands should be piped before dispatching.
          *
          * @param array $pipes
          * @return $this 
@@ -1855,7 +1938,7 @@ namespace {
         /**
          * Set the event dispatcher instance.
          *
-         * @param \Illuminate\Contracts\Events\Dispatcher
+         * @param \Illuminate\Contracts\Events\Dispatcher $events
          * @return void 
          * @static 
          */
@@ -2073,7 +2156,7 @@ namespace {
         }
         
         /**
-         * Checks if macro is registered
+         * Checks if macro is registered.
          *
          * @param string $name
          * @return bool 
@@ -2387,7 +2470,7 @@ namespace {
         }
         
         /**
-         * Get the cookies which have been queued for the next request
+         * Get the cookies which have been queued for the next request.
          *
          * @return array 
          * @static 
@@ -2402,6 +2485,18 @@ namespace {
     class Crypt extends \Illuminate\Support\Facades\Crypt{
         
         /**
+         * Determine if the given key and cipher combination is valid.
+         *
+         * @param string $key
+         * @param string $cipher
+         * @return bool 
+         * @static 
+         */
+        public static function supported($key, $cipher){
+            return \Illuminate\Encryption\McryptEncrypter::supported($key, $cipher);
+        }
+        
+        /**
          * Encrypt the given value.
          *
          * @param string $value
@@ -2409,7 +2504,7 @@ namespace {
          * @static 
          */
         public static function encrypt($value){
-            return \Illuminate\Encryption\Encrypter::encrypt($value);
+            return \Illuminate\Encryption\McryptEncrypter::encrypt($value);
         }
         
         /**
@@ -2420,40 +2515,7 @@ namespace {
          * @static 
          */
         public static function decrypt($payload){
-            return \Illuminate\Encryption\Encrypter::decrypt($payload);
-        }
-        
-        /**
-         * Set the encryption key.
-         *
-         * @param string $key
-         * @return void 
-         * @static 
-         */
-        public static function setKey($key){
-            \Illuminate\Encryption\Encrypter::setKey($key);
-        }
-        
-        /**
-         * Set the encryption cipher.
-         *
-         * @param string $cipher
-         * @return void 
-         * @static 
-         */
-        public static function setCipher($cipher){
-            \Illuminate\Encryption\Encrypter::setCipher($cipher);
-        }
-        
-        /**
-         * Set the encryption mode.
-         *
-         * @param string $mode
-         * @return void 
-         * @static 
-         */
-        public static function setMode($mode){
-            \Illuminate\Encryption\Encrypter::setMode($mode);
+            return \Illuminate\Encryption\McryptEncrypter::decrypt($payload);
         }
         
     }
@@ -2980,7 +3042,7 @@ namespace {
         /**
          * Set the query grammar used by the connection.
          *
-         * @param \Illuminate\Database\Query\Grammars\Grammar
+         * @param \Illuminate\Database\Query\Grammars\Grammar $grammar
          * @return void 
          * @static 
          */
@@ -2992,7 +3054,7 @@ namespace {
         /**
          * Get the schema grammar used by the connection.
          *
-         * @return \Illuminate\Database\Query\Grammars\Grammar 
+         * @return \Illuminate\Database\Schema\Grammars\Grammar 
          * @static 
          */
         public static function getSchemaGrammar(){
@@ -3003,7 +3065,7 @@ namespace {
         /**
          * Set the schema grammar used by the connection.
          *
-         * @param \Illuminate\Database\Schema\Grammars\Grammar
+         * @param \Illuminate\Database\Schema\Grammars\Grammar $grammar
          * @return void 
          * @static 
          */
@@ -3026,7 +3088,7 @@ namespace {
         /**
          * Set the query post processor used by the connection.
          *
-         * @param \Illuminate\Database\Query\Processors\Processor
+         * @param \Illuminate\Database\Query\Processors\Processor $processor
          * @return void 
          * @static 
          */
@@ -3049,7 +3111,7 @@ namespace {
         /**
          * Set the event dispatcher instance on the connection.
          *
-         * @param \Illuminate\Contracts\Events\Dispatcher
+         * @param \Illuminate\Contracts\Events\Dispatcher $events
          * @return void 
          * @static 
          */
@@ -3213,13 +3275,25 @@ namespace {
         /**
          * Find a model by its primary key.
          *
-         * @param array $id
+         * @param mixed $id
          * @param array $columns
-         * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static 
+         * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|null 
          * @static 
          */
-        public static function findMany($id, $columns = array()){
-            return \Illuminate\Database\Eloquent\Builder::findMany($id, $columns);
+        public static function find($id, $columns = array()){
+            return \Illuminate\Database\Eloquent\Builder::find($id, $columns);
+        }
+        
+        /**
+         * Find a model by its primary key.
+         *
+         * @param array $ids
+         * @param array $columns
+         * @return \Illuminate\Database\Eloquent\Collection 
+         * @static 
+         */
+        public static function findMany($ids, $columns = array()){
+            return \Illuminate\Database\Eloquent\Builder::findMany($ids, $columns);
         }
         
         /**
@@ -3270,10 +3344,24 @@ namespace {
         }
         
         /**
-         * Pluck a single column from the database.
+         * Get a single column's value from the first result of a query.
          *
          * @param string $column
          * @return mixed 
+         * @static 
+         */
+        public static function value($column){
+            return \Illuminate\Database\Eloquent\Builder::value($column);
+        }
+        
+        /**
+         * Get a single column's value from the first result of a query.
+         * 
+         * This is an alias for the "value" method.
+         *
+         * @param string $column
+         * @return mixed 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function pluck($column){
@@ -3297,7 +3385,7 @@ namespace {
          *
          * @param string $column
          * @param string $key
-         * @return array 
+         * @return \Illuminate\Support\Collection 
          * @static 
          */
         public static function lists($column, $key = null){
@@ -3309,11 +3397,12 @@ namespace {
          *
          * @param int $perPage
          * @param array $columns
+         * @param string $pageName
          * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator 
          * @static 
          */
-        public static function paginate($perPage = null, $columns = array()){
-            return \Illuminate\Database\Eloquent\Builder::paginate($perPage, $columns);
+        public static function paginate($perPage = null, $columns = array(), $pageName = 'page'){
+            return \Illuminate\Database\Eloquent\Builder::paginate($perPage, $columns, $pageName);
         }
         
         /**
@@ -3321,11 +3410,12 @@ namespace {
          *
          * @param int $perPage
          * @param array $columns
+         * @param string $pageName
          * @return \Illuminate\Contracts\Pagination\Paginator 
          * @static 
          */
-        public static function simplePaginate($perPage = null, $columns = array()){
-            return \Illuminate\Database\Eloquent\Builder::simplePaginate($perPage, $columns);
+        public static function simplePaginate($perPage = null, $columns = array(), $pageName = 'page'){
+            return \Illuminate\Database\Eloquent\Builder::simplePaginate($perPage, $columns, $pageName);
         }
         
         /**
@@ -4266,11 +4356,12 @@ namespace {
         /**
          * Get the count of the total records for the paginator.
          *
+         * @param array $columns
          * @return int 
          * @static 
          */
-        public static function getCountForPagination(){
-            return \Illuminate\Database\Query\Builder::getCountForPagination();
+        public static function getCountForPagination($columns = array()){
+            return \Illuminate\Database\Query\Builder::getCountForPagination($columns);
         }
         
         /**
@@ -4310,7 +4401,7 @@ namespace {
          * Retrieve the minimum value of a given column.
          *
          * @param string $column
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function min($column){
@@ -4321,7 +4412,7 @@ namespace {
          * Retrieve the maximum value of a given column.
          *
          * @param string $column
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function max($column){
@@ -4332,7 +4423,7 @@ namespace {
          * Retrieve the sum of the values of a given column.
          *
          * @param string $column
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function sum($column){
@@ -4343,7 +4434,7 @@ namespace {
          * Retrieve the average of the values of a given column.
          *
          * @param string $column
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function avg($column){
@@ -4355,7 +4446,7 @@ namespace {
          *
          * @param string $function
          * @param array $columns
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function aggregate($function, $columns = array()){
@@ -4488,7 +4579,7 @@ namespace {
         /**
          * Get the query grammar instance.
          *
-         * @return \Illuminate\Database\Grammar 
+         * @return \Illuminate\Database\Query\Grammars\Grammar 
          * @static 
          */
         public static function getGrammar(){
@@ -4549,7 +4640,7 @@ namespace {
         /**
          * Register an event subscriber with the dispatcher.
          *
-         * @param string $subscriber
+         * @param object|string $subscriber
          * @return void 
          * @static 
          */
@@ -4560,7 +4651,7 @@ namespace {
         /**
          * Fire an event until the first non-null response is returned.
          *
-         * @param string $event
+         * @param string|object $event
          * @param array $payload
          * @return mixed 
          * @static 
@@ -5000,7 +5091,7 @@ namespace {
         }
         
         /**
-         * Checks if macro is registered
+         * Checks if macro is registered.
          *
          * @param string $name
          * @return bool 
@@ -5303,7 +5394,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function query($key = null, $default = null){
@@ -5326,7 +5417,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function cookie($key = null, $default = null){
@@ -5361,7 +5452,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function header($key = null, $default = null){
@@ -5373,7 +5464,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function server($key = null, $default = null){
@@ -5488,6 +5579,37 @@ namespace {
          */
         public static function wantsJson(){
             return \Illuminate\Http\Request::wantsJson();
+        }
+        
+        /**
+         * Determines whether the current requests accepts a given content type.
+         *
+         * @param string|array $contentTypes
+         * @return bool 
+         * @static 
+         */
+        public static function accepts($contentTypes){
+            return \Illuminate\Http\Request::accepts($contentTypes);
+        }
+        
+        /**
+         * Determines whether a request accepts JSON.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function acceptsJson(){
+            return \Illuminate\Http\Request::acceptsJson();
+        }
+        
+        /**
+         * Determines whether a request accepts HTML.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function acceptsHtml(){
+            return \Illuminate\Http\Request::acceptsHtml();
         }
         
         /**
@@ -6177,6 +6299,30 @@ namespace {
         public static function getUriForPath($path){
             //Method inherited from \Symfony\Component\HttpFoundation\Request            
             return \Illuminate\Http\Request::getUriForPath($path);
+        }
+        
+        /**
+         * Returns the path as relative reference from the current Request path.
+         * 
+         * Only the URIs path component (no schema, host etc.) is relevant and must be given.
+         * Both paths must be absolute and not contain relative parts.
+         * Relative URLs from one resource to another are useful when generating self-contained downloadable document archives.
+         * Furthermore, they can be used to reduce the link size in documents.
+         * 
+         * Example target paths, given a base path of "/a/b/c/d":
+         * - "/a/b/c/d"     -> ""
+         * - "/a/b/c/"      -> "./"
+         * - "/a/b/"        -> "../"
+         * - "/a/b/c/other" -> "other"
+         * - "/a/x/y"       -> "../../x/y"
+         *
+         * @param string $path The target path
+         * @return string The relative target path
+         * @static 
+         */
+        public static function getRelativeUriForPath($path){
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getRelativeUriForPath($path);
         }
         
         /**
@@ -6922,7 +7068,7 @@ namespace {
          * Register an error_log handler.
          *
          * @param string $level
-         * @param integer $messageType
+         * @param int $messageType
          * @return void 
          * @static 
          */
@@ -6931,8 +7077,7 @@ namespace {
         }
         
         /**
-         * Register a new callback handler for when
-         * a log event is triggered.
+         * Register a new callback handler for when a log event is triggered.
          *
          * @param \Closure $callback
          * @return void 
@@ -6966,7 +7111,7 @@ namespace {
         /**
          * Set the event dispatcher instance.
          *
-         * @param \Illuminate\Contracts\Events\Dispatcher
+         * @param \Illuminate\Contracts\Events\Dispatcher $dispatcher
          * @return void 
          * @static 
          */
@@ -6983,12 +7128,24 @@ namespace {
          * Set the global from address and name.
          *
          * @param string $address
-         * @param string $name
+         * @param string|null $name
          * @return void 
          * @static 
          */
         public static function alwaysFrom($address, $name = null){
             \Illuminate\Mail\Mailer::alwaysFrom($address, $name);
+        }
+        
+        /**
+         * Set the global to address and name.
+         *
+         * @param string $address
+         * @param string|null $name
+         * @return void 
+         * @static 
+         */
+        public static function alwaysTo($address, $name = null){
+            \Illuminate\Mail\Mailer::alwaysTo($address, $name);
         }
         
         /**
@@ -7035,7 +7192,7 @@ namespace {
          * @param string|array $view
          * @param array $data
          * @param \Closure|string $callback
-         * @param string $queue
+         * @param string|null $queue
          * @return mixed 
          * @static 
          */
@@ -7064,7 +7221,7 @@ namespace {
          * @param string|array $view
          * @param array $data
          * @param \Closure|string $callback
-         * @param string $queue
+         * @param string|null $queue
          * @return mixed 
          * @static 
          */
@@ -7403,6 +7560,7 @@ namespace {
          * @param mixed $data
          * @param string $queue
          * @return mixed 
+         * @throws \Exception
          * @static 
          */
         public static function push($job, $data = '', $queue = null){
@@ -7480,6 +7638,7 @@ namespace {
          * Marshal a push queue request and fire the job.
          *
          * @throws \RuntimeException
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function marshal(){
@@ -7499,17 +7658,6 @@ namespace {
         public static function bulk($jobs, $data = '', $queue = null){
             //Method inherited from \Illuminate\Queue\Queue            
             return \Illuminate\Queue\SyncQueue::bulk($jobs, $data, $queue);
-        }
-        
-        /**
-         * Get the current UNIX timestamp.
-         *
-         * @return int 
-         * @static 
-         */
-        public static function getTime(){
-            //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\SyncQueue::getTime();
         }
         
         /**
@@ -7932,7 +8080,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function query($key = null, $default = null){
@@ -7955,7 +8103,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function cookie($key = null, $default = null){
@@ -7990,7 +8138,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function header($key = null, $default = null){
@@ -8002,7 +8150,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function server($key = null, $default = null){
@@ -8117,6 +8265,37 @@ namespace {
          */
         public static function wantsJson(){
             return \Illuminate\Http\Request::wantsJson();
+        }
+        
+        /**
+         * Determines whether the current requests accepts a given content type.
+         *
+         * @param string|array $contentTypes
+         * @return bool 
+         * @static 
+         */
+        public static function accepts($contentTypes){
+            return \Illuminate\Http\Request::accepts($contentTypes);
+        }
+        
+        /**
+         * Determines whether a request accepts JSON.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function acceptsJson(){
+            return \Illuminate\Http\Request::acceptsJson();
+        }
+        
+        /**
+         * Determines whether a request accepts HTML.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function acceptsHtml(){
+            return \Illuminate\Http\Request::acceptsHtml();
         }
         
         /**
@@ -8809,6 +8988,30 @@ namespace {
         }
         
         /**
+         * Returns the path as relative reference from the current Request path.
+         * 
+         * Only the URIs path component (no schema, host etc.) is relevant and must be given.
+         * Both paths must be absolute and not contain relative parts.
+         * Relative URLs from one resource to another are useful when generating self-contained downloadable document archives.
+         * Furthermore, they can be used to reduce the link size in documents.
+         * 
+         * Example target paths, given a base path of "/a/b/c/d":
+         * - "/a/b/c/d"     -> ""
+         * - "/a/b/c/"      -> "./"
+         * - "/a/b/"        -> "../"
+         * - "/a/b/c/other" -> "other"
+         * - "/a/x/y"       -> "../../x/y"
+         *
+         * @param string $path The target path
+         * @return string The relative target path
+         * @static 
+         */
+        public static function getRelativeUriForPath($path){
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getRelativeUriForPath($path);
+        }
+        
+        /**
          * Generates the normalized query string for the Request.
          * 
          * It builds a normalized query string, where keys/value pairs are alphabetized
@@ -9184,7 +9387,7 @@ namespace {
          * @param string $content
          * @param int $status
          * @param array $headers
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @return \Illuminate\Http\Response 
          * @static 
          */
         public static function make($content = '', $status = 200, $headers = array()){
@@ -9198,7 +9401,7 @@ namespace {
          * @param array $data
          * @param int $status
          * @param array $headers
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @return \Illuminate\Http\Response 
          * @static 
          */
         public static function view($view, $data = array(), $status = 200, $headers = array()){
@@ -9212,7 +9415,7 @@ namespace {
          * @param int $status
          * @param array $headers
          * @param int $options
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @return \Illuminate\Http\JsonResponse 
          * @static 
          */
         public static function json($data = array(), $status = 200, $headers = array(), $options = 0){
@@ -9227,7 +9430,7 @@ namespace {
          * @param int $status
          * @param array $headers
          * @param int $options
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @return \Illuminate\Http\JsonResponse 
          * @static 
          */
         public static function jsonp($callback, $data = array(), $status = 200, $headers = array(), $options = 0){
@@ -9253,7 +9456,7 @@ namespace {
          * @param \SplFileInfo|string $file
          * @param string $name
          * @param array $headers
-         * @param null|string $disposition
+         * @param string|null $disposition
          * @return \Symfony\Component\HttpFoundation\BinaryFileResponse 
          * @static 
          */
@@ -9267,8 +9470,8 @@ namespace {
          * @param string $path
          * @param int $status
          * @param array $headers
-         * @param bool $secure
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @param bool|null $secure
+         * @return \Illuminate\Http\RedirectResponse 
          * @static 
          */
         public static function redirectTo($path, $status = 302, $headers = array(), $secure = null){
@@ -9282,7 +9485,7 @@ namespace {
          * @param array $parameters
          * @param int $status
          * @param array $headers
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @return \Illuminate\Http\RedirectResponse 
          * @static 
          */
         public static function redirectToRoute($route, $parameters = array(), $status = 302, $headers = array()){
@@ -9296,7 +9499,7 @@ namespace {
          * @param array $parameters
          * @param int $status
          * @param array $headers
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @return \Illuminate\Http\RedirectResponse 
          * @static 
          */
         public static function redirectToAction($action, $parameters = array(), $status = 302, $headers = array()){
@@ -9309,8 +9512,8 @@ namespace {
          * @param string $path
          * @param int $status
          * @param array $headers
-         * @param bool $secure
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @param bool|null $secure
+         * @return \Illuminate\Http\RedirectResponse 
          * @static 
          */
         public static function redirectGuest($path, $status = 302, $headers = array(), $secure = null){
@@ -9323,8 +9526,8 @@ namespace {
          * @param string $default
          * @param int $status
          * @param array $headers
-         * @param bool $secure
-         * @return \Symfony\Component\HttpFoundation\Response 
+         * @param bool|null $secure
+         * @return \Illuminate\Http\RedirectResponse 
          * @static 
          */
         public static function redirectToIntended($default = '/', $status = 302, $headers = array(), $secure = null){
@@ -9344,7 +9547,7 @@ namespace {
         }
         
         /**
-         * Checks if macro is registered
+         * Checks if macro is registered.
          *
          * @param string $name
          * @return bool 
@@ -9583,6 +9786,17 @@ namespace {
         }
         
         /**
+         * Resolve the middleware name to a class name preserving passed parameters.
+         *
+         * @param $name
+         * @return string 
+         * @static 
+         */
+        public static function resolveMiddlewareClassName($name){
+            return \Illuminate\Routing\Router::resolveMiddlewareClassName($name);
+        }
+        
+        /**
          * Register a route matched event listener.
          *
          * @param string|callable $callback
@@ -9598,6 +9812,7 @@ namespace {
          *
          * @param string|callable $callback
          * @return void 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function before($callback){
@@ -9609,6 +9824,7 @@ namespace {
          *
          * @param string|callable $callback
          * @return void 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function after($callback){
@@ -9643,6 +9859,7 @@ namespace {
          * @param string $name
          * @param string|callable $callback
          * @return void 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function filter($name, $callback){
@@ -9656,6 +9873,7 @@ namespace {
          * @param string $name
          * @param array|null $methods
          * @return void 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function when($pattern, $name, $methods = null){
@@ -9669,6 +9887,7 @@ namespace {
          * @param string $name
          * @param array|null $methods
          * @return void 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function whenRegex($pattern, $name, $methods = null){
@@ -9713,7 +9932,7 @@ namespace {
         }
         
         /**
-         * Set a global where pattern on all routes
+         * Set a global where pattern on all routes.
          *
          * @param string $key
          * @param string $pattern
@@ -9725,7 +9944,7 @@ namespace {
         }
         
         /**
-         * Set a group of global where patterns on all routes
+         * Set a group of global where patterns on all routes.
          *
          * @param array $patterns
          * @return void 
@@ -9752,6 +9971,7 @@ namespace {
          *
          * @param \Illuminate\Http\Request $request
          * @return array 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function findPatternFilters($request){
@@ -9765,6 +9985,7 @@ namespace {
          * @param \Illuminate\Http\Request $request
          * @param \Illuminate\Http\Response $response
          * @return mixed 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function callRouteAfter($route, $request, $response){
@@ -9780,10 +10001,23 @@ namespace {
          * @param \Illuminate\Http\Request $request
          * @param \Illuminate\Http\Response|null $response
          * @return mixed 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function callRouteFilter($filter, $parameters, $route, $request, $response = null){
             return \Illuminate\Routing\Router::callRouteFilter($filter, $parameters, $route, $request, $response);
+        }
+        
+        /**
+         * Create a response instance from the given value.
+         *
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param mixed $response
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */
+        public static function prepareResponse($request, $response){
+            return \Illuminate\Routing\Router::prepareResponse($request, $response);
         }
         
         /**
@@ -9967,7 +10201,7 @@ namespace {
         }
         
         /**
-         * Checks if macro is registered
+         * Checks if macro is registered.
          *
          * @param string $name
          * @return bool 
@@ -10015,6 +10249,19 @@ namespace {
         public static function hasColumn($table, $column){
             //Method inherited from \Illuminate\Database\Schema\Builder            
             return \Illuminate\Database\Schema\MySqlBuilder::hasColumn($table, $column);
+        }
+        
+        /**
+         * Determine if the given table has given columns.
+         *
+         * @param string $table
+         * @param array $columns
+         * @return bool 
+         * @static 
+         */
+        public static function hasColumns($table, $columns){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::hasColumns($table, $columns);
         }
         
         /**
@@ -10094,7 +10341,7 @@ namespace {
         /**
          * Set the database connection instance.
          *
-         * @param \Illuminate\Database\Connection
+         * @param \Illuminate\Database\Connection $connection
          * @return $this 
          * @static 
          */
@@ -10708,6 +10955,17 @@ namespace {
          */
         public static function createLocalDriver($config){
             return \Illuminate\Filesystem\FilesystemManager::createLocalDriver($config);
+        }
+        
+        /**
+         * Create an instance of the ftp driver.
+         *
+         * @param array $config
+         * @return \Illuminate\Contracts\Filesystem\Filesystem 
+         * @static 
+         */
+        public static function createFtpDriver($config){
+            return \Illuminate\Filesystem\FilesystemManager::createFtpDriver($config);
         }
         
         /**
@@ -11444,7 +11702,7 @@ namespace {
         /**
          * Set the event dispatcher instance.
          *
-         * @param \Illuminate\Contracts\Events\Dispatcher
+         * @param \Illuminate\Contracts\Events\Dispatcher $events
          * @return void 
          * @static 
          */
@@ -11493,6 +11751,17 @@ namespace {
          */
         public static function getShared(){
             return \Illuminate\View\Factory::getShared();
+        }
+        
+        /**
+         * Check if section exists.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasSection($name){
+            return \Illuminate\View\Factory::hasSection($name);
         }
         
         /**
@@ -11917,7 +12186,7 @@ namespace {
         }
         
         /**
-         * Checks if macro is registered
+         * Checks if macro is registered.
          *
          * @param string $name
          * @return bool 
@@ -12159,7 +12428,7 @@ namespace {
         }
         
         /**
-         * Checks if macro is registered
+         * Checks if macro is registered.
          *
          * @param string $name
          * @return bool 
