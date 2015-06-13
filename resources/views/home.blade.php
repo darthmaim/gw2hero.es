@@ -2,7 +2,7 @@
 
 @section('title', 'home')
 
-@section('content')
+@section('content.right')
 	<h2>lang.home-header</h2>
 
 	<div>

@@ -2,8 +2,19 @@
 
 @section('title', 'home')
 
-@section('content')
+@section('content.right')
     <h2>Settings</h2>
 
     @yield('settings.content')
+@stop
+
+
+@section('content.left')
+    <div class="settings-sidebar">
+        @section('settings.sidebar')
+            <a href="{{ action('Settings\SettingsController@getProfile') }}">Profile</a>
+            <a href="{{ action('Settings\AccountsController@getIndex') }}">Accounts</a>
+            <a href="{{ action('Settings\SettingsController@getNotifications') }}">Notifications</a>
+        @show
+    </div>
 @stop

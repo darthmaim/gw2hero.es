@@ -13,6 +13,14 @@ class SettingsController extends Controller {
     }
 
     public function getIndex() {
-        return view('settings.settings');
+        return redirect()->action('Settings\SettingsController@getProfile');
+    }
+
+    public function getProfile() {
+        return view('settings.profile');
+    }
+
+    public function getNotifications() {
+        return view('settings.notifications');
     }
 }

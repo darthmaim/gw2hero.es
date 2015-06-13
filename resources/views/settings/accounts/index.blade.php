@@ -7,11 +7,9 @@
 
     <ul class="settings__accounts__list">
         @foreach($accounts as $acc)
-            <li id="account-{{ $acc->id }}">
+            <li>
                 <div class="settings__accounts__account__title">
-                    <a href="#account-{{ $acc->id }}">
-                        {!! $acc->getNameHtml() !!}
-                    </a>
+                    {!! $acc->getNameHtml() !!}
                 </div>
                 <div class="settings__accounts__account__content">
                     <dl class="settings--definition-list">

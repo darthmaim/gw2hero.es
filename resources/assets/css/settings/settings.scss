@@ -12,3 +12,22 @@ dl.settings--definition-list {
         margin: 4px 0;
     }
 }
+
+.settings-sidebar {
+    a {
+        display: block;
+        padding: 12px;
+
+        &:after {
+            content: '〉';
+            color: #aaa;
+            margin-left: 4px;
+            font-weight: bold;
+            float: right;
+        }
+
+        &:hover {
+            background-color: #fafafa;
+        }
+    }
+}
