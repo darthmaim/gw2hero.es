@@ -1,7 +1,5 @@
-<?php namespace GW2Heroes\Commands;
+<?php
 
-abstract class Command{
+namespace GW2Heroes\Jobs;
 
-	//
-
-}
+abstract class Job { }

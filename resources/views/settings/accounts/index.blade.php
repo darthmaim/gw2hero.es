@@ -3,6 +3,8 @@
 @section('settings.content')
     <h3>Accounts</h3>
 
+    <a href="{{ action('Settings\AccountsController@getAdd') }}">+ Add account</a>
+
     <ul class="settings__accounts__list">
         @foreach($accounts as $acc)
             <li id="account-{{ $acc->id }}">
@@ -11,12 +13,6 @@
                         {!! $acc->getNameHtml() !!}
                     </a>
                 </div>
-                @unless( $acc->api_key_verified )
-                    <div class="settings__accounts__account__api-key__not-verified">
-                        You have to verify the ownership of this account before you can use it.
-                        <a href="{{ action('Settings\AccountsController@getVerify', $acc->id) }}">Verify Ownership</a>.
-                    </div>
-                @endunless
                 <div class="settings__accounts__account__content">
                     <dl class="settings--definition-list">
                         <dt>API key:</dt>
@@ -26,4 +22,6 @@
             </li>
         @endforeach
     </ul>
+
+    <a href="{{ action('Settings\AccountsController@getAdd') }}">+ Add account</a>
 @stop

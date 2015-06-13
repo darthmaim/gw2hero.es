@@ -1,0 +1,25 @@
+@import "colors";
+
+.api-key__name {
+    border: 1px solid #eee;
+    border-radius: 3px;
+    padding: 4px 6px;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.api-key__permission {
+    border: 1px solid #eee;
+    border-radius: 3px;
+    padding: 4px 6px;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1;
+
+    &:before {
+        content: '⚙';
+        margin-right: 4px;
+        color: $brand;
+    }
+}

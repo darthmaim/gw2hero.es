@@ -23,17 +23,12 @@
                 </ul>
             </li>
         @empty
-            <li>No accounts added yet.</li>
+            <li>
+                No accounts added yet.
+                <a href="{{ action('Settings\AccountsController@getAdd') }}">Add one now</a>.
+            </li>
         @endforelse
     </ul>
 
-    {!! Form::open([ 'action' => 'HomeController@addAccount' ]) !!}
-        <div class="form__field">
-            {!! Form::label('api_key', 'Api key') !!}
-            {!! Form::text('api_key') !!}
-        </div>
-        <div class="form__field">
-            {!! Form::submit('Add account') !!}
-        </div>
-    {!! Form::close() !!}
+    <a href="{{ action('Settings\AccountsController@getIndex') }}">Manage Accounts</a>
 @stop

@@ -3,10 +3,12 @@
 namespace GW2Heroes\Http\Controllers\Settings;
 
 use Auth;
-use Crypt;
 use GW2Heroes\Account;
 use GW2Heroes\Http\Controllers\Controller;
 use GW2Treasures\GW2Api\GW2Api;
+use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
+use Illuminate\Http\Request;
+use Session;
 
 class AccountsController extends Controller {
     function __construct() {
@@ -19,42 +21,78 @@ class AccountsController extends Controller {
         return view('settings.accounts.index', compact('accounts'));
     }
 
-    public function getVerify($id) {
-        $account = Auth::user()->accounts()->find($id);
+    public function getAdd() {
+        $apiKeyNameSessionName = $this->getApiKeyNameSessionName();
 
-        if( !$account ) {
-            return redirect( action( 'Settings\AccountsController@getIndex' ));
+        if( Session::has($apiKeyNameSessionName) ) {
+            $apiKeyName = Session::get($apiKeyNameSessionName);
+        } else {
+            $apiKeyName = 'gw2hero.es [' . str_random(8) . ']';
+            Session::set($apiKeyNameSessionName, $apiKeyName);
         }
 
-        $key = $this->getVerificationKey( $account );
-
-        return view('settings.accounts.verify', compact('account', 'key'));
+        return view('settings.accounts.add', compact('apiKeyName'));
     }
 
-    public function postVerify($id) {
-        $account = Auth::user()->accounts()->find($id);
+    public function postAdd(Request $request) {
+        $this->validate($request, [
+            'api_key' => 'required',
+        ]);
 
-        if( !$account ) {
-            return redirect( action( 'Settings\AccountsController@getIndex' ));
-        }
+        $apiKeyNameSessionName = $this->getApiKeyNameSessionName();
+        $apiKeyName = Session::get($apiKeyNameSessionName);
 
-        $key = $this->getVerificationKey( $account );
+        $apiKey = $request->input('api_key');
 
         $api = new GW2Api();
-        $tokeninfo = $api->tokeninfo( $account->api_key )->get();
 
-        if( $tokeninfo->name === $key ) {
-            $account->api_key_verified = true;
-            $account->save();
-
-            return redirect( action( 'Settings\AccountsController@getIndex' ));
+        try {
+            $tokeninfo = $api->tokeninfo($apiKey)->get();
+        } catch( AuthenticationException $e ) {
+            return redirect()->back()
+                ->withErrors('API key invalid');
         }
 
-        return redirect( action('Settings\AccountsController@getVerify', [ $account->id ]) )
-            ->withErrors('api_key', 'Name of API key does not match.');
+        if( $tokeninfo->name !== $apiKeyName ) {
+            return redirect()->back()
+                ->withErrors('API key name invalid');
+        }
+
+        if( !in_array('account', $tokeninfo->permissions) ) {
+            return redirect()->back()
+                ->withErrors('API key does not have `account` permission');
+        }
+
+        if( !in_array('characters', $tokeninfo->permissions) ) {
+            return redirect()->back()
+                ->withErrors('API key does not have `characters` permission');
+        }
+
+        Session::forget($apiKeyNameSessionName);
+
+        $account = Account::fromApiKey($apiKey);
+        Auth::user()->accounts()->save($account);
+
+        $characterInfos = $api->characters( $apiKey )->all();
+        $characters = [];
+
+        foreach( $characterInfos as $char ) {
+            $characters[] = [
+                'name' => $char->name,
+                'race' => $char->race,
+                'gender' => $char->gender,
+                'profession' => $char->profession,
+                'level' => $char->level
+            ];
+        }
+
+        $account->characters()->createMany($characters);
+
+        return redirect()->action('Settings\AccountsController@getIndex')
+            ->with('account', $account);
     }
 
-    protected function getVerificationKey( Account $account ) {
-        return $key = 'gw2hero.es ' . substr(md5($account->api_key . config('app.key')), 0, 8);
+    protected function getApiKeyNameSessionName() {
+        return 'settings.accounts.add.apiKeyName';
     }
 }
