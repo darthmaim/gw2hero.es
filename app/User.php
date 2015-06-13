@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
     public function accounts() {
-        return $this->hasMany( '\GW2Heroes\Account' );
+        return $this->hasMany('\GW2Heroes\Account');
     }
 
 	/**

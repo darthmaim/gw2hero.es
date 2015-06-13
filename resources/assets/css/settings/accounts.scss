@@ -1,0 +1,57 @@
+@import "colors";
+
+.settings__accounts__list {
+    padding: 0;
+    margin: 20px 0;
+
+    list-style: none;
+
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    li {
+        padding: 8px 16px;
+
+        &:target .settings__accounts__account__content {
+            max-height: 500px;
+        }
+    }
+
+    li+li {
+        border-top: 1px solid #ccc;
+    }
+}
+
+.settings__accounts__account__title {
+    .account-name {
+        font-weight: bold;
+        font-size: 16px;
+
+        margin-bottom: 4px;
+
+        color: $font;
+    }
+}
+
+.settings__accounts__account__content {
+//    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s linear;
+}
+
+.settings__accounts__account__api-key {
+    color: #aaa;
+    font-size: 12px;
+
+    @extend .truncate;
+}
+
+.settings__accounts__account__api-key__not-verified {
+    color: $brand;
+    margin-top: 8px;
+    font-size: 13px;
+
+    a {
+        text-decoration: underline;
+    }
+}
