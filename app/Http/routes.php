@@ -17,7 +17,8 @@ Route::get('home', 'HomeController@index');
 
 // settings
 Route::controllers([
-    'settings/accounts' => 'Settings\AccountsController'
+    'settings/accounts' => 'Settings\AccountsController',
+    'settings' => 'Settings\SettingsController'
 ]);
 
 // authentication
