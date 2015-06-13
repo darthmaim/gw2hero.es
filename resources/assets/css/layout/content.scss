@@ -5,6 +5,7 @@
 }
 
 .content {
+    width: 100%;
     max-width: $width;
     margin: 40px auto;
 
@@ -15,8 +16,29 @@
 
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
 
-
     a {
         color: $brand;
     }
+}
+
+.content__container {
+    display: flex;
+}
+
+.content__left {
+    float: left;
+
+    flex-shrink: 0;
+
+    width: 250px;
+    border-right: 1px solid #eee;
+    padding-right: 24px;
+}
+
+.content__right {
+    flex: 1;
+
+    overflow: hidden;
+    padding-left: 24px;
+    padding-bottom: 16px;
 }

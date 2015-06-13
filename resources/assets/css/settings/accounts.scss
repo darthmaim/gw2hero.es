@@ -6,11 +6,11 @@
 
     list-style: none;
 
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
     border-radius: 3px;
 
     li {
-        padding: 8px 16px;
+        padding: 16px;
 
         &:target .settings__accounts__account__content {
             max-height: 500px;
@@ -18,7 +18,7 @@
     }
 
     li+li {
-        border-top: 1px solid #ccc;
+        border-top: 1px solid #eee;
     }
 }
 
