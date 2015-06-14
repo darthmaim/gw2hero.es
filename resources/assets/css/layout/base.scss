@@ -3,6 +3,10 @@
 body {
     background: #eee url( asset("images/background.png" ));
     font: 14px/1 $fontSansSerif;
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        background-size: 64px 64px;
+    }
 }
 
 *, *:before, *:after {
@@ -28,6 +32,10 @@ a {
 p {
     line-height: 1.8;
     color: $text;
+
+    b, strong {
+        color: $font;
+    }
 }
 
 h2 {
@@ -36,6 +44,10 @@ h2 {
     &:first-child {
         margin-top: 0;
     }
+}
+
+h3 {
+    margin-top: 2.5em;
 }
 
 @import "header";

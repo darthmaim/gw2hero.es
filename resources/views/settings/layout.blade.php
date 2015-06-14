@@ -14,7 +14,7 @@
         @section('settings.sidebar')
             <a href="{{ action('Settings\SettingsController@getProfile') }}">Profile</a>
             <a href="{{ action('Settings\AccountsController@getIndex') }}">Accounts</a>
-            <a href="{{ action('Settings\SettingsController@getNotifications') }}">Notifications</a>
+            <a href="{{ action('Settings\SettingsController@getNotifications') }}">Emails and Notifications</a>
         @show
     </div>
 @stop

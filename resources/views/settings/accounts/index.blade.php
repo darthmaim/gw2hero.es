@@ -12,9 +12,9 @@
                     {!! $acc->getNameHtml() !!}
                 </div>
                 <div class="settings__accounts__account__content">
-                    <dl class="settings--definition-list">
+                    <dl class="settings__definition-list">
                         <dt>API key:</dt>
-                        <dd class="settings__accounts__account__api-key">{{ $acc->api_key }}</dd>
+                        <dd class="settings__accounts__account__api-key" title="{{ $acc->api_key }}">{{ $acc->api_key }}</dd>
                     </dl>
                 </div>
             </li>
