@@ -64,7 +64,8 @@ var styles = {
     },
     buildCss: function() {
         var sass = require('gulp-sass');
-        var autoprefixer = require('gulp-autoprefixer');
+        var postcss = require('gulp-postcss');
+        var autoprefixer = require('autoprefixer-core');
         var minify = require('gulp-minify-css');
         var sourcemaps = require('gulp-sourcemaps');
 
@@ -73,7 +74,7 @@ var styles = {
         return gulp.src( styles.paths.src )
             .pipe( sourcemaps.init() )
             .pipe( sass() )
-            .pipe( autoprefixer() )
+            .pipe( postcss([autoprefixer]) )
             .pipe( minify() )
             .pipe( sourcemaps.write( '.' ))
             .pipe( gulp.dest( styles.paths.dest ))
