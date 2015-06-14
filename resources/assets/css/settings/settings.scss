@@ -1,7 +1,7 @@
 @import "accounts";
 
 
-dl.settings--definition-list {
+dl.settings__definition-list {
     margin: 20px 0 0;
 
     & > dt {
@@ -9,7 +9,7 @@ dl.settings--definition-list {
         font-weight: bold;
     }
     & > dd {
-        margin: 4px 0;
+        margin: 4px 0 12px;
     }
 }
 

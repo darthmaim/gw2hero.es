@@ -1,3 +1,6 @@
+@import "colors",
+        "mixin";
+
 input:not([type]),
 input[type="email"],
 input[type="number"],
@@ -33,5 +36,17 @@ button,
     label {
         display: block;
         padding: 8px 0;
+    }
+
+    &--margin-top {
+        @extend .form__field;
+
+        margin: 32px 0 8px 0;
+    }
+}
+
+.form__checkbox {
+    input[type="checkbox"] {
+        margin: 0 10px;
     }
 }

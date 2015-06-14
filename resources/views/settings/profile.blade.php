@@ -1,8 +1,14 @@
 @extends('settings.layout')
 
 @section('settings.content')
-    <b>Username</b>: {{ Auth::user()->name }}
+    <dl class="settings__definition-list">
+        <dt>Username</dt>
+        <dd>{{ Auth::user()->name }}</dd>
 
-    <br>
-    <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(trim( Auth::user()->email ))) }}?d=identicon" />
+        <dt>Email</dt>
+        <dd>{{ Auth::user()->email }}</dd>
+
+        <dt>Avatar</dt>
+        <dd><img src="https://www.gravatar.com/avatar/{{ md5(strtolower(trim( Auth::user()->email ))) }}?d=identicon" /></dd>
+    </dl>
 @endsection
