@@ -28,7 +28,7 @@
 
 	<link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}" />
 	<link rel="stylesheet" href="{{ asset('assets/css/gw2heroes.css') }}" />
-    <link href='http://fonts.googleapis.com/css?family=Bitter:700|Roboto:700,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bitter:700|Roboto:700,400' rel='stylesheet' type='text/css'>
 
 	@yield('styles')
 </head>
