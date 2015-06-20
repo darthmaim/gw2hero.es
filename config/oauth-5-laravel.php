@@ -35,12 +35,6 @@ return [
 			'scope'         => [],
 		],
 
-		'Guildwars2' => [
-			'client_id'     => env('OAUTH2_ID_GUILDWARS2', ''),
-			'client_secret' => env('OAUTH2_SECRET_GUILDWARS2', ''),
-			'scope'         => [],
-		],
-
 		'Twitter' => [
 			'client_id'     => env('OAUTH2_ID_TWITTER', ''),
 			'client_secret' => env('OAUTH2_SECRET_TWITTER', ''),
