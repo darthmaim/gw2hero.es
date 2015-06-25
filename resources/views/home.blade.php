@@ -9,6 +9,15 @@
 		You are logged in! <a href="{{ action('Auth\AuthController@getLogout') }}">Logout</a>
 	</div>
 
+    <h3>Your activities</h3>
+    <ul>
+        @forelse($activities as $activity)
+            <li>@include('activities.activity')</li>
+        @empty
+            <li>None</li>
+        @endforelse
+    </ul>
+
     <h3>Accounts</h3>
     <ul>
         @forelse($accounts as $acc)
