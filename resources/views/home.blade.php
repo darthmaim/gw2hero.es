@@ -28,8 +28,10 @@
                 <ul>
                     @forelse( $acc->characters as $char )
                         <li>
-                            {{ $char->name }}
-                            <span class="character-info">Level {{ $char->level }} {{ $char->race }} {{ $char->profession }}</span>
+                            <a href="{{ action('CharacterController@getIndex', [$char->name]) }}">
+                                {{ $char->name }}
+                                <span class="character-info">Level {{ $char->level }} {{ $char->race }} {{ $char->profession }}</span>
+                            </a>
                         </li>
                     @empty
                         <li>No characters</li>
