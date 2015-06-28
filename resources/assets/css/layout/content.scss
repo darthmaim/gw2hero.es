@@ -33,6 +33,19 @@
     width: 250px;
     border-right: 1px solid #eee;
     padding-right: 24px;
+
+    h3 {
+        margin-top: 0;
+        font-size: 16px;
+        line-height: 16px;
+
+        a {
+            float: right;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: normal;
+        }
+    }
 }
 
 .content__right {

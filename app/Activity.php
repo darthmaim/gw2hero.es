@@ -5,7 +5,14 @@ namespace GW2Heroes;
 use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model {
-    const TYPE_ACCOUNT_CREATED = 'account_added';
+
+    // account activity types
+    const TYPE_ACCOUNT_CREATED = 'account.created';
+
+    // character activity types
+    const TYPE_CHARACTER_CREATED = 'character.created';
+    const TYPE_CHARACTER_LEVEL   = 'character.level';
+
 
     protected $table = 'activities';
     protected $fillable = ['user_id', 'account_id', 'character_id', 'type', 'data'];
@@ -32,8 +39,8 @@ class Activity extends Model {
 
     public static function createForCharacter( Character $character, $type, $data = null ) {
         $activity = $character->activities()->create([
-            'user_id' => $character->account()->user_id,
-            'account_id' => $character->account()->id,
+            'user_id' => $character->account->user_id,
+            'account_id' => $character->account->id,
             'type' => $type,
             'data' => $data
         ]);

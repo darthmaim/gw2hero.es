@@ -1,0 +1,29 @@
+.home-account-list {
+    list-style: none;
+    padding: 0;
+
+    .account-name {
+        font-weight: bold;
+    }
+
+    & > li {
+        margin-bottom: 16px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 8px;
+
+        & > li {
+            padding: 4px 16px;
+        }
+    }
+
+    .character-info {
+        display: block;
+        font-size: 12px;
+        color: #999;
+        margin-top: 4px;
+    }
+}

@@ -1,0 +1,10 @@
+.activity {
+    padding: 12px 0;
+
+    & > time {
+        display: block;
+        color: #999;
+        font-size: 12px;
+        margin-top: 8px;
+    }
+}
