@@ -33,7 +33,7 @@ class Account extends Model {
     }
 
     public function getNameHtml() {
-        return view('helper.accountName', ['account' => $this]);
+        return trim(view('helper.accountName', ['account' => $this]));
     }
 
     /**
