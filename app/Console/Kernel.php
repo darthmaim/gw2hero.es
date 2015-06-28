@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel{
 	 */
 	protected $commands = [
 		'GW2Heroes\Console\Commands\Inspire',
+        'GW2Heroes\Console\Commands\Update'
 	];
 
 	/**

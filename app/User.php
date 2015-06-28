@@ -36,6 +36,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('\GW2Heroes\Account');
     }
 
+    public function activities() {
+        return $this->hasMany('\GW2Heroes\Activity');
+    }
+
 	/**
 	 * Attach one or multiple roles to a user
 	 *

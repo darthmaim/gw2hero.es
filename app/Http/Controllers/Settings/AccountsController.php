@@ -4,6 +4,7 @@ namespace GW2Heroes\Http\Controllers\Settings;
 
 use Auth;
 use GW2Heroes\Account;
+use GW2Heroes\Activity;
 use GW2Heroes\Http\Controllers\Controller;
 use GW2Treasures\GW2Api\GW2Api;
 use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
@@ -72,6 +73,9 @@ class AccountsController extends Controller {
 
         $account = Account::fromApiKey($apiKey);
         Auth::user()->accounts()->save($account);
+
+        Activity::createForAccount( $account, Activity::TYPE_ACCOUNT_CREATED );
+
 
         $characterInfos = $api->characters( $apiKey )->all();
         $characters = [];

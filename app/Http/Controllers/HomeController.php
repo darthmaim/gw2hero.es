@@ -32,8 +32,9 @@ class HomeController extends Controller{
 	 * @return Response
 	 */
 	public function index() {
+        $activities = Auth::user()->activities()->get();
         $accounts = Auth::user()->accounts()->with('characters')->get();
-		return view('home', compact('accounts'));
+		return view('home', compact('activities', 'accounts'));
 	}
 
 }

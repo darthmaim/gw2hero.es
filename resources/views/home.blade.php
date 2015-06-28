@@ -9,14 +9,28 @@
 		You are logged in! <a href="{{ action('Auth\AuthController@getLogout') }}">Logout</a>
 	</div>
 
-    <h3>Accounts</h3>
-    <ul>
+    <h3>Your activities</h3>
+    <ul class="activity-list">
+        @forelse($activities as $activity)
+            <li>@include('activities.activity')</li>
+        @empty
+            <li>None</li>
+        @endforelse
+    </ul>
+@stop
+
+@section('content.left')
+    <h3>Accounts <a href="{{ action('Settings\AccountsController@getIndex') }}">Manage Accounts</a></h3>
+    <ul class="home-account-list">
         @forelse($accounts as $acc)
             <li>
                 @include('helper.accountName', [ 'account' => $acc ])
                 <ul>
                     @forelse( $acc->characters as $char )
-                        <li>{{ $char->name }} (Level {{ $char->level }} {{ $char->race }} {{ $char->profession }})</li>
+                        <li>
+                            {{ $char->name }}
+                            <span class="character-info">Level {{ $char->level }} {{ $char->race }} {{ $char->profession }}</span>
+                        </li>
                     @empty
                         <li>No characters</li>
                     @endforelse
@@ -29,6 +43,4 @@
             </li>
         @endforelse
     </ul>
-
-    <a href="{{ action('Settings\AccountsController@getIndex') }}">Manage Accounts</a>
-@stop
+@endsection
