@@ -10,6 +10,9 @@
             <li>
                 <div class="settings__accounts__account__title">
                     {!! $acc->getNameHtml() !!}
+                    <time class="settings__accounts__account__title__added" datetime="{{ $acc->created_at }}">
+                        {{ $acc->created_at->toDateTimeString() }}
+                    </time>
                 </div>
                 <div class="settings__accounts__account__content">
                     <dl class="settings__definition-list">

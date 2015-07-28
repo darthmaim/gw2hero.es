@@ -31,6 +31,12 @@
 
         color: $font;
     }
+
+    time {
+        color: #aaa;
+        font-size: 12px;
+        float: right;
+    }
 }
 
 .settings__accounts__account__content {
