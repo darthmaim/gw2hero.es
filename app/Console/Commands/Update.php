@@ -60,7 +60,7 @@ class Update extends Command {
                             return $value->name === $char->name;
                         });
 
-                        if( $char->level !== $character->level ) {
+                        if( $char->level !== (int)$character->level ) {
                             $character->level = $char->level;
                             Activity::createForCharacter( $character, Activity::TYPE_CHARACTER_LEVEL, $character->level );
                             $character->save();
