@@ -12,7 +12,7 @@
 
     <p>
         Go to your Guild Wars 2 account page to
-        <a href="https://account.guildwars2.com/account/api-keys/create" target="_blank">create a new API Key</a>
+        <a href="https://account.arena.net/applications/create" target="_blank">create a new API Key</a>
         with the exact name <span class="api-key__name">{{ $apiKeyName }}</span> and with
         <span class="api-key__permission">account</span> and
         <span class="api-key__permission">characters</span> permissions.
