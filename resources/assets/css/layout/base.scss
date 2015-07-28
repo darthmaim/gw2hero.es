@@ -51,6 +51,13 @@ h3 {
     margin-top: 2.5em;
 }
 
+hr {
+    border: none;
+    height: 1px;
+    background: #eee;
+    margin: 1.5em auto;
+}
+
 @import "header";
 @import "content";
 @import "footer";
