@@ -9,7 +9,7 @@
 @stop
 
 @section('body')
-    <p>Hello {{ $account->user->name }}</p>
+    <p>Hello {{ $account->user->name }},</p>
     <p>
         The API key used by your account <b>{{ $account->name }}</b> is invalid. A possible cause for this is
         that your recently deleted this key.

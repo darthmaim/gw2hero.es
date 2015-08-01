@@ -94,6 +94,7 @@ class AccountsController extends Controller {
 
         // save the new api key
         $account->api_key = $apiKey;
+        $account->api_key_valid = true;
         $account->save();
 
         return redirect()->action('Settings\AccountsController@getIndex')
