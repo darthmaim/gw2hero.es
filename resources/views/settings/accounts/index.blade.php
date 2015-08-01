@@ -13,6 +13,9 @@
                     <time class="settings__accounts__account__title__added" datetime="{{ $acc->created_at }}">
                         {{ $acc->created_at->toDateTimeString() }}
                     </time>
+                    @if(!$acc->api_key_valid)
+                        <span style="color: red">Invalid API key!</span>
+                    @endif
                 </div>
                 <div class="settings__accounts__account__content">
                     <dl class="settings__definition-list">

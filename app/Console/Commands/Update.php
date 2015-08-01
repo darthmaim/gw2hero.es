@@ -8,6 +8,8 @@ use GW2Treasures\GW2Api\GW2Api;
 use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Mail\Message;
+use Mail;
 
 class Update extends Command {
     /**
@@ -38,11 +40,14 @@ class Update extends Command {
      */
     public function handle() {
         // get all accounts
-        $accounts = Account::with('characters', 'user')->get();
+
+        /** @var Account[]|Collection $accounts */
+        $accounts = Account::with('characters', 'user')
+            ->where('api_key_valid', '=', true)
+            ->get();
 
         $api = new GW2Api();
 
-        /** @var Account $account */
         foreach( $accounts as $account ) {
             try {
                 /** @var Collection $characters */
@@ -80,6 +85,14 @@ class Update extends Command {
                 }
             } catch( AuthenticationException $authException ) {
                 $this->output->warning( 'API Key of ' . $account->name . ' [' . $account->id . '] is invalid' );
+
+                Mail::send('emails.invalid_api_key', ['account' => $account], function(Message $mail) use ($account) {
+                    $mail->to($account->user->email, $account->user->name)
+                        ->subject('Invalid API key for your account ' . $account->name);
+                });
+
+                $account->api_key_valid = false;
+                $account->save();
             }
         }
     }

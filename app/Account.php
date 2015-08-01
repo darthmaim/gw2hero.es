@@ -11,7 +11,7 @@ class Account extends Model {
      *
      * @var array
      */
-    protected $fillable = ['guid', 'name', 'world', 'user_id', 'api_key'];
+    protected $fillable = ['guid', 'name', 'world', 'user_id', 'api_key', 'api_key_valid'];
 
     /**
      * The attributes excluded from the model's JSON form.
