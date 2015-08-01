@@ -19,6 +19,7 @@
                         <dt>API key:</dt>
                         <dd class="settings__accounts__account__api-key" title="{{ $acc->api_key }}">{{ $acc->api_key }}</dd>
                     </dl>
+                    <a href="{{ action('Settings\AccountsController@getEdit', [$acc->id]) }}">Edit</a>
                 </div>
             </li>
         @endforeach

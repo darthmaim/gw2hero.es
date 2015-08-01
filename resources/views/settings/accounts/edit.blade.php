@@ -1,30 +1,30 @@
 @extends('settings.layout')
 
 @section('settings.content')
-    <h3>Add account</h3>
+    <h3>Change API key of {{ $account->name }}</h3>
 
     @foreach($errors->all() as $error)
         <div style="color:red">{{ $error }}</div>
     @endforeach
 
-    {!! Form::open(['action' => 'Settings\AccountsController@postAdd']) !!}
+    {!! Form::open(['action' => ['Settings\AccountsController@postEdit', $account->id]]) !!}
     {!! Form::hidden('api_key_name', $apiKeyName ) !!}
 
     <p>
-        Go to your Guild Wars 2 account page to
-        <a href="https://account.arena.net/applications/create" target="_blank">create a new API Key</a>
+        You can change your API key by going to your Guild Wars 2 account page.
+        <a href="https://account.arena.net/applications/create" target="_blank">Create a new API Key</a>
         with the exact name <span class="api-key__name">{{ $apiKeyName }}</span> and with
         <span class="api-key__permission">account</span> and
         <span class="api-key__permission">characters</span> permissions.
     </p>
 
     <div class="form__field">
-        {!! Form::label('api_key', 'Enter the generated API key:') !!}
+        {!! Form::label('api_key', 'Enter the new generated API key:') !!}
         {!! Form::text('api_key') !!}
     </div>
 
     <div class="form__field">
-        {!! Form::submit('Add account') !!}
+        {!! Form::submit('Change API key') !!}
     </div>
 
     {!! Form::close() !!}
