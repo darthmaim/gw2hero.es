@@ -86,9 +86,14 @@ class Update extends Command {
             } catch( AuthenticationException $authException ) {
                 $this->output->warning( 'API Key of ' . $account->name . ' [' . $account->id . '] is invalid' );
 
-                Mail::send('emails.invalid_api_key', ['account' => $account], function(Message $mail) use ($account) {
+
+                $subject = 'Invalid API key for your account ' . $account->name;
+                Mail::send([
+                    'emails.invalid_api_key.html',
+                    'emails.invalid_api_key.text'
+                ], compact('account', 'subject'), function(Message $mail) use ($account, $subject) {
                     $mail->to($account->user->email, $account->user->name)
-                        ->subject('Invalid API key for your account ' . $account->name);
+                        ->subject($subject);
                 });
 
                 $account->api_key_valid = false;

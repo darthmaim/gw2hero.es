@@ -1,11 +1,7 @@
-@extends('layout.email')
-
-@section('title')
-    <title>Invalid API key for your account {{ $account->name }}</title>
-@overwrite
+@extends('layout.email.html')
 
 @section('preheader')
-    Invalid API key for your account {{ $account->name }}
+    Please update your API key in your account settings.
 @stop
 
 @section('body')
@@ -25,5 +21,5 @@
 @stop
 
 @section('footer')
-    @include('layout.email-footer')
+    @include('layout.email.html.footer')
 @stop
