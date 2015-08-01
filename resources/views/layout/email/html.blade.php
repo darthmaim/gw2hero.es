@@ -3,7 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>@yield('title', $subject)</title>
+	<title>@yield('title', isset( $subject ) ? $subject : 'GW2Heroes')</title>
 	@include('layout.email.html.styles')
 </head>
 
@@ -15,7 +15,7 @@
 		<td class="container" style="box-sizing: border-box; display: block; margin: 0 auto; max-width: 580px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 10px; vertical-align: top; width: 580px" valign="top">
 			<div class="content" style="box-sizing: border-box; display: block; margin: 0 auto; max-width: 580px; padding: 10px">
 				<span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; mso-hide: all; opacity: 0; overflow: hidden; visibility: hidden; width: 0">
-                    @yield('preheader', $subject)
+                    @yield('preheader', isset( $subject ) ? $subject : 'GW2Heroes')
                 </span>
 				<table class="main" style="-premailer-width: 100%; background: #fff; border-collapse: separate !important; border-radius: 3px; border: 1px solid #e5e5e5; box-sizing: border-box; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%" bgcolor="#fff" width="100%">
 					<tr>

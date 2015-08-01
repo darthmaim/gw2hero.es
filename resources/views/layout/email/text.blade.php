@@ -1,4 +1,4 @@
-@yield('title', $subject)
+@yield('title', isset( $subject ) ? $subject : 'GW2Heroes')
 
 ------------------------------------------------------------
 
@@ -7,5 +7,5 @@
 
 ---
 @section('footer')
-    @include('layout.email.text.footer')
+@include('layout.email.text.footer')
 @show

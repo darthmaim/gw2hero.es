@@ -12,7 +12,3 @@ To always show up-to-date information about your account on gw2hero.es, we need 
 Thank you,
 GW2Heroes
 @stop
-
-@section('footer')
-@include('layout.email.text.footer')
-@stop

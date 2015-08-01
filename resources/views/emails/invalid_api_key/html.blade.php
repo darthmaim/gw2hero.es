@@ -19,7 +19,3 @@
         Thank you,<br>GW2Heroes
     </p>
 @stop
-
-@section('footer')
-    @include('layout.email.html.footer')
-@stop

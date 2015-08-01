@@ -31,7 +31,7 @@ class PasswordController extends Controller{
 		$this->auth = $auth;
 		$this->passwords = $passwords;
 
-		$this->subject = trans('mail.password-subject');
+		$this->subject = 'Password reset';
 
 		$this->middleware('guest');
 	}
