@@ -2,6 +2,7 @@
 
 namespace GW2Heroes\Console\Commands;
 
+use Carbon\Carbon;
 use GW2Heroes\Account;
 use GW2Heroes\Activity;
 use GW2Treasures\GW2Api\GW2Api;
@@ -77,7 +78,10 @@ class Update extends Command {
                             'race' => $char->race,
                             'gender' => $char->gender,
                             'profession' => $char->profession,
-                            'level' => $char->level
+                            'level' => $char->level,
+                            'age' => $char->age,
+                            'created' =>  Carbon::createFromFormat( Carbon::ISO8601, $char->created ),
+                            'deaths' => $char->deaths
                         ]);
 
                         Activity::createForCharacter( $character, Activity::TYPE_CHARACTER_CREATED );
