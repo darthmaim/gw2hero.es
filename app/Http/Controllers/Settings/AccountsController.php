@@ -55,7 +55,7 @@ class AccountsController extends Controller {
     }
 
     public function getEdit($accountId) {
-        $account = Account::find( $accountId );
+        $account = Auth::user()->accounts()->find( $accountId );
         $apiKeyName = $this->getApiKeyName();
 
         return view('settings.accounts.edit', compact('account', 'apiKeyName'));
@@ -67,7 +67,7 @@ class AccountsController extends Controller {
             'api_key' => 'required'
         ]);
 
-        $account = Account::find($accountId);
+        $account = Auth::user()->accounts()->find($accountId);
 
         $apiKeyName = $this->getApiKeyName();
         $apiKey = $request->input('api_key');
