@@ -71,6 +71,11 @@ class Update extends Command {
                             Activity::createForCharacter( $character, Activity::TYPE_CHARACTER_LEVEL, $character->level );
                             $character->save();
                         }
+
+                        if( $character->created !== Carbon::createFromFormat( Carbon::ISO8601, $char->created )) {
+                            $character->created = Carbon::createFromFormat( Carbon::ISO8601, $char->created );
+                            $character->save();
+                        }
                     } else {
                         // new char
                         $character = $account->characters()->create([
