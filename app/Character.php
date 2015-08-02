@@ -19,6 +19,14 @@ class Character extends Model {
      */
     protected $hidden = ['api_key'];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created', 'created_at', 'updated_at'];
+
+
     public function account() {
         return $this->belongsTo('\GW2Heroes\Account');
     }

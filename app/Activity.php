@@ -12,6 +12,7 @@ class Activity extends Model {
     // character activity types
     const TYPE_CHARACTER_CREATED = 'character.created';
     const TYPE_CHARACTER_LEVEL   = 'character.level';
+    const TYPE_CHARACTER_RENAMED = 'character.renamed';
 
 
     protected $table = 'activities';
