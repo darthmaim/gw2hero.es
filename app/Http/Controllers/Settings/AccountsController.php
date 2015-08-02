@@ -17,7 +17,7 @@ class AccountsController extends Controller {
     }
 
     public function getIndex() {
-        $accounts = Auth::user()->accounts()->with('characters')->get();
+        $accounts = Auth::user()->accounts()->get();
 
         return view('settings.accounts.index', compact('accounts'));
     }

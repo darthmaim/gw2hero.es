@@ -26,14 +26,16 @@ class HomeController extends Controller{
 		$this->middleware('auth');
 	}
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
 	public function index() {
-        $activities = Auth::user()->activities()->orderBy('created_at', 'desc')->get();
-        $accounts = Auth::user()->accounts()->with('characters')->get();
+        $activities = Auth::user()->activities()
+			->with('character', 'account', 'user', 'user.accounts')
+			->orderBy('created_at', 'desc')
+			->get();
+
+        $accounts = Auth::user()->accounts()
+			->with('characters')
+			->get();
+
 		return view('home', compact('activities', 'accounts'));
 	}
 
