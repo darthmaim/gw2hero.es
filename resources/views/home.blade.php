@@ -28,7 +28,7 @@
                 <ul>
                     @forelse( $acc->characters as $char )
                         <li>
-                            <a href="{{ action('CharacterController@getIndex', [$char->name]) }}">
+                            <a href="{{ $char->getUrl() }}">
                                 {{ $char->name }}
                                 <span class="character-info">Level {{ $char->level }} {{ $char->race }} {{ $char->profession }}</span>
                             </a>

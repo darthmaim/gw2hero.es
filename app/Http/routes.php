@@ -15,9 +15,6 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-// characters
-Route::get('c/{name}', ['uses' => 'CharacterController@getIndex', 'as' => 'character']);
-
 // settings
 Route::controllers([
     'settings/accounts' => 'Settings\AccountsController',
@@ -29,3 +26,6 @@ Route::controllers([
 	'auth'     => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+// characters
+Route::controller('character/{id}/{name?}', 'CharacterController');

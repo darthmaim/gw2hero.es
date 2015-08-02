@@ -1,14 +1,18 @@
 <?php namespace GW2Heroes\Http\Controllers;
 
-use Auth;
-use GW2Heroes\Account;
 use GW2Heroes\Character;
-use GW2Treasures\GW2Api\GW2Api;
-use Input;
+use Illuminate\Http\Request;
 
 class CharacterController extends Controller{
-    public function getIndex( $name ) {
-        $character = Character::where( 'name', '=', $name )->first();
+    public function getIndex( Request $request, $id ) {
+        $id = base_convert( $id, 36, 10 );
+
+        /** @var Character $character */
+        $character = Character::find($id);
+
+        if( $character->getUrl() !== $request->url() ) {
+            return redirect( $character->getUrl() );
+        }
 
         return view('character.index', compact('character'));
     }

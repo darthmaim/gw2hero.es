@@ -26,4 +26,12 @@ class Character extends Model {
     public function activities() {
         return $this->hasMany('\GW2Heroes\Activity');
     }
+
+    public function getUrl() {
+        $data = [
+            base_convert( $this->id, 10, 36),
+            str_slug(strtolower($this->name))
+        ];
+        return action('CharacterController@getIndex', $data );
+    }
 }

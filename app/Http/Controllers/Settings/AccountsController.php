@@ -8,7 +8,6 @@ use GW2Heroes\Activity;
 use GW2Heroes\Http\Controllers\Controller;
 use GW2Treasures\GW2Api\GW2Api;
 use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Session;
 
