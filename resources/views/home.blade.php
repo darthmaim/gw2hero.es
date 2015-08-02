@@ -30,7 +30,7 @@
                         <li>
                             <a href="{{ $char->getUrl() }}">
                                 {{ $char->name }}
-                                <span class="character-info">{{ $char->level }} {{ $char->race }} {{ $char->profession }}</span>
+                                <span class="character-info"><b>{{ $char->level }}</b> {{ $char->race }} {{ $char->profession }}</span>
                             </a>
                         </li>
                     @empty

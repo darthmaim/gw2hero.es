@@ -8,7 +8,7 @@ class CharacterController extends Controller{
         $id = base_convert( $id, 36, 10 );
 
         /** @var Character $character */
-        $character = Character::find($id);
+        $character = Character::with('account', 'account.user')->find($id);
 
         if( $character->getUrl() !== $request->url() ) {
             return redirect( $character->getUrl() );

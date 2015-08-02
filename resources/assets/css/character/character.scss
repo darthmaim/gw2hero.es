@@ -1,0 +1,25 @@
+.char-info-box {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.char-info-box__name {
+    margin-bottom: 4px;
+}
+
+.char-info-box__char {
+    margin-bottom: 16px;
+
+    .level {
+        font-weight: bold;
+    }
+}
+
+.char-info-box__guild {
+    margin-bottom: 16px;
+}
+
+.char-info-box__owner {
+    color: #888;
+}

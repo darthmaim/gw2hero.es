@@ -2,6 +2,7 @@
 
 use GW2Treasures\GW2Api\GW2Api;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\View\Expression;
 
 class Account extends Model {
     protected $table = 'accounts';
@@ -33,7 +34,7 @@ class Account extends Model {
     }
 
     public function getNameHtml() {
-        return trim(view('helper.accountName', ['account' => $this]));
+        return new Expression(trim(view('helper.accountName', ['account' => $this])));
     }
 
     /**
