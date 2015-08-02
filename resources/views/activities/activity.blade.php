@@ -5,6 +5,6 @@
         Unknown Activity [{{ $activity->type }}]
     @endif
 
-    <time datetime="{{ $activity->created_at }}">{{ $activity->created_at->toDateTimeString() }}</time>
+    <time datetime="{{ $activity->created_at }}">{{ $activity->created_at->diffForHumans() }}</time>
 </div>
 

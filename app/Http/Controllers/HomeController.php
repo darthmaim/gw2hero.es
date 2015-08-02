@@ -32,7 +32,7 @@ class HomeController extends Controller{
 	 * @return Response
 	 */
 	public function index() {
-        $activities = Auth::user()->activities()->get();
+        $activities = Auth::user()->activities()->orderBy('created_at', 'desc')->get();
         $accounts = Auth::user()->accounts()->with('characters')->get();
 		return view('home', compact('activities', 'accounts'));
 	}
