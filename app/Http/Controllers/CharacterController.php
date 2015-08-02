@@ -21,12 +21,17 @@ class CharacterController extends Controller{
         $id = base_convert( $id, 36, 10 );
 
         /** @var Character $character */
-        $character = Character::with('account', 'account.user', 'activities', 'activities.account', 'activities.user', 'activities.user.accounts')->find($id);
+        $character = Character::with('account', 'account.user')->find($id);
 
         if( action( 'CharacterController@getActivities', $character->getActionData() ) !== $request->url() ) {
             return redirect()->action('CharacterController@getActivities', $character->getActionData(), 301);
         }
 
-        return view('character.activities', compact('character'));
+        $activities = $character->activities()
+            ->with('character', 'account', 'user', 'user.accounts')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('character.activities', compact('character', 'activities'));
     }
 }
