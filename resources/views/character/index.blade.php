@@ -30,9 +30,9 @@
     </div>
 
     <ul class="sidebar-nav">
-        <li><a href="">Summary</a>
+        <li><a href="{{ action('CharacterController@getIndex', $character->getActionData()) }}">Summary</a>
         <li><a href="">Story</a>
-        <li><a href="">Activities</a>
+        <li><a href="{{ action('CharacterController@getActivities', $character->getActionData()) }}">Activities</a>
         <li><a href="">Gallery</a>
         <li><a href="">Inventory</a>
         <li><a href="">Professions</a>

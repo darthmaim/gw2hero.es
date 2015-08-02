@@ -35,11 +35,14 @@ class Character extends Model {
         return $this->hasMany('\GW2Heroes\Activity');
     }
 
-    public function getUrl() {
-        $data = [
+    public function getActionData() {
+        return [
             base_convert( $this->id, 10, 36),
             str_slug(strtolower($this->name))
         ];
-        return action('CharacterController@getIndex', $data );
+    }
+
+    public function getUrl() {
+        return action('CharacterController@getIndex', $this->getActionData() );
     }
 }
