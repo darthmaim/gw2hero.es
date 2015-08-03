@@ -15,7 +15,7 @@ var logger = function( head ) {
 // === IMAGES ===
 
 var images = {
-    src: 'resources/assets/images/*',
+    src: 'resources/assets/images/*/**.{svg,png,jpg}',
     dest: 'public/assets/images',
 
     build: function() {
