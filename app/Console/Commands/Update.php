@@ -154,7 +154,7 @@ class Update extends Command {
     protected function createChar( Account $account, $char ) {
         /** @var Character $character */
         $character = Character::createFromApiData($char, $account);
-        Activity::createForCharacter( $character, Activity::TYPE_CHARACTER_CREATED );
+        Activity::characterCreated($character);
 
         $this->output->writeln('created character ' . $char->name);
     }
@@ -171,7 +171,7 @@ class Update extends Command {
         if( $apiChar->level !== (int)$localChar->level ) {
             $localChar->level = $apiChar->level;
 
-            Activity::createForCharacter( $localChar, Activity::TYPE_CHARACTER_LEVEL, $localChar->level );
+            Activity::characterLevel($localChar, $localChar->level);
         }
 
         // name
@@ -179,10 +179,7 @@ class Update extends Command {
             $oldName = $localChar->name;
             $localChar->name = $apiChar->name;
 
-            Activity::createForCharacter( $localChar, Activity::TYPE_CHARACTER_RENAMED, [
-                'old' => $oldName,
-                'new' => $apiChar->name
-            ]);
+            Activity::characterRenamed($localChar, $oldName, $apiChar->name);
         }
 
         // update all other changeable properties we don't fire activities for (yet)

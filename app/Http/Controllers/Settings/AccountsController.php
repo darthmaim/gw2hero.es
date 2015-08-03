@@ -172,19 +172,20 @@ class AccountsController extends Controller {
      *
      * @param GW2Api $api
      * @param string $apiKey
+     * @param User   $user
      * @return Account
      */
     protected function createAccountFromNewApiKey(GW2Api $api, $apiKey, User $user) {
         $accountData = $api->account($apiKey)->get();
         $account = Account::createFromApiData($accountData, $apiKey, $user);
-        Activity::createForAccount($account, Activity::TYPE_ACCOUNT_CREATED);
+        Activity::accountCreated($account);
 
         // load characters from api
         $characterData = $api->characters($apiKey)->all();
 
         foreach($characterData as $char) {
             $character = Character::createFromApiData($char, $account);
-            Activity::createForCharacter($character, Activity::TYPE_CHARACTER_CREATED);
+            Activity::characterCreated($character);
         }
 
         return $account;

@@ -49,6 +49,24 @@ class Activity extends Model {
         return $activity;
     }
 
+    public static function accountCreated(Account $account) {
+        return self::createForAccount($account, self::TYPE_ACCOUNT_CREATED);
+    }
+
+    public static function characterCreated(Character $character) {
+        return self::createForCharacter($character, self::TYPE_CHARACTER_CREATED);
+    }
+
+    public static function characterLevel(Character $character, $level) {
+        return self::createForCharacter($character, self::TYPE_CHARACTER_LEVEL, $level);
+    }
+
+    public static function characterRenamed(Character $character, $oldName, $newName) {
+        return self::createForCharacter($character, self::TYPE_CHARACTER_RENAMED, [
+            'old' => $oldName, 'new' => $newName
+        ]);
+    }
+
     public function account() {
         return $this->belongsTo('\GW2Heroes\Account');
     }
