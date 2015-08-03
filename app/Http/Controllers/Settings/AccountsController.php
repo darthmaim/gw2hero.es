@@ -5,7 +5,9 @@ namespace GW2Heroes\Http\Controllers\Settings;
 use Auth;
 use GW2Heroes\Account;
 use GW2Heroes\Activity;
+use GW2Heroes\Character;
 use GW2Heroes\Http\Controllers\Controller;
+use GW2Heroes\User;
 use GW2Treasures\GW2Api\GW2Api;
 use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
 use Illuminate\Http\Request;
@@ -48,7 +50,8 @@ class AccountsController extends Controller {
         $this->forgetApiKeyName();
 
         // create the new account
-        $account = $this->createAccountFromNewApiKey($api, $apiKey);
+        $user = Auth::user();
+        $account = $this->createAccountFromNewApiKey($api, $apiKey, $user);
 
         return redirect()->action('Settings\AccountsController@getIndex')
             ->with('account', $account);
@@ -165,33 +168,25 @@ class AccountsController extends Controller {
     }
 
     /**
-     * Creates a new account from an api key.
+     * Creates a new account from an api key and imports all characters.
      *
      * @param GW2Api $api
      * @param string $apiKey
      * @return Account
      */
-    protected function createAccountFromNewApiKey(GW2Api $api, $apiKey)
-    {
-        $account = Account::fromApiKey($apiKey);
-        Auth::user()->accounts()->save($account);
-
+    protected function createAccountFromNewApiKey(GW2Api $api, $apiKey, User $user) {
+        $accountData = $api->account($apiKey)->get();
+        $account = Account::createFromApiData($accountData, $apiKey, $user);
         Activity::createForAccount($account, Activity::TYPE_ACCOUNT_CREATED);
 
-        $characterInfos = $api->characters($apiKey)->all();
-        $characters = [];
+        // load characters from api
+        $characterData = $api->characters($apiKey)->all();
 
-        foreach ($characterInfos as $char) {
-            $characters[] = [
-                'name' => $char->name,
-                'race' => $char->race,
-                'gender' => $char->gender,
-                'profession' => $char->profession,
-                'level' => $char->level
-            ];
+        foreach($characterData as $char) {
+            $character = Character::createFromApiData($char, $account);
+            Activity::createForCharacter($character, Activity::TYPE_CHARACTER_CREATED);
         }
 
-        $account->characters()->createMany($characters);
         return $account;
     }
 }

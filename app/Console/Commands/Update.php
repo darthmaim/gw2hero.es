@@ -153,18 +153,9 @@ class Update extends Command {
      */
     protected function createChar( Account $account, $char ) {
         /** @var Character $character */
-        $character = $account->characters()->create([
-            'name' => $char->name,
-            'race' => $char->race,
-            'gender' => $char->gender,
-            'profession' => $char->profession,
-            'level' => $char->level,
-            'age' => $char->age,
-            'created' =>  Carbon::createFromFormat( Carbon::ISO8601, $char->created ),
-            'deaths' => $char->deaths
-        ]);
-
+        $character = Character::createFromApiData($char, $account);
         Activity::createForCharacter( $character, Activity::TYPE_CHARACTER_CREATED );
+
         $this->output->writeln('created character ' . $char->name);
     }
 

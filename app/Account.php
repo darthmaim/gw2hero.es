@@ -38,19 +38,18 @@ class Account extends Model {
     }
 
     /**
-     * Create a new Account
+     * Creates a new Account and adds it to the user.
      *
-     * @param string $apiKey
+     * @param mixed  $apiData The data returned from the api.
+     * @param string $apiKey  The api key of the account.
+     * @param User   $user    The owning user.
      * @return static
      */
-    public static function fromApiKey($apiKey) {
-        $api = new GW2Api();
-        $account = $api->account($apiKey)->info();
-
-        return new self([
-            'guid' => $account->id,
-            'name' => $account->name,
-            'world' => $account->world,
+    public static function createFromApiData($apiData, $apiKey, User $user) {
+        return $user->accounts()->create([
+            'guid' => $apiData->id,
+            'name' => $apiData->name,
+            'world' => $apiData->world,
             'api_key' => $apiKey
         ]);
     }

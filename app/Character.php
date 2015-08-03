@@ -1,5 +1,6 @@
 <?php namespace GW2Heroes;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model {
@@ -33,6 +34,26 @@ class Character extends Model {
 
     public function activities() {
         return $this->hasMany('\GW2Heroes\Activity');
+    }
+
+    /**
+     * Creates a new character and adds it to the account.
+     *
+     * @param mixed   $apiData The data returned by the api.
+     * @param Account $account The owner account.
+     * @return static
+     */
+    public static function createFromApiData($apiData, Account $account) {
+        return $account->characters()->create([
+            'name' => $apiData->name,
+            'race' => $apiData->race,
+            'gender' => $apiData->gender,
+            'profession' => $apiData->profession,
+            'level' => $apiData->level,
+            'age' => $apiData->age,
+            'created' =>  Carbon::createFromFormat( Carbon::ISO8601, $apiData->created ),
+            'deaths' => $apiData->deaths
+        ]);
     }
 
     public function getActionData() {
