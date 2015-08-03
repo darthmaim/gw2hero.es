@@ -59,3 +59,23 @@
     padding-left: 24px;
     padding-bottom: 16px;
 }
+
+@media (max-width: 786px) {
+    .content__container {
+        flex-direction: column;
+    }
+
+    .content__left {
+        float: none;
+        width: auto;
+        padding-right: 0;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #eee;
+        border-right: none;
+    }
+
+    .content__right {
+        padding-left: 0;
+        padding-top: 24px;
+    }
+}

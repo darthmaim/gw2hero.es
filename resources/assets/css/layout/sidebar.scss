@@ -19,4 +19,13 @@
             background-color: #fafafa;
         }
     }
+
+
+    @media (max-width: 786px) {
+        margin: 0 -40px;
+
+        > li > a {
+            padding: 12px 40px;
+        }
+    }
 }
