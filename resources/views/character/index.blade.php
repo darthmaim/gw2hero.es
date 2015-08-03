@@ -34,7 +34,7 @@
         <li><a href="">Story</a>
         <li><a href="{{ action('CharacterController@getActivities', $character->getActionData()) }}">Activities</a>
         <li><a href="">Gallery</a>
-        <li><a href="">Inventory</a>
-        <li><a href="">Professions</a>
+        <li><a href="">Equipment & Inventory</a>
+        <li><a href="">Crafting Disciplines</a>
     </ul>
 @stop
