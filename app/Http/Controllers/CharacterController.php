@@ -14,7 +14,7 @@ class CharacterController extends Controller{
             return redirect( $character->getUrl(), 301 );
         }
 
-        return view('character.index', compact('character'));
+        return view('character.summary', compact('character'));
     }
 
     public function getActivities( Request $request, $id ) {

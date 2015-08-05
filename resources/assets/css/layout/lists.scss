@@ -1,0 +1,19 @@
+dl.statistics-list {
+    & > dt {
+        clear: left;
+        float: left;
+
+        width: 100px;
+        padding-right: 8px;
+
+        font-weight: bold;
+        color: #999;
+        text-align: right;
+
+        &:after { content: ':' }
+    }
+
+    & > dd {
+        margin: 8px 0 8px 100px;
+    }
+}
