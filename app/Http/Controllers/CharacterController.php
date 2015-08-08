@@ -29,6 +29,12 @@ class CharacterController extends Controller {
 
         return view('character.summary', compact('character'));
     }
+    
+    public function getStory( Request $request, $id ) {
+        $character = $this->getCharacterFromRequest( $request, $id, __FUNCTION__ );
+
+        return view('character.story', compact('character'));
+    }
 
     public function getActivities( Request $request, $id ) {
         $character = $this->getCharacterFromRequest( $request, $id, __FUNCTION__ );
