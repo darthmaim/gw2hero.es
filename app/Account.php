@@ -40,7 +40,7 @@ class Account extends Model {
     public function getActionData() {
         return [
             base_convert($this->id, 10, 36),
-            str_slug(strtolower($this->name))
+            substr_replace(str_slug(strtolower($this->name)), '.', -4, 0)
         ];
     }
 
