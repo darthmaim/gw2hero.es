@@ -1,5 +1,6 @@
 <?php namespace GW2Heroes\Http\Controllers;
 
+use Cache;
 use GW2Heroes\Character;
 use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Http\Request;
@@ -10,7 +11,9 @@ class CharacterController extends Controller {
         $id = base_convert( $id, 36, 10 );
 
         /** @var Character $character */
-        $character = Character::with('account', 'account.user')->find($id);
+        $character = Cache::remember('character.'.$id, 1, function() use ($id) {
+            return Character::with('account', 'account.user')->find($id);
+        });
 
         $actionName = '\\'.__CLASS__.'@'.$function;
         $action = action( $actionName, $character->getActionData() );
@@ -29,7 +32,7 @@ class CharacterController extends Controller {
 
         return view('character.summary', compact('character'));
     }
-    
+
     public function getStory( Request $request, $id ) {
         $character = $this->getCharacterFromRequest( $request, $id, __FUNCTION__ );
 

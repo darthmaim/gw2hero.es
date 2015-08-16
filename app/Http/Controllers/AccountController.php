@@ -1,5 +1,6 @@
 <?php namespace GW2Heroes\Http\Controllers;
 
+use Cache;
 use GW2Heroes\Account;
 use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Http\Request;
@@ -10,7 +11,9 @@ class AccountController extends Controller {
         $id = base_convert( $id, 36, 10 );
 
         /** @var Account $account */
-        $account = Account::with('user', 'characters')->find($id);
+        $account = Cache::remember('account.'.$id, 1, function() use ($id) {
+            return Account::with('user', 'characters')->find($id);
+        });
 
         $actionName = '\\'.__CLASS__.'@'.$function;
         $action = action( $actionName, $account->getActionData() );
