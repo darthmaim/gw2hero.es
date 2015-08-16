@@ -58,7 +58,7 @@ class Character extends Model {
 
     public function getActionData() {
         return [
-            base_convert( $this->id, 10, 36),
+            base_convert($this->id, 10, 36),
             str_slug(strtolower($this->name))
         ];
     }

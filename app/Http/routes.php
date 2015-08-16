@@ -29,3 +29,6 @@ Route::controllers([
 
 // characters
 Route::controller('character/{id}/{name?}', 'CharacterController');
+
+// accounts
+Route::controller('account/{id}/{name?}', 'AccountController');

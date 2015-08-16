@@ -37,6 +37,13 @@ class Account extends Model {
         return new Expression(trim(view('helper.accountName', ['account' => $this])));
     }
 
+    public function getActionData() {
+        return [
+            base_convert($this->id, 10, 36),
+            str_slug(strtolower($this->name))
+        ];
+    }
+
     /**
      * Creates a new Account and adds it to the user.
      *
