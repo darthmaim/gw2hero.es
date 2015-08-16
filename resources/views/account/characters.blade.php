@@ -25,7 +25,7 @@
                     <td>{{ $character->profession }}</td>
                     <td>{{ $character->race }}</td>
                     <td data-sort="{{ $character->created->timestamp }}" class="c">
-                        {{ $character->created->diffForHumans(null, true) }}<wbr>({{ $character->created->format('d.m.Y') }})
+                        {{ $character->created->diffForHumans(null, true) }} <wbr>({{ $character->created->format('d.m.Y') }})
                     </td>
                     <td data-sort="{{ $character->age }}" class="r">
                         {{ ($age = $character->age / 60 / 60) < 1 ? '<1' : round($age) }} hours

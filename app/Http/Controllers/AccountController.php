@@ -40,4 +40,15 @@ class AccountController extends Controller {
 
         return view('account.characters', compact('account'));
     }
+
+    public function getActivities( Request $request, $id ) {
+        $account = $this->getAccountFromRequest( $request, $id, __FUNCTION__ );
+
+        $activities = $account->activities()
+            ->with('character', 'account', 'user', 'user.accounts')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('account.activities', compact('account', 'activities'));
+    }
 }

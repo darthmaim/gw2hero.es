@@ -10,8 +10,9 @@
 
     <ul class="sidebar-nav">
         <li><a href="{{ action('AccountController@getIndex', $account->getActionData()) }}">Summary</a>
-        <li><a href="{{ action('AccountController@getCharacters', $account->getActionData()) }}">Characters ({{ $account->characters->count() }})</a>
-        <li><a href="">Activities</a>
+        <li><a href="{{ action('AccountController@getCharacters', $account->getActionData()) }}">
+                Characters ({{ $account->characters->count() }})</a>
+        <li><a href="{{ action('AccountController@getActivities', $account->getActionData()) }}">Activities</a>
         <li><a href="">Guilds</a>
         <li><a href="">Bank</a>
         <li><a href="">Collections</a>
