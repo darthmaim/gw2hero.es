@@ -104,7 +104,7 @@ var js = {
         entries: './resources/assets/js/gw2heroes.js',
         dest: './public/assets/js',
         outputName: 'gw2heroes.js',
-        paths: [ './node_modules', './resources/assets/js/' ],
+        paths: [ './node_modules' ],
         fullPaths: false,
         debug: true
     },

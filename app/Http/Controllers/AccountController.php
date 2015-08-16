@@ -12,7 +12,9 @@ class AccountController extends Controller {
 
         /** @var Account $account */
         $account = Cache::remember('account.'.$id, 1, function() use ($id) {
-            return Account::with('user', 'characters')->find($id);
+            return Account::with(['user', 'characters' => function($query) {
+                return $query->orderBy('created', 'asc');
+            }])->find($id);
         });
 
         $actionName = '\\'.__CLASS__.'@'.$function;
@@ -30,6 +32,12 @@ class AccountController extends Controller {
     public function getIndex( Request $request, $id ) {
         $account = $this->getAccountFromRequest( $request, $id, __FUNCTION__ );
 
-        return view('account.index', compact('account'));
+        return view('account.summary', compact('account'));
+    }
+
+    public function getCharacters( Request $request, $id ) {
+        $account = $this->getAccountFromRequest( $request, $id, __FUNCTION__ );
+
+        return view('account.characters', compact('account'));
     }
 }
