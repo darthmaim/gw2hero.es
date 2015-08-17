@@ -12,8 +12,6 @@
             Member of <a>Some Guild [some]</a>
         </div>
         <div class="char-info-box__owner">
-            <a>{{ $character->account->user->name }}</a>
-            &raquo;
             <a href="{{ action('AccountController@getIndex', $character->account->getActionData()) }}">
                 {{ $character->account->getNameHtml() }}
             </a>

@@ -13,7 +13,7 @@
         </div>
         <div class="header__right">
             @section('header.right')
-                <a class="header__button">Search</a>
+                <a class="header__button" href="{{ action('SearchController@getIndex') }}">Search</a>
                 @if(Auth::check())
                     <div class="header__button--dropdown" tabindex="0">
                         <a class="header__button--dropdown__link">
