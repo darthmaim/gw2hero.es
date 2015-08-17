@@ -1,8 +1,17 @@
 .table {
     min-width: 100%;
+    position: relative;
 
-    thead > tr:last-of-type {
+    tbody:before {
+        content: '';
+        position: absolute;
+        left: 24px; right: 40px;
         border-bottom: 1px solid #EEE;
+        margin-top: -8px;
+    }
+
+    thead tr:last-of-type {
+        border-bottom: 8px solid transparent;
     }
 
     tbody tr:hover {
@@ -20,6 +29,13 @@
         &.l { text-align: left; }
         &.c { text-align: center; }
         &.r { text-align: right; }
+    }
+
+    @media( max-width: 768px ) {
+        tbody:before { left: 40px; }
+
+        th:first-child { padding-left: 40px }
+        td:first-child { padding-left: 40px }
     }
 }
 

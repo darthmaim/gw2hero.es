@@ -11,7 +11,7 @@
 
     background: #FFFFFF;
 
-    padding: 40px 0;
+    padding: 40px;
     border-radius: 1.5px;
 
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
@@ -27,6 +27,7 @@
 
 .content__container {
     display: flex;
+    margin: 0 -40px;
 }
 
 .content__left {
@@ -62,19 +63,19 @@
 @media (max-width: 786px) {
     .content__container {
         flex-direction: column;
+        margin: 0;
     }
 
     .content__left {
         float: none;
         width: auto;
-        padding-right: 40px;
-        padding-bottom: 24px;
+        padding: 0 0 24px 0;
         border-bottom: 1px solid #eee;
         border-right: none;
     }
 
     .content__right {
-        padding-left: 40px;
-        padding-top: 24px;
+        padding: 24px 0 0 0;
+        overflow: visible;
     }
 }
