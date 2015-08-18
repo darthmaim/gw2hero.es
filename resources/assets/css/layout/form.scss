@@ -27,6 +27,7 @@ button,
     font-weight: bold;
     border-radius: 1.5px;
     box-shadow: 0 1px 1px rgba(0,0,0,.2);
+    flex: initial;
 }
 
 
@@ -48,5 +49,13 @@ button,
 .form__checkbox {
     input[type="checkbox"] {
         margin: 0 10px;
+    }
+}
+
+.form--flex {
+    display: flex;
+
+    & > * {
+        flex: 1;
     }
 }

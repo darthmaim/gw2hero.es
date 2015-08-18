@@ -17,3 +17,12 @@
         </ul>
     @endif
 @endsection
+
+@section('wrapper')
+    <div class="wrapper wrapper--search">
+        <div class="content">
+            @include('search.form')
+        </div>
+    </div>
+    @parent
+@endsection
