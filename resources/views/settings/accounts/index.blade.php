@@ -9,7 +9,9 @@
         @foreach($accounts as $acc)
             <li>
                 <div class="settings__accounts__account__title">
-                    {!! $acc->getNameHtml() !!}
+                    <a href="{{ action('AccountController@getIndex', $acc->getActionData()) }}">
+                        {{ $acc->getNameHtml() }}
+                    </a>
                     <time class="settings__accounts__account__title__added"
                           datetime="{{ $acc->created_at }}" title="{{ $acc->created_at }}">
                         {{ $acc->created_at->diffForHumans() }}

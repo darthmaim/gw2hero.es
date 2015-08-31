@@ -24,7 +24,9 @@
     <ul class="home-account-list">
         @forelse($accounts as $acc)
             <li>
-                @include('helper.accountName', [ 'account' => $acc ])
+                <a href="{{ action('AccountController@getIndex', $acc->getActionData()) }}">
+                    {{ $acc->getNameHtml() }}
+                </a>
                 <ul>
                     @forelse( $acc->characters as $char )
                         <li>
