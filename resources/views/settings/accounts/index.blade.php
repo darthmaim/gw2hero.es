@@ -10,7 +10,8 @@
             <li>
                 <div class="settings__accounts__account__title">
                     {!! $acc->getNameHtml() !!}
-                    <time class="settings__accounts__account__title__added" datetime="{{ $acc->created_at }}">
+                    <time class="settings__accounts__account__title__added"
+                          datetime="{{ $acc->created_at }}" title="{{ $acc->created_at }}">
                         {{ $acc->created_at->diffForHumans() }}
                     </time>
                     @if(!$acc->api_key_valid)
