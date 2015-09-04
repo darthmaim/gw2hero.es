@@ -2,37 +2,33 @@
 
 namespace GW2Heroes\Console\Commands;
 
-use Carbon\Carbon;
 use GW2Heroes\Models\Account;
-use GW2Heroes\Models\Activity;
-use GW2Heroes\Models\Character;
-use GW2Treasures\GW2Api\GW2Api;
-use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
+use GW2Heroes\Updater\Accounts\AccountUpdatePayload;
+use GW2Heroes\Updater\Accounts\UpdatesAccount;
+use GW2Heroes\Updater\UpdatePayload;
+use GW2Heroes\Updater\Updater;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Mail\Message;
-use Mail;
 
 class Update extends Command {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
+    use UpdatesAccount;
+
+    /** @var string $signature */
     protected $signature = 'gw2heroes:update';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
+    /** @var string $description */
     protected $description = 'Updates all accounts.';
+
+    /** @var Updater $updater */
+    protected $updater;
 
     /**
      * Create a new command instance.
      */
     public function __construct() {
         parent::__construct();
+
+        $this->updater = new Updater();
     }
 
     /**
@@ -48,163 +44,14 @@ class Update extends Command {
             ->where('api_key_valid', '=', true)
             ->get();
 
-        $api = new GW2Api();
-
         foreach( $accounts as $account ) {
-            try {
-                /** @var Collection|Character[] $charactersLocal */
-                $charactersLocal = $account->characters;
-
-                // get all characters from api
-                $charactersApi = $api->characters($account->api_key)->all();
-
-                $characterMapping = $this->mapCharacters( $charactersLocal, $charactersApi );
-
-                foreach( $characterMapping as $char ) {
-                    if( is_null( $char->api )) {
-                        $this->deletedChar( $account, $char->local );
-                    } elseif( is_null( $char->local )) {
-                        $this->createChar( $account, $char->api );
-                    } else {
-                        $this->updateChar( $account, $char->local, $char->api );
-                    }
-                }
-            } catch( AuthenticationException $authException ) {
-                $this->output->warning( 'API Key of ' . $account->name . ' [' . $account->id . '] is invalid' );
-
-                $this->sendInvalidApiKeyMail($account);
-
-                // mark the api key as invalid
-                $account->api_key_valid = false;
-                $account->save();
-            }
+            $this->scheduleAccountUpdate( new AccountUpdatePayload( $account ));
         }
+
+        $this->updater->queueScheduledUpdates();
     }
 
-    /**
-     * Maps local characters to the characters returned from the api.
-     *
-     * @param Character[] $charactersLocal
-     * @param array[]     $charactersApi
-     * @return array
-     */
-    protected function mapCharacters($charactersLocal, $charactersApi) {
-        $mapping = [];
-
-        // insert all characters from api into mapping array
-        foreach( $charactersApi as $char ) {
-            $mapping[] = (object)[
-                'api' => $char,
-                'local' => null
-            ];
-        }
-
-        // map local characters to api
-        foreach( $charactersLocal as $char ) {
-            $apiChar = null;
-
-            foreach( $mapping as $map ) {
-                // check if this char was already mapped to a local char
-                if( !is_null( $map->local )) {
-                    continue;
-                }
-
-                // check if char is the same
-                if( $char->created->eq(Carbon::createFromFormat( Carbon::ISO8601, $map->api->created )) &&
-                    $char->race === $map->api->race &&
-                    $char->profession === $map->api->profession &&
-                    $char->level <= $map->api->level &&
-                    $char->age <= $map->api->age &&
-                    $char->deaths <= $map->api->deaths
-                ) {
-                    $map->local = $char;
-                    $apiChar = $map->api;
-                    continue;
-                }
-            }
-
-            // if we havent mapped this char, it was deleted
-            if( is_null( $apiChar )) {
-                $mapping[] = (object)[
-                    'api' => null,
-                    'local' => $char
-                ];
-            }
-        }
-
-        return $mapping;
-    }
-
-    /**
-     * Mark local character as deleted.
-     *
-     * @param Account $account
-     * @param Character $char
-     */
-    protected function deletedChar( Account $account, Character $char ) {
-        // we don't do anything with this yet.
-    }
-
-    /**
-     * Create a new local character based on the data returned from the api.
-     *
-     * @param Account $account
-     * @param $char
-     */
-    protected function createChar( Account $account, $char ) {
-        /** @var Character $character */
-        $character = Character::createFromApiData($char, $account);
-        Activity::characterCreated($character);
-
-        $this->output->writeln('created character ' . $char->name);
-    }
-
-    /**
-     * Update the local character with the data returned from the api.
-     *
-     * @param Account $account
-     * @param Character $localChar
-     * @param $apiChar
-     */
-    protected function updateChar( Account $account, Character $localChar, $apiChar ) {
-        // level
-        if( $apiChar->level !== (int)$localChar->level ) {
-            $localChar->level = $apiChar->level;
-
-            Activity::characterLevel($localChar, $localChar->level);
-        }
-
-        // name
-        if( $apiChar->name !== $localChar->name ) {
-            $oldName = $localChar->name;
-            $localChar->name = $apiChar->name;
-
-            Activity::characterRenamed($localChar, $oldName, $apiChar->name);
-        }
-
-        // update all other changeable properties we don't fire activities for (yet)
-        $localChar->gender = $apiChar->gender;
-        $localChar->age = $apiChar->age;
-        $localChar->deaths = $apiChar->deaths;
-
-        if( $localChar->isDirty() ) {
-            $this->output->writeln('updated character ' . $localChar->name);
-            $localChar->save();
-        }
-    }
-
-    /**
-     * Send a mail for invalid api keys
-     * @param Account $account
-     */
-    protected function sendInvalidApiKeyMail(Account $account) {
-        $subject = 'Invalid API key for your account ' . $account->name;
-        Mail::send([
-            'emails.invalid_api_key.html',
-            'emails.invalid_api_key.text'
-        ], compact('account', 'subject'), function (Message $mail) use ($account, $subject) {
-            $mail->to($account->user->email, $account->user->name)
-                ->subject($subject);
-        });
+    public function scheduleUpdate($updater, UpdatePayload $payload) {
+        $this->updater->scheduleUpdate( $updater, $payload );
     }
 }
