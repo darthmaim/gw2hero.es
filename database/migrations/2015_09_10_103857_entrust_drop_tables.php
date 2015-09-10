@@ -1,15 +1,29 @@
 <?php
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 
-class EntrustSetupTables extends Migration
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class EntrustDropTables extends Migration
 {
     /**
      * Run the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function up()
+    {
+        Schema::dropIfExists(Config::get('entrust.permission_role_table', 'permission_role'));
+        Schema::dropIfExists(Config::get('entrust.permissions_table', 'permissions'));
+        Schema::dropIfExists(Config::get('entrust.role_user_table', 'role_user'));
+        Schema::dropIfExists(Config::get('entrust.roles_table', 'roles'));
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
     {
         // Create table for storing roles
         Schema::create(Config::get('entrust.roles_table', 'roles'), function (Blueprint $table) {
@@ -54,18 +68,5 @@ class EntrustSetupTables extends Migration
 
             $table->primary(['permission_id', 'role_id']);
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return  void
-     */
-    public function down()
-    {
-        Schema::dropIfExists(Config::get('entrust.permission_role_table', 'permission_role'));
-        Schema::dropIfExists(Config::get('entrust.permissions_table', 'permissions'));
-        Schema::dropIfExists(Config::get('entrust.role_user_table', 'role_user'));
-        Schema::dropIfExists(Config::get('entrust.roles_table', 'roles'));
     }
 }
