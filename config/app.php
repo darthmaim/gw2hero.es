@@ -145,7 +145,7 @@ return [
 		'GW2Heroes\Providers\EventServiceProvider',
 		'GW2Heroes\Providers\RouteServiceProvider',
 
-		'Illuminate\Html\HtmlServiceProvider',
+		'Collective\Html\HtmlServiceProvider',
 
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 	],
@@ -196,8 +196,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-		'Form'      => 'Illuminate\Html\FormFacade',
-		'HTML'      => 'Illuminate\Html\HtmlFacade',
+		'Form'      => 'Collective\Html\FormFacade',
+		'HTML'      => 'Collective\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
 
 	],

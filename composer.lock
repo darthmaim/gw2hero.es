@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "aedba4616b460c5a955cedc69ba5c697",
+    "hash": "29d24b45d580f77846621c77acc46e45",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -582,52 +582,6 @@
             "time": "2015-09-03 20:06:18"
         },
         {
-            "name": "illuminate/html",
-            "version": "v5.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/html.git",
-                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/html/zipball/3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
-                "reference": "3d1009bb8e0f25720c914af5c1f4015dd373c9ef",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/http": "~5.0",
-                "illuminate/session": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Html\\": ""
-                },
-                "files": [
-                    "helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "time": "2015-01-01 16:31:18"
-        },
-        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -953,6 +907,56 @@
                 "oauth"
             ],
             "time": "2015-08-30 01:12:56"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "8b7c357e78b8fb6a2e48377cf2441441aac6dd1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/8b7c357e78b8fb6a2e48377cf2441441aac6dd1e",
+                "reference": "8b7c357e78b8fb6a2e48377cf2441441aac6dd1e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.1.*",
+                "illuminate/routing": "5.1.*",
+                "illuminate/session": "5.1.*",
+                "illuminate/support": "5.1.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "time": "2015-09-03 17:16:48"
         },
         {
             "name": "league/flysystem",
