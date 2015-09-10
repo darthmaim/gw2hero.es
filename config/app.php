@@ -147,7 +147,6 @@ return [
 
 		'Illuminate\Html\HtmlServiceProvider',
 
-		'Artdarek\OAuth\OAuthServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 	],
 
@@ -200,8 +199,6 @@ return [
 		'Form'      => 'Illuminate\Html\FormFacade',
 		'HTML'      => 'Illuminate\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-
-		'OAuth'     => 'Artdarek\OAuth\Facade\OAuth',
 
 	],
 

@@ -12555,55 +12555,5 @@ namespace {
     }
 
 
-    class OAuth extends \Artdarek\OAuth\Facade\OAuth{
-        
-        /**
-         * Detect config and set data from it
-         *
-         * @param string $service
-         * @static 
-         */
-        public static function setConfig($service){
-            return \Artdarek\OAuth\OAuth::setConfig($service);
-        }
-        
-        /**
-         * Create storage instance
-         *
-         * @param string $storageName
-         * @return \Artdarek\OAuth\OAuth\Common\\Storage 
-         * @static 
-         */
-        public static function createStorageInstance($storageName){
-            return \Artdarek\OAuth\OAuth::createStorageInstance($storageName);
-        }
-        
-        /**
-         * Set the http client object
-         *
-         * @param string $httpClientName
-         * @return void 
-         * @static 
-         */
-        public static function setHttpClient($httpClientName){
-            \Artdarek\OAuth\OAuth::setHttpClient($httpClientName);
-        }
-        
-        /**
-         * 
-         *
-         * @param string $service
-         * @param string $url
-         * @param array $scope
-         * @return \OAuth\Common\Service\AbstractService 
-         * @static 
-         */
-        public static function consumer($service, $url = null, $scope = null){
-            return \Artdarek\OAuth\OAuth::consumer($service, $url, $scope);
-        }
-        
-    }
-
-
 }
 
