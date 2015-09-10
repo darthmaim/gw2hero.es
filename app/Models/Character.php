@@ -1,4 +1,6 @@
-<?php namespace GW2Heroes;
+<?php
+
+namespace GW2Heroes\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -29,11 +31,11 @@ class Character extends Model {
 
 
     public function account() {
-        return $this->belongsTo('\GW2Heroes\Account');
+        return $this->belongsTo('\GW2Heroes\Models\Account');
     }
 
     public function activities() {
-        return $this->hasMany('\GW2Heroes\Activity');
+        return $this->hasMany('\GW2Heroes\Models\Activity');
     }
 
     /**

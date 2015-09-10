@@ -1,4 +1,6 @@
-<?php namespace GW2Heroes;
+<?php
+
+namespace GW2Heroes\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -33,10 +35,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
     public function accounts() {
-        return $this->hasMany('\GW2Heroes\Account');
+        return $this->hasMany('\GW2Heroes\Models\Account');
     }
 
     public function activities() {
-        return $this->hasMany('\GW2Heroes\Activity');
+        return $this->hasMany('\GW2Heroes\Models\Activity');
     }
 }

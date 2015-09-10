@@ -1270,7 +1270,7 @@ namespace {
         /**
          * Get the currently authenticated user.
          *
-         * @return \GW2Heroes\User|null 
+         * @return \GW2Heroes\Models\User|null 
          * @static 
          */
         public static function user(){
@@ -1372,7 +1372,7 @@ namespace {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \GW2Heroes\User 
+         * @return \GW2Heroes\Models\User 
          * @static 
          */
         public static function loginUsingId($id, $remember = false){
@@ -1477,7 +1477,7 @@ namespace {
         /**
          * Return the currently cached user.
          *
-         * @return \GW2Heroes\User|null 
+         * @return \GW2Heroes\Models\User|null 
          * @static 
          */
         public static function getUser(){
@@ -1519,7 +1519,7 @@ namespace {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \GW2Heroes\User 
+         * @return \GW2Heroes\Models\User 
          * @static 
          */
         public static function getLastAttempted(){

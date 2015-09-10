@@ -1,9 +1,9 @@
 <?php namespace GW2Heroes\Http\Controllers;
 
 use Cache;
-use GW2Heroes\Account;
-use GW2Heroes\Character;
-use GW2Heroes\User;
+use GW2Heroes\Models\Account;
+use GW2Heroes\Models\Character;
+use GW2Heroes\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Input;

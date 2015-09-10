@@ -1,7 +1,7 @@
 <?php namespace GW2Heroes\Http\Controllers;
 
 use Cache;
-use GW2Heroes\Account;
+use GW2Heroes\Models\Account;
 use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Http\Request;
 

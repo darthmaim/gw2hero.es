@@ -1,9 +1,7 @@
 <?php namespace GW2Heroes\Http\Controllers\Auth;
 
 use GW2Heroes\Http\Controllers\Controller;
-use GW2Heroes\User;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\Registrar;
+use GW2Heroes\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Validator;
 

@@ -1,6 +1,7 @@
-<?php namespace GW2Heroes;
+<?php
 
-use GW2Treasures\GW2Api\GW2Api;
+namespace GW2Heroes\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\Expression;
 
@@ -22,15 +23,15 @@ class Account extends Model {
     protected $hidden = ['api_key'];
 
     public function user() {
-        return $this->belongsTo('\GW2Heroes\User');
+        return $this->belongsTo('\GW2Heroes\Models\User');
     }
 
     public function characters() {
-        return $this->hasMany('\GW2Heroes\Character');
+        return $this->hasMany('\GW2Heroes\Models\Character');
     }
 
     public function activities() {
-        return $this->hasMany('\GW2Heroes\Activity');
+        return $this->hasMany('\GW2Heroes\Models\Activity');
     }
 
     public function getNameHtml() {

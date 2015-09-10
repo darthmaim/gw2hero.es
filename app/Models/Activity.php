@@ -1,6 +1,6 @@
 <?php
 
-namespace GW2Heroes;
+namespace GW2Heroes\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -68,14 +68,14 @@ class Activity extends Model {
     }
 
     public function account() {
-        return $this->belongsTo('\GW2Heroes\Account');
+        return $this->belongsTo('\GW2Heroes\Models\Account');
     }
 
     public function user() {
-        return $this->belongsTo('\GW2Heroes\User');
+        return $this->belongsTo('\GW2Heroes\Models\User');
     }
 
     public function character() {
-        return $this->belongsTo('\GW2Heroes\Character');
+        return $this->belongsTo('\GW2Heroes\Models\Character');
     }
 }
