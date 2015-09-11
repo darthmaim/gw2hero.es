@@ -1,7 +1,10 @@
 <?php namespace GW2Heroes\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler{
 
@@ -11,7 +14,8 @@ class Handler extends ExceptionHandler{
 	 * @var array
 	 */
 	protected $dontReport = [
-		'Symfony\Component\HttpKernel\Exception\HttpException'
+		HttpException::class,
+		ModelNotFoundException::class
 	];
 
 	/**
@@ -23,7 +27,7 @@ class Handler extends ExceptionHandler{
 	 *
 	 * @return void
 	 */
-	public function report(Exception $e){
+	public function report(Exception $e) {
 		return parent::report($e);
 	}
 
@@ -35,7 +39,11 @@ class Handler extends ExceptionHandler{
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function render($request, Exception $e){
+	public function render($request, Exception $e) {
+		if ($e instanceof ModelNotFoundException) {
+			$e = new NotFoundHttpException($e->getMessage(), $e);
+		}
+
 		return parent::render($request, $e);
 	}
 

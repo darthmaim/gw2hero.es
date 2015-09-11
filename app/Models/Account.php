@@ -23,15 +23,15 @@ class Account extends Model {
     protected $hidden = ['api_key'];
 
     public function user() {
-        return $this->belongsTo('\GW2Heroes\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function characters() {
-        return $this->hasMany('\GW2Heroes\Models\Character');
+        return $this->hasMany(Character::class);
     }
 
     public function activities() {
-        return $this->hasMany('\GW2Heroes\Models\Activity');
+        return $this->hasMany(Activity::class);
     }
 
     public function getNameHtml() {

@@ -68,14 +68,14 @@ class Activity extends Model {
     }
 
     public function account() {
-        return $this->belongsTo('\GW2Heroes\Models\Account');
+        return $this->belongsTo(Account::class);
     }
 
     public function user() {
-        return $this->belongsTo('\GW2Heroes\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function character() {
-        return $this->belongsTo('\GW2Heroes\Models\Character');
+        return $this->belongsTo(Character::class);
     }
 }

@@ -31,11 +31,11 @@ class Character extends Model {
 
 
     public function account() {
-        return $this->belongsTo('\GW2Heroes\Models\Account');
+        return $this->belongsTo(Account::class);
     }
 
     public function activities() {
-        return $this->hasMany('\GW2Heroes\Models\Activity');
+        return $this->hasMany(Activity::class);
     }
 
     /**
