@@ -140,6 +140,7 @@ return [
 		 * Application Service Providers...
 		 */
 		GW2Heroes\Providers\AppServiceProvider::class,
+		GW2Heroes\Providers\AuthServiceProvider::class,
 		GW2Heroes\Providers\EventServiceProvider::class,
 		GW2Heroes\Providers\RouteServiceProvider::class,
 
@@ -174,6 +175,7 @@ return [
 		'Eloquent'  => Illuminate\Database\Eloquent\Model::class,
 		'Event'     => Illuminate\Support\Facades\Event::class,
 		'File'      => Illuminate\Support\Facades\File::class,
+		'Gate'      => Illuminate\Support\Facades\Gate::class,
 		'Hash'      => Illuminate\Support\Facades\Hash::class,
 		'Input'     => Illuminate\Support\Facades\Input::class,
 		'Inspiring' => Illuminate\Foundation\Inspiring::class,
