@@ -2,7 +2,6 @@
 
 namespace GW2Heroes\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -25,6 +24,8 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Activity whereData($value)
  * @method static Builder|Activity whereCreatedAt($value)
  * @method static Builder|Activity whereUpdatedAt($value)
+ * @method static Builder|Activity whereStringContains($column, $value, $boolean = 'and')
+ * @method static Builder|Activity orWhereStringContains($column, $value)
  */
 class Activity extends Model {
 

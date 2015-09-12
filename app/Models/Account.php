@@ -3,7 +3,6 @@
 namespace GW2Heroes\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\View\Expression;
 
@@ -29,6 +28,8 @@ use Illuminate\View\Expression;
  * @method static Builder|Account whereApiKeyValid($value)
  * @method static Builder|Account whereCreatedAt($value)
  * @method static Builder|Account whereUpdatedAt($value)
+ * @method static Builder|Account whereStringContains($column, $value, $boolean = 'and')
+ * @method static Builder|Account orWhereStringContains($column, $value)
  */
 class Account extends Model {
     protected $table = 'accounts';

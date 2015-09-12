@@ -4,7 +4,6 @@ namespace GW2Heroes\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -34,6 +33,8 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Character whereAccountId($value)
  * @method static Builder|Character whereCreatedAt($value)
  * @method static Builder|Character whereUpdatedAt($value)
+ * @method static Builder|Character whereStringContains($column, $value, $boolean = 'and')
+ * @method static Builder|Character orWhereStringContains($column, $value)
  */
 class Character extends Model {
     protected $table = 'characters';

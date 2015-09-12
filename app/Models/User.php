@@ -4,7 +4,6 @@ namespace GW2Heroes\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -29,6 +28,8 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereUpdatedAt($value)
+ * @method static Builder|User whereStringContains($column, $value, $boolean = 'and')
+ * @method static Builder|User orWhereStringContains($column, $value)
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract {
     use Authenticatable, Authorizable, CanResetPassword;
