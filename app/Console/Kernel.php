@@ -11,7 +11,7 @@ class Kernel extends ConsoleKernel {
      * @var array
      */
     protected $commands = [
-        'GW2Heroes\Console\Commands\Update'
+        Commands\Update::class
     ];
 
     /**

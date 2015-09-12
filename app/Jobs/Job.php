@@ -2,4 +2,8 @@
 
 namespace GW2Heroes\Jobs;
 
-abstract class Job { }
+use Illuminate\Bus\Queueable;
+
+abstract class Job {
+    use Queueable;
+}

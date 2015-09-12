@@ -1,8 +1,41 @@
-<?php namespace GW2Heroes;
+<?php
+
+namespace GW2Heroes\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Query\Builder;
 
+/**
+ * @property-read Account $account
+ * @property-read Collection|Activity[] $activities
+ * @property integer $id
+ * @property string $name
+ * @property string $race
+ * @property string $gender
+ * @property string $profession
+ * @property integer $level
+ * @property integer $age
+ * @property \Carbon\Carbon $created
+ * @property integer $deaths
+ * @property integer $account_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static Builder|Character whereId($value)
+ * @method static Builder|Character whereName($value)
+ * @method static Builder|Character whereRace($value)
+ * @method static Builder|Character whereGender($value)
+ * @method static Builder|Character whereProfession($value)
+ * @method static Builder|Character whereLevel($value)
+ * @method static Builder|Character whereAge($value)
+ * @method static Builder|Character whereCreated($value)
+ * @method static Builder|Character whereDeaths($value)
+ * @method static Builder|Character whereAccountId($value)
+ * @method static Builder|Character whereCreatedAt($value)
+ * @method static Builder|Character whereUpdatedAt($value)
+ * @method static Builder|Character whereStringContains($column, $value, $boolean = 'and')
+ * @method static Builder|Character orWhereStringContains($column, $value)
+ */
 class Character extends Model {
     protected $table = 'characters';
 
@@ -29,11 +62,11 @@ class Character extends Model {
 
 
     public function account() {
-        return $this->belongsTo('\GW2Heroes\Account');
+        return $this->belongsTo(Account::class);
     }
 
     public function activities() {
-        return $this->hasMany('\GW2Heroes\Activity');
+        return $this->hasMany(Activity::class);
     }
 
     /**

@@ -27,18 +27,18 @@ $app = new Illuminate\Foundation\Application(
 */
 
 $app->singleton(
-	'Illuminate\Contracts\Http\Kernel',
-	'GW2Heroes\Http\Kernel'
+	\Illuminate\Contracts\Http\Kernel::class,
+	\GW2Heroes\Http\Kernel::class
 );
 
 $app->singleton(
-	'Illuminate\Contracts\Console\Kernel',
-	'GW2Heroes\Console\Kernel'
+	\Illuminate\Contracts\Console\Kernel::class,
+	\GW2Heroes\Console\Kernel::class
 );
 
 $app->singleton(
-	'Illuminate\Contracts\Debug\ExceptionHandler',
-	'GW2Heroes\Exceptions\Handler'
+	\Illuminate\Contracts\Debug\ExceptionHandler::class,
+	\GW2Heroes\Exceptions\Handler::class
 );
 
 /*

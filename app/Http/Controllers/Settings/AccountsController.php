@@ -3,11 +3,11 @@
 namespace GW2Heroes\Http\Controllers\Settings;
 
 use Auth;
-use GW2Heroes\Account;
-use GW2Heroes\Activity;
-use GW2Heroes\Character;
+use GW2Heroes\Models\Account;
+use GW2Heroes\Models\Activity;
+use GW2Heroes\Models\Character;
 use GW2Heroes\Http\Controllers\Controller;
-use GW2Heroes\User;
+use GW2Heroes\Models\User;
 use GW2Treasures\GW2Api\GW2Api;
 use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
 use Illuminate\Http\Request;

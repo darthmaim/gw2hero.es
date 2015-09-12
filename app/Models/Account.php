@@ -1,9 +1,36 @@
-<?php namespace GW2Heroes;
+<?php
 
-use GW2Treasures\GW2Api\GW2Api;
-use Illuminate\Database\Eloquent\Model;
+namespace GW2Heroes\Models;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Query\Builder;
 use Illuminate\View\Expression;
 
+/**
+ * @property-read User $user
+ * @property-read Collection|Character[] $characters
+ * @property-read Collection|Activity[] $activities
+ * @property integer $id
+ * @property string $guid
+ * @property string $name
+ * @property integer $world
+ * @property integer $user_id
+ * @property string $api_key
+ * @property boolean $api_key_valid
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static Builder|Account whereId($value)
+ * @method static Builder|Account whereGuid($value)
+ * @method static Builder|Account whereName($value)
+ * @method static Builder|Account whereWorld($value)
+ * @method static Builder|Account whereUserId($value)
+ * @method static Builder|Account whereApiKey($value)
+ * @method static Builder|Account whereApiKeyValid($value)
+ * @method static Builder|Account whereCreatedAt($value)
+ * @method static Builder|Account whereUpdatedAt($value)
+ * @method static Builder|Account whereStringContains($column, $value, $boolean = 'and')
+ * @method static Builder|Account orWhereStringContains($column, $value)
+ */
 class Account extends Model {
     protected $table = 'accounts';
 
@@ -22,15 +49,15 @@ class Account extends Model {
     protected $hidden = ['api_key'];
 
     public function user() {
-        return $this->belongsTo('\GW2Heroes\User');
+        return $this->belongsTo(User::class);
     }
 
     public function characters() {
-        return $this->hasMany('\GW2Heroes\Character');
+        return $this->hasMany(Character::class);
     }
 
     public function activities() {
-        return $this->hasMany('\GW2Heroes\Activity');
+        return $this->hasMany(Activity::class);
     }
 
     public function getNameHtml() {

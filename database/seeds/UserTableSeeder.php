@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Database\Seeder;
-use GW2Heroes\User;
+use GW2Heroes\Models\User;
 
 class UserTableSeeder extends Seeder{
 

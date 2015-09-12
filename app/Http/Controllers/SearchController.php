@@ -1,9 +1,9 @@
 <?php namespace GW2Heroes\Http\Controllers;
 
 use Cache;
-use GW2Heroes\Account;
-use GW2Heroes\Character;
-use GW2Heroes\User;
+use GW2Heroes\Models\Account;
+use GW2Heroes\Models\Character;
+use GW2Heroes\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Input;
@@ -20,9 +20,9 @@ class SearchController extends Controller {
         $cacheKey = 'search:'.md5($searchTerm);
 
         return Cache::remember($cacheKey, 5, function() use ($searchTerm) {
-            $characters = $this->rawLikeStatement( Character::query(), 'name', $searchTerm )->get();
-            $accounts = $this->rawLikeStatement( Account::query(), 'name', $searchTerm )->get();
-            $users = $this->rawLikeStatement( User::query(), 'name', $searchTerm )->get();
+            $characters = Character::whereStringContains( 'name', $searchTerm )->get();
+            $accounts = Account::whereStringContains( 'name', $searchTerm )->get();
+            $users = User::whereStringContains( 'name', $searchTerm )->get();
 
             return compact('users', 'accounts', 'characters');
         });
@@ -48,21 +48,5 @@ class SearchController extends Controller {
         }
 
         return view('search.search');
-    }
-
-    /**
-     * @param Builder $query
-     * @param string  $column
-     * @param string  $searchTerm
-     * @return Builder
-     *
-     * @todo Refactor into common base model scope method.
-     */
-    protected function rawLikeStatement( Builder $query, $column, $searchTerm) {
-        // escape like query param (don't use backslash because it gets really awkward with quadruple escapes...)
-        $e = '=';
-        $escapedParam = str_replace([$e, '%', '_'], [$e.$e, $e.'%', $e.'_'], $searchTerm);
-
-        return $query->whereRaw("UPPER(`$column`) LIKE ? ESCAPE '$e'", ['%'.$escapedParam.'%']);
     }
 }

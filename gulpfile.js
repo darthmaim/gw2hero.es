@@ -65,7 +65,7 @@ var styles = {
     buildCss: function() {
         var sass = require('gulp-sass');
         var postcss = require('gulp-postcss');
-        var autoprefixer = require('autoprefixer-core');
+        var autoprefixer = require('autoprefixer');
         var minify = require('gulp-minify-css');
         var sourcemaps = require('gulp-sourcemaps');
 
@@ -170,9 +170,9 @@ var general = {
             js.build()
         );
     },
-    clean: function( cb ) {
+    clean: function() {
         var del = require('del');
-        del( general.dest, cb );
+        return del( general.dest );
     },
     watch: function() {
         styles.build();

@@ -3,9 +3,9 @@
 namespace GW2Heroes\Console\Commands;
 
 use Carbon\Carbon;
-use GW2Heroes\Account;
-use GW2Heroes\Activity;
-use GW2Heroes\Character;
+use GW2Heroes\Models\Account;
+use GW2Heroes\Models\Activity;
+use GW2Heroes\Models\Character;
 use GW2Treasures\GW2Api\GW2Api;
 use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
 use Illuminate\Console\Command;

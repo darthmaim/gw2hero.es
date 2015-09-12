@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'model' => 'GW2Heroes\User',
+	'model' => GW2Heroes\Models\User::class,
 
 	/*
 	|--------------------------------------------------------------------------
