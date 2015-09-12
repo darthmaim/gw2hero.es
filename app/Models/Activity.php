@@ -3,7 +3,29 @@
 namespace GW2Heroes\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
+/**
+ * @property-read Account $account
+ * @property-read User $user
+ * @property-read Character $character
+ * @property integer $id
+ * @property integer $user_id
+ * @property integer $account_id
+ * @property integer $character_id
+ * @property string $type
+ * @property string $data
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static Builder|Activity whereId($value)
+ * @method static Builder|Activity whereUserId($value)
+ * @method static Builder|Activity whereAccountId($value)
+ * @method static Builder|Activity whereCharacterId($value)
+ * @method static Builder|Activity whereType($value)
+ * @method static Builder|Activity whereData($value)
+ * @method static Builder|Activity whereCreatedAt($value)
+ * @method static Builder|Activity whereUpdatedAt($value)
+ */
 class Activity extends Model {
 
     // account activity types

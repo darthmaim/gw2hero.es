@@ -3,8 +3,38 @@
 namespace GW2Heroes\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
+/**
+ * @property-read Account $account
+ * @property-read Collection|Activity[] $activities
+ * @property integer $id
+ * @property string $name
+ * @property string $race
+ * @property string $gender
+ * @property string $profession
+ * @property integer $level
+ * @property integer $age
+ * @property \Carbon\Carbon $created
+ * @property integer $deaths
+ * @property integer $account_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static Builder|Character whereId($value)
+ * @method static Builder|Character whereName($value)
+ * @method static Builder|Character whereRace($value)
+ * @method static Builder|Character whereGender($value)
+ * @method static Builder|Character whereProfession($value)
+ * @method static Builder|Character whereLevel($value)
+ * @method static Builder|Character whereAge($value)
+ * @method static Builder|Character whereCreated($value)
+ * @method static Builder|Character whereDeaths($value)
+ * @method static Builder|Character whereAccountId($value)
+ * @method static Builder|Character whereCreatedAt($value)
+ * @method static Builder|Character whereUpdatedAt($value)
+ */
 class Character extends Model {
     protected $table = 'characters';
 

@@ -2,9 +2,34 @@
 
 namespace GW2Heroes\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 use Illuminate\View\Expression;
 
+/**
+ * @property-read User $user
+ * @property-read Collection|Character[] $characters
+ * @property-read Collection|Activity[] $activities
+ * @property integer $id
+ * @property string $guid
+ * @property string $name
+ * @property integer $world
+ * @property integer $user_id
+ * @property string $api_key
+ * @property boolean $api_key_valid
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @method static Builder|Account whereId($value)
+ * @method static Builder|Account whereGuid($value)
+ * @method static Builder|Account whereName($value)
+ * @method static Builder|Account whereWorld($value)
+ * @method static Builder|Account whereUserId($value)
+ * @method static Builder|Account whereApiKey($value)
+ * @method static Builder|Account whereApiKeyValid($value)
+ * @method static Builder|Account whereCreatedAt($value)
+ * @method static Builder|Account whereUpdatedAt($value)
+ */
 class Account extends Model {
     protected $table = 'accounts';
 
