@@ -7,6 +7,11 @@
         display: block;
         padding: 12px 24px 12px 40px;
 
+        &.active {
+            border-right: 2px solid $brand;
+            padding-left: 38px;
+        }
+
         &:after {
             content: '〉';
             color: #aaa;
