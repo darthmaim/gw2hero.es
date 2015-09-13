@@ -28,6 +28,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Activity whereUpdatedAt($value)
  * @method static Builder|Activity whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Activity orWhereStringContains($column, $value)
+ * @method static Builder|Activity random($amount = 1)
  */
 class Activity extends Model {
 

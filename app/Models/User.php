@@ -32,6 +32,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|User orWhereStringContains($column, $value)
+ * @method static Builder|User random($amount = 1)
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract {
     use Authenticatable, Authorizable, CanResetPassword;

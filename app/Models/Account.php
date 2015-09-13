@@ -32,6 +32,7 @@ use Illuminate\View\Expression;
  * @method static Builder|Account whereUpdatedAt($value)
  * @method static Builder|Account whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Account orWhereStringContains($column, $value)
+ * @method static Builder|Account random($amount = 1)
  */
 class Account extends Model {
     protected $table = 'accounts';

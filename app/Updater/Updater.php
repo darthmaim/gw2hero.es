@@ -10,7 +10,7 @@ class Updater {
 
     private $scheduledUpdates = [];
 
-    public function scheduleUpdate($updater, UpdatePayload $payload) {
+    public function scheduleUpdate($updater, UpdatePayload $payload = null) {
         if( !array_key_exists( $updater, $this->scheduledUpdates )) {
             $this->scheduledUpdates[$updater] = [];
         }
