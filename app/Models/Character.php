@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Builder;
 
 /**
+ * GW2Heroes\Models\Character
+ *
  * @property-read Account $account
  * @property-read Collection|Activity[] $activities
  * @property integer $id
@@ -18,6 +20,7 @@ use Illuminate\Database\Query\Builder;
  * @property integer $age
  * @property \Carbon\Carbon $created
  * @property integer $deaths
+ * @property string $equipment
  * @property integer $account_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -30,6 +33,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Character whereAge($value)
  * @method static Builder|Character whereCreated($value)
  * @method static Builder|Character whereDeaths($value)
+ * @method static Builder|Character whereEquipment($value)
  * @method static Builder|Character whereAccountId($value)
  * @method static Builder|Character whereCreatedAt($value)
  * @method static Builder|Character whereUpdatedAt($value)
@@ -60,6 +64,14 @@ class Character extends Model {
      */
     protected $dates = ['created', 'created_at', 'updated_at'];
 
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'equipment' => 'object'
+    ];
 
     public function account() {
         return $this->belongsTo(Account::class);

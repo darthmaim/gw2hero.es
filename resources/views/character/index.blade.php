@@ -23,7 +23,7 @@
         <li><a href="{{ action('CharacterController@getStory', $character->getActionData()) }}">Story</a>
         <li><a href="{{ action('CharacterController@getActivities', $character->getActionData()) }}">Activities</a>
         <li><a href="">Gallery</a>
-        <li><a href="">Equipment & Inventory</a>
+        <li><a href="{{ action('CharacterController@getEquipment', $character->getActionData()) }}">Equipment & Inventory</a>
         <li><a href="">Crafting Disciplines</a>
     </ul>
 @stop

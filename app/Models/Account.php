@@ -7,6 +7,8 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\View\Expression;
 
 /**
+ * GW2Heroes\Models\Account
+ *
  * @property-read User $user
  * @property-read Collection|Character[] $characters
  * @property-read Collection|Activity[] $activities

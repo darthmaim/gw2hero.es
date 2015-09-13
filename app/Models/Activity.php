@@ -5,6 +5,8 @@ namespace GW2Heroes\Models;
 use Illuminate\Database\Query\Builder;
 
 /**
+ * GW2Heroes\Models\Activity
+ *
  * @property-read Account $account
  * @property-read User $user
  * @property-read Character $character

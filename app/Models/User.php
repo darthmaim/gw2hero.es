@@ -12,6 +12,8 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
 /**
+ * GW2Heroes\Models\User
+ *
  * @property-read Collection|Account[] $accounts
  * @property-read Collection|Activity[] $activities
  * @property integer $id
@@ -53,7 +55,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['password', 'remember_token'];
+	protected $hidden = ['email', 'password', 'remember_token'];
 
     public function accounts() {
         return $this->hasMany(Account::class);
