@@ -52,9 +52,7 @@ class CharacterController extends Controller {
 
     public function getEquipment( Request $request, $id ) {
         $character = $this->getCharacterFromRequest( $request, $id, __FUNCTION__ );
-        $equipment = is_array( $character->equipment )
-            ? collect($character->equipment)->keyBy('slot')
-            : $character->equipment;
+        $equipment = $character->equipment()->with('item')->get()->keyBy('slot');
 
         return view('character.equipment', compact('character', 'equipment'));
     }

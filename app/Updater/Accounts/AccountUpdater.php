@@ -164,7 +164,7 @@ class AccountUpdater extends Updater {
         $localChar->deaths = $apiChar->deaths;
 
         $ageChanged = $localChar->getOriginal('age') !== $localChar->getAttribute('age');
-        if( $ageChanged || is_null($localChar->equipment) || $this->probability(0.05) ) {
+        if( $ageChanged || $localChar->equipment()->count() === 0 || $this->probability(0.05) ) {
             $this->scheduleCharacterUpdate( new CharacterUpdatePayload($localChar) );
         }
 

@@ -2,7 +2,9 @@
 
 namespace GW2Heroes\Models;
 
+use HTML;
 use Illuminate\Database\Query\Builder;
+use Illuminate\View\Expression;
 
 /**
  * GW2Heroes\Models\Item
@@ -12,10 +14,10 @@ use Illuminate\Database\Query\Builder;
  * @property string $name_en
  * @property string $name_es
  * @property string $name_fr
- * @property string $data_de
- * @property string $data_en
- * @property string $data_es
- * @property string $data_fr
+ * @property mixed $data_de
+ * @property mixed $data_en
+ * @property mixed $data_es
+ * @property mixed $data_fr
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @method static Builder|Item whereId($value)
@@ -57,4 +59,45 @@ class Item extends Model {
         'data_es' => 'object',
         'data_fr' => 'object'
     ];
+
+    /**
+     * Gets the url to the icon on the cdn.
+     *
+     * @param int $size Minimum size of the icon
+     * @return string
+     */
+    public function getIconUrl( $size = 64 ) {
+        $size = intval( $size );
+        if( !in_array( $size, array( 16, 32, 64 ) ) ) {
+            if( $size <= 16 ) {
+                $size = 16;
+            } elseif( $size <= 32 ) {
+                $size = 32;
+            } else {
+                $size = 64;
+            }
+        }
+
+        preg_match('/\/(?<signature>[^\/]*)\/(?<file_id>[^\/]*)\.png$/', $this->data_en->icon, $icon);
+        $signature = $icon['signature'];
+        $file_id = $icon['file_id'];
+
+        return 'https://darthmaim-cdn.de/gw2treasures/icons/' . $signature . '/' . $file_id . '-' . $size . 'px.png';
+    }
+
+    public function getIcon( $size = 32 ) {
+        $attributes = [
+            'width' => $size,
+            'height' => $size,
+            'crossorigin' => 'anonymous'
+        ];
+
+        if( $size <= 32 ) {
+            $attributes['srcset'] = $this->getIconUrl( $size * 2 ).' 2x';
+        }
+
+        return new Expression(
+            HTML::image($this->getIconUrl(32), null, $attributes)
+        );
+    }
 }
