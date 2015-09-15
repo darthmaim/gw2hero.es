@@ -1,0 +1,36 @@
+.itemSlot {
+    &+& {
+        margin-top: 8px;
+    }
+
+    img {
+        box-sizing: content-box;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    .itemSlot__empty {
+        &:before {
+            content: '';
+            display: inline-block;
+            box-sizing: content-box;
+            margin-right: 5px;
+            width: 32px;
+            height: 32px;
+            background: #eee;
+            vertical-align: middle;
+        }
+    }
+}
+
+.itemSlot__upgrade {
+    margin-left: 8px;
+    margin-top: 4px;
+
+    .itemSlot__empty {
+        &:before {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
