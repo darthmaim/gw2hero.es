@@ -18,7 +18,7 @@ class EquipmentUpdater extends CharacterUpdater {
         \Log::debug('Updating equipment of '. $character->name .' ['. $character->id.']');
 
         try {
-            $apiEquipment = collect($api->characters($apiKey)->equipment($character->name)->get());
+            $apiEquipment = collect($api->characters($apiKey)->equipment($character->name)->get())->keyBy('slot');
 
             // get current equipment
             /** @var Collection|Equipment[] $localEquipment */
