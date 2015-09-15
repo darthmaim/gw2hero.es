@@ -10,11 +10,9 @@
 
 
 @section('content.left')
-    <ul class="sidebar-nav">
-        @section('settings.sidebar')
-            <li><a href="{{ action('Settings\SettingsController@getProfile') }}">Profile</a>
-            <li><a href="{{ action('Settings\AccountsController@getIndex') }}">Accounts</a>
-            <li><a href="{{ action('Settings\SettingsController@getNotifications') }}">Emails and Notifications</a>
-        @show
-    </ul>
+    @include('helper.sidebar-nav', ['links' => [
+        'Profile' => action('Settings\SettingsController@getProfile'),
+        'Accounts' => action('Settings\AccountsController@getIndex'),
+        'Emails and Notifications' => action('Settings\SettingsController@getNotifications')
+    ]])
 @stop

@@ -8,13 +8,13 @@
         </div>
     </div>
 
-    <ul class="sidebar-nav">
-        <li><a href="{{ action('AccountController@getIndex', $account->getActionData()) }}">Summary</a>
-        <li><a href="{{ action('AccountController@getCharacters', $account->getActionData()) }}">
-                Characters ({{ $account->characters->count() }})</a>
-        <li><a href="{{ action('AccountController@getActivities', $account->getActionData()) }}">Activities</a>
-        <li><a href="">Guilds</a>
-        <li><a href="">Bank</a>
-        <li><a href="">Collections</a>
-    </ul>
+    @include('helper.sidebar-nav', ['links' => [
+        'Summary' => action('AccountController@getIndex', $account->getActionData()),
+        'Characters ('.$account->characters->count().')'
+            => action('AccountController@getCharacters', $account->getActionData()),
+        'Activities' => action('AccountController@getActivities', $account->getActionData()),
+        'Guilds' => null,
+        'Bank' => null,
+        'Collections' => null
+    ]])
 @stop

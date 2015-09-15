@@ -18,12 +18,12 @@
         </div>
     </div>
 
-    <ul class="sidebar-nav">
-        <li><a href="{{ action('CharacterController@getIndex', $character->getActionData()) }}">Summary</a>
-        <li><a href="{{ action('CharacterController@getStory', $character->getActionData()) }}">Story</a>
-        <li><a href="{{ action('CharacterController@getActivities', $character->getActionData()) }}">Activities</a>
-        <li><a href="">Gallery</a>
-        <li><a href="{{ action('CharacterController@getEquipment', $character->getActionData()) }}">Equipment & Inventory</a>
-        <li><a href="">Crafting Disciplines</a>
-    </ul>
+    @include('helper.sidebar-nav', [ 'links' => [
+        'Summary' => action('CharacterController@getIndex', $character->getActionData()),
+        'Story' => action('CharacterController@getStory', $character->getActionData()),
+        'Activities' => action('CharacterController@getActivities', $character->getActionData()),
+        'Gallery' => null,
+        'Equipment & Inventory' => action('CharacterController@getEquipment', $character->getActionData()),
+        'Crafting Disciplines' => null,
+    ]])
 @stop
