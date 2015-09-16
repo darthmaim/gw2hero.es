@@ -4,7 +4,9 @@
     <h2>Users matching "{{ $searchTerm }}"</h2>
     <ul>
         @foreach($users as $user)
-            <li>{{ $user->name }}</li>
+            <li><a href="{{ action('UserController@getIndex', $user->getActionData()) }}">
+                {{ $user->name }}
+            </a></li>
         @endforeach
     </ul>
 @endsection
