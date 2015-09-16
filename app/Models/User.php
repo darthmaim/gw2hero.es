@@ -65,4 +65,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function activities() {
         return $this->hasMany(Activity::class);
     }
+
+
+    public function getActionData() {
+        return [
+            base_convert($this->id, 10, 36),
+            str_slug(strtolower($this->name))
+        ];
+    }
 }

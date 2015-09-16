@@ -33,5 +33,8 @@ Route::controller('character/{id}/{name?}', 'CharacterController');
 // accounts
 Route::controller('account/{id}/{name?}', 'AccountController');
 
+// user
+Route::controller('user/{id}/{name?}', 'UserController');
+
 // search
 Route::get('search', 'SearchController@getIndex');
