@@ -134,7 +134,6 @@ return [
 		Illuminate\Session\SessionServiceProvider::class,
 		Illuminate\Translation\TranslationServiceProvider::class,
 		Illuminate\Validation\ValidationServiceProvider::class,
-		Illuminate\View\ViewServiceProvider::class,
 
 		/*
 		 * Application Service Providers...
@@ -143,6 +142,7 @@ return [
 		GW2Heroes\Providers\AuthServiceProvider::class,
 		GW2Heroes\Providers\EventServiceProvider::class,
 		GW2Heroes\Providers\RouteServiceProvider::class,
+		GW2Heroes\Providers\ViewServiceProvider::class,
 
 		Collective\Html\HtmlServiceProvider::class,
 
