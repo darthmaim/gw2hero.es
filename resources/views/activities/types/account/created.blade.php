@@ -1,2 +1,1 @@
-<b>{{ Auth::id() === $activity->user->id ? 'You' : $activity->user->name }}</b>
-added a new account: <b>{{ $activity->account->getNameHtml() }}</b>
+@include('activities.helper.user') added a new account: @include('activities.helper.account').

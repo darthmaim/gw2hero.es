@@ -4,7 +4,9 @@
     <div class="char-info-box">
         <h2 class="char-info-box__name">{{ $account->name }}</h2>
         <div>
-            Owned by <a>{{ $account->user->name }}</a>
+            Owned by <a href="{{ action('UserController@getIndex', $account->user->getActionData()) }}">
+                {{ $account->user->name }}
+            </a>
         </div>
     </div>
 

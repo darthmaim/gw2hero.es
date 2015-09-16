@@ -1,3 +1,2 @@
-<b>{{ Auth::id() === $activity->user->id ? 'Your' : $activity->user->name . 's' }}</b> character
-<a href="{{ $activity->character->getUrl() }}">{{ $activity->character->name }}</a>
-reached level {{ $activity->data }}
+@include('activities.helper.user', ['suffix' => true]) character
+@include('activities.helper.character') reached level {{ $activity->data }}.

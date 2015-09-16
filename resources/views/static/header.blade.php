@@ -16,7 +16,8 @@
                 <a class="header__button" href="{{ action('SearchController@getIndex') }}">Search</a>
                 @if(Auth::check())
                     <div class="header__button--dropdown" tabindex="0">
-                        <a class="header__button--dropdown__link">
+                        <a class="header__button--dropdown__link"
+                           href="{{ action('UserController@getIndex', Auth::user()->getActionData()) }}">
                             {{ Auth::user()->name }}
                         </a>
                         <div class="header__button__dropdown">
