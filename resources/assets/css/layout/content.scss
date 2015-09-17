@@ -79,3 +79,15 @@
         overflow: visible;
     }
 }
+
+.body--red {
+    background: $brand;
+
+    .header {
+        box-shadow: none;
+    }
+
+    .footer {
+        color: mix( $fontLight, $brand, 50% );
+    }
+}

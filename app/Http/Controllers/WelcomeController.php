@@ -1,26 +1,15 @@
 <?php namespace GW2Heroes\Http\Controllers;
 
+use GW2Heroes\Models\Account;
+use GW2Heroes\Models\Character;
+use GW2Heroes\Models\User;
 use Response;
 
-class WelcomeController extends Controller{
-
-	/*
-	|--------------------------------------------------------------------------
-	| Welcome Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders the "marketing page" for the application and
-	| is configured to only allow guests. Like most of the other sample
-	| controllers, you are free to modify or remove it as you desire.
-	|
-	*/
-
+class WelcomeController extends Controller {
 	/**
 	 * Create a new controller instance.
-	 *
-	 * @return void
 	 */
-	public function __construct(){
+	public function __construct() {
 		$this->middleware('guest');
 	}
 
@@ -29,8 +18,14 @@ class WelcomeController extends Controller{
 	 *
 	 * @return Response
 	 */
-	public function index(){
-		return view('welcome');
+	public function index() {
+
+		$userCount = User::count();
+		$accountCount = Account::count();
+		$characterCount = Character::count();
+
+		return view('welcome')
+			->with(compact('userCount', 'accountCount', 'characterCount'));
 	}
 
 }

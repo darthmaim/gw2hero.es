@@ -11,17 +11,49 @@
         </div>
         <div class="content">
             @section('content')
-                <h2>Welcome!</h2>
+                <section class="welcome-section--left">
+                    <div class="welcome-section__content">
+                        <h2>Tell Your Story</h2>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                        <p>
+                            Write stories about the adventures of your characters in Tyria and
+                            share them with other players.
+                        </p>
 
-                <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+                        <p>
+                            Showcase your unique achievements, statistics, equipment, specializations and more and
+                            compare them with your friends and guildmates.
+                        </p>
+
+                        <p class="welcome-button">
+                            <a class="input--button" href="{{ action('Auth\AuthController@getRegister') }}">Register now</a>
+                        </p>
+                    </div>
+                    <div class="welcome-section__image"
+                         style="background-image: url({{ asset('assets/images/welcome/welcome1.jpg') }})"></div>
+                </section>
+                <section class="welcome-section--right welcome-section--dark">
+                    <div class="welcome-section__content">
+                        <h2>Stay Connected</h2>
+
+                        <p>
+                            Follow other heroes of Tyria and chat with them about their accomplishments.
+                            Never miss what your your friends are doing.
+                        </p>
+
+                        <p class="welcome-stats">
+                            Join the community of <span><em>{{ $userCount }}</em> users</span>
+                            with <span><em>{{ $characterCount }}</em> characters</span>
+                            on <span><em>{{ $accountCount }}</em> accounts</span>.
+                        </p>
+
+                        <p class="welcome-button">
+                            <a class="input--button" href="{{ action('Auth\AuthController@getRegister') }}">Register now</a>
+                        </p>
+                    </div>
+                    <div class="welcome-section__image"
+                         style="background-image: url({{ asset('assets/images/welcome/welcome2.jpg') }})"></div>
+                </section>
             @show
         </div>
     </div>
