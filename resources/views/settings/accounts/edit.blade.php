@@ -14,8 +14,8 @@
         You can change your API key by going to your Guild Wars 2 account page.
         <a href="https://account.arena.net/applications/create" target="_blank">Create a new API Key</a>
         with the exact name <span class="api-key__name">{{ $apiKeyName }}</span> and with
-        <span class="api-key__permission">account</span> and
-        <span class="api-key__permission">characters</span> permissions.
+        <span class="api-key__permission">account</span>, <span class="api-key__permission">characters</span>
+        <span class="api-key__permission">unlocks</span> and <span class="api-key__permission">build</span> permissions.
     </p>
 
     <div class="form__field">

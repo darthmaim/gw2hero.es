@@ -3,13 +3,9 @@
 @section('content.right')
     <h2>Equipment</h2>
 
-    @if( is_null($equipment) )
+    @if($equipment->count() === 0)
         <p style="font-style: italic;">
             The equipment of {{ $character->name }} hasn't been loaded yet.
-        </p>
-    @elseif( $equipment === false )
-        <p style="font-style: italic;">
-            {{ $character->account->user->name }} has disabled sharing of the equipment on account {{ $character->account->getNameHtml() }}.
         </p>
     @else
         <h3>Weapons</h3>

@@ -53,8 +53,14 @@ class AccountsController extends Controller {
         $user = Auth::user();
         $account = $this->createAccountFromNewApiKey($api, $apiKey, $user);
 
+        // we redirect new users to /home to continue the tutorial.
+        if( $user->accounts()->count() === 1 ) {
+            return redirect()->action('HomeController@index')
+                ->with('new_account', $account);
+        }
+
         return redirect()->action('Settings\AccountsController@getIndex')
-            ->with('account', $account);
+            ->with('new_account', $account);
     }
 
     public function getEdit($accountId) {
@@ -156,7 +162,7 @@ class AccountsController extends Controller {
             return 'API key name invalid';
         }
 
-        $requiredPermissions = ['account', 'characters'];
+        $requiredPermissions = ['account', 'characters', 'unlocks', 'builds'];
 
         foreach( $requiredPermissions as $permission ) {
             if( !in_array( $permission, $tokeninfo->permissions )) {
