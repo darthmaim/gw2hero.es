@@ -45,6 +45,7 @@ class UserController extends Controller {
         $activities = $user->activities()
             ->with('character', 'account', 'user', 'user.accounts')
             ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->get();
 
         return view('user.activities', compact('user', 'activities'));

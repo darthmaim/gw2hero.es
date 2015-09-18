@@ -15,6 +15,7 @@ class HomeController extends Controller {
         $activities = Auth::user()->activities()
             ->with('character', 'account', 'user', 'user.accounts')
             ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->get();
 
         $accounts = Auth::user()->accounts()
