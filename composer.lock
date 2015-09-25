@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c52b5f00ff0ac1acfc4d7573ff8350b1",
+    "hash": "ffa2cff5b73be57b8031a8e9b9da3d1a",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -535,16 +535,16 @@
         },
         {
             "name": "gw2treasures/gw2api",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GW2Treasures/gw2api.git",
-                "reference": "3c999a0cb609fbab156ec058077500c9ea17be74"
+                "reference": "c410b90765f8ae3255d44686425dc2905a75eaef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GW2Treasures/gw2api/zipball/3c999a0cb609fbab156ec058077500c9ea17be74",
-                "reference": "3c999a0cb609fbab156ec058077500c9ea17be74",
+                "url": "https://api.github.com/repos/GW2Treasures/gw2api/zipball/c410b90765f8ae3255d44686425dc2905a75eaef",
+                "reference": "c410b90765f8ae3255d44686425dc2905a75eaef",
                 "shasum": ""
             },
             "require": {
@@ -579,7 +579,7 @@
                 "guildwars2",
                 "wrapper"
             ],
-            "time": "2015-09-03 20:06:18"
+            "time": "2015-09-18 22:38:20"
         },
         {
             "name": "jakub-onderka/php-console-color",

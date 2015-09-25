@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.16 (LTS) on 2015-09-12.
+ * Generated for Laravel 5.1.16 (LTS) on 2015-09-19.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1569,7 +1569,8 @@ namespace {
          * @static 
          */
         public static function compile($path = null){
-            \Illuminate\View\Compilers\BladeCompiler::compile($path);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GW2Heroes\Providers\View\BladeCompiler::compile($path);
         }
         
         /**
@@ -1579,7 +1580,8 @@ namespace {
          * @static 
          */
         public static function getPath(){
-            return \Illuminate\View\Compilers\BladeCompiler::getPath();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GW2Heroes\Providers\View\BladeCompiler::getPath();
         }
         
         /**
@@ -1590,7 +1592,8 @@ namespace {
          * @static 
          */
         public static function setPath($path){
-            \Illuminate\View\Compilers\BladeCompiler::setPath($path);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GW2Heroes\Providers\View\BladeCompiler::setPath($path);
         }
         
         /**
@@ -1601,7 +1604,8 @@ namespace {
          * @static 
          */
         public static function compileString($value){
-            return \Illuminate\View\Compilers\BladeCompiler::compileString($value);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GW2Heroes\Providers\View\BladeCompiler::compileString($value);
         }
         
         /**
@@ -1612,7 +1616,8 @@ namespace {
          * @static 
          */
         public static function compileEchoDefaults($value){
-            return \Illuminate\View\Compilers\BladeCompiler::compileEchoDefaults($value);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GW2Heroes\Providers\View\BladeCompiler::compileEchoDefaults($value);
         }
         
         /**
@@ -1622,7 +1627,8 @@ namespace {
          * @static 
          */
         public static function getExtensions(){
-            return \Illuminate\View\Compilers\BladeCompiler::getExtensions();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GW2Heroes\Providers\View\BladeCompiler::getExtensions();
         }
         
         /**
@@ -1633,7 +1639,8 @@ namespace {
          * @static 
          */
         public static function extend($compiler){
-            \Illuminate\View\Compilers\BladeCompiler::extend($compiler);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GW2Heroes\Providers\View\BladeCompiler::extend($compiler);
         }
         
         /**
@@ -1645,7 +1652,8 @@ namespace {
          * @static 
          */
         public static function directive($name, $handler){
-            \Illuminate\View\Compilers\BladeCompiler::directive($name, $handler);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GW2Heroes\Providers\View\BladeCompiler::directive($name, $handler);
         }
         
         /**
@@ -1655,7 +1663,8 @@ namespace {
          * @static 
          */
         public static function getCustomDirectives(){
-            return \Illuminate\View\Compilers\BladeCompiler::getCustomDirectives();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GW2Heroes\Providers\View\BladeCompiler::getCustomDirectives();
         }
         
         /**
@@ -1665,7 +1674,8 @@ namespace {
          * @static 
          */
         public static function getRawTags(){
-            return \Illuminate\View\Compilers\BladeCompiler::getRawTags();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GW2Heroes\Providers\View\BladeCompiler::getRawTags();
         }
         
         /**
@@ -1677,7 +1687,8 @@ namespace {
          * @static 
          */
         public static function setRawTags($openTag, $closeTag){
-            \Illuminate\View\Compilers\BladeCompiler::setRawTags($openTag, $closeTag);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GW2Heroes\Providers\View\BladeCompiler::setRawTags($openTag, $closeTag);
         }
         
         /**
@@ -1690,7 +1701,8 @@ namespace {
          * @static 
          */
         public static function setContentTags($openTag, $closeTag, $escaped = false){
-            \Illuminate\View\Compilers\BladeCompiler::setContentTags($openTag, $closeTag, $escaped);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GW2Heroes\Providers\View\BladeCompiler::setContentTags($openTag, $closeTag, $escaped);
         }
         
         /**
@@ -1702,7 +1714,8 @@ namespace {
          * @static 
          */
         public static function setEscapedContentTags($openTag, $closeTag){
-            \Illuminate\View\Compilers\BladeCompiler::setEscapedContentTags($openTag, $closeTag);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GW2Heroes\Providers\View\BladeCompiler::setEscapedContentTags($openTag, $closeTag);
         }
         
         /**
@@ -1712,7 +1725,8 @@ namespace {
          * @static 
          */
         public static function getContentTags(){
-            return \Illuminate\View\Compilers\BladeCompiler::getContentTags();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GW2Heroes\Providers\View\BladeCompiler::getContentTags();
         }
         
         /**
@@ -1722,7 +1736,8 @@ namespace {
          * @static 
          */
         public static function getEscapedContentTags(){
-            return \Illuminate\View\Compilers\BladeCompiler::getEscapedContentTags();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GW2Heroes\Providers\View\BladeCompiler::getEscapedContentTags();
         }
         
         /**
@@ -1733,7 +1748,8 @@ namespace {
          * @static 
          */
         public static function setEchoFormat($format){
-            \Illuminate\View\Compilers\BladeCompiler::setEchoFormat($format);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GW2Heroes\Providers\View\BladeCompiler::setEchoFormat($format);
         }
         
         /**
@@ -1745,7 +1761,7 @@ namespace {
          */
         public static function getCompiledPath($path){
             //Method inherited from \Illuminate\View\Compilers\Compiler            
-            return \Illuminate\View\Compilers\BladeCompiler::getCompiledPath($path);
+            return \GW2Heroes\Providers\View\BladeCompiler::getCompiledPath($path);
         }
         
         /**
@@ -1757,7 +1773,7 @@ namespace {
          */
         public static function isExpired($path){
             //Method inherited from \Illuminate\View\Compilers\Compiler            
-            return \Illuminate\View\Compilers\BladeCompiler::isExpired($path);
+            return \GW2Heroes\Providers\View\BladeCompiler::isExpired($path);
         }
         
     }
@@ -5153,6 +5169,128 @@ namespace {
          */
         public static function hasMacro($name){
             return \Illuminate\Filesystem\Filesystem::hasMacro($name);
+        }
+        
+    }
+
+
+    class Gate extends \Illuminate\Support\Facades\Gate{
+        
+        /**
+         * Determine if a given ability has been defined.
+         *
+         * @param string $ability
+         * @return bool 
+         * @static 
+         */
+        public static function has($ability){
+            return \Illuminate\Auth\Access\Gate::has($ability);
+        }
+        
+        /**
+         * Define a new ability.
+         *
+         * @param string $ability
+         * @param callable|string $callback
+         * @return $this 
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function define($ability, $callback){
+            return \Illuminate\Auth\Access\Gate::define($ability, $callback);
+        }
+        
+        /**
+         * Define a policy class for a given class type.
+         *
+         * @param string $class
+         * @param string $policy
+         * @return $this 
+         * @static 
+         */
+        public static function policy($class, $policy){
+            return \Illuminate\Auth\Access\Gate::policy($class, $policy);
+        }
+        
+        /**
+         * Register a callback to run before all Gate checks.
+         *
+         * @param callable $callback
+         * @return $this 
+         * @static 
+         */
+        public static function before($callback){
+            return \Illuminate\Auth\Access\Gate::before($callback);
+        }
+        
+        /**
+         * Determine if the given ability should be granted for the current user.
+         *
+         * @param string $ability
+         * @param array|mixed $arguments
+         * @return bool 
+         * @static 
+         */
+        public static function allows($ability, $arguments = array()){
+            return \Illuminate\Auth\Access\Gate::allows($ability, $arguments);
+        }
+        
+        /**
+         * Determine if the given ability should be denied for the current user.
+         *
+         * @param string $ability
+         * @param array|mixed $arguments
+         * @return bool 
+         * @static 
+         */
+        public static function denies($ability, $arguments = array()){
+            return \Illuminate\Auth\Access\Gate::denies($ability, $arguments);
+        }
+        
+        /**
+         * Determine if the given ability should be granted for the current user.
+         *
+         * @param string $ability
+         * @param array|mixed $arguments
+         * @return bool 
+         * @static 
+         */
+        public static function check($ability, $arguments = array()){
+            return \Illuminate\Auth\Access\Gate::check($ability, $arguments);
+        }
+        
+        /**
+         * Get a policy instance for a given class.
+         *
+         * @param object|string $class
+         * @return mixed 
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function getPolicyFor($class){
+            return \Illuminate\Auth\Access\Gate::getPolicyFor($class);
+        }
+        
+        /**
+         * Build a policy class instance of the given type.
+         *
+         * @param object|string $class
+         * @return mixed 
+         * @static 
+         */
+        public static function resolvePolicy($class){
+            return \Illuminate\Auth\Access\Gate::resolvePolicy($class);
+        }
+        
+        /**
+         * Get a guard instance for the given user.
+         *
+         * @param \Illuminate\Contracts\Auth\Authenticatable|mixed $user
+         * @return static 
+         * @static 
+         */
+        public static function forUser($user){
+            return \Illuminate\Auth\Access\Gate::forUser($user);
         }
         
     }

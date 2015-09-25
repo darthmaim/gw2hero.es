@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2015-09-12.
+    * Generated on 2015-09-19.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -36,6 +36,7 @@ namespace PHPSTORM_META {
             'session.store' instanceof \Illuminate\Session\Store,
             'Illuminate\Session\Middleware\StartSession' instanceof \Illuminate\Session\Middleware\StartSession,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
+            'gw2api' instanceof \GW2Treasures\GW2Api\GW2Api,
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
@@ -119,7 +120,7 @@ namespace PHPSTORM_META {
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
+            'blade.compiler' instanceof \GW2Heroes\Providers\View\BladeCompiler,
         ],
         \Illuminate\Contracts\Container\Container::make('') => [
             '' == '@',
@@ -148,6 +149,7 @@ namespace PHPSTORM_META {
             'session.store' instanceof \Illuminate\Session\Store,
             'Illuminate\Session\Middleware\StartSession' instanceof \Illuminate\Session\Middleware\StartSession,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
+            'gw2api' instanceof \GW2Treasures\GW2Api\GW2Api,
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
@@ -231,7 +233,7 @@ namespace PHPSTORM_META {
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
+            'blade.compiler' instanceof \GW2Heroes\Providers\View\BladeCompiler,
         ],
         \App::make('') => [
             '' == '@',
@@ -260,6 +262,7 @@ namespace PHPSTORM_META {
             'session.store' instanceof \Illuminate\Session\Store,
             'Illuminate\Session\Middleware\StartSession' instanceof \Illuminate\Session\Middleware\StartSession,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
+            'gw2api' instanceof \GW2Treasures\GW2Api\GW2Api,
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
@@ -343,7 +346,7 @@ namespace PHPSTORM_META {
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
+            'blade.compiler' instanceof \GW2Heroes\Providers\View\BladeCompiler,
         ],
         app('') => [
             '' == '@',
@@ -372,6 +375,7 @@ namespace PHPSTORM_META {
             'session.store' instanceof \Illuminate\Session\Store,
             'Illuminate\Session\Middleware\StartSession' instanceof \Illuminate\Session\Middleware\StartSession,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
+            'gw2api' instanceof \GW2Treasures\GW2Api\GW2Api,
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
@@ -455,7 +459,7 @@ namespace PHPSTORM_META {
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
+            'blade.compiler' instanceof \GW2Heroes\Providers\View\BladeCompiler,
         ],
     ];
 }

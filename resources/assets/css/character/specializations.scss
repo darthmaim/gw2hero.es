@@ -1,0 +1,121 @@
+$padding: 10px;
+
+.spec__header {
+    background: black;
+    color: white;
+    margin: 8px 0 0;
+    padding: 8px;
+
+    img {
+        vertical-align: middle;
+        display: none;
+    }
+
+    @media(max-width: 600px) {
+        margin: 8px -40px 0;
+    }
+}
+
+.spec__traits {
+    display: flex;
+    flex-direction: row;
+    padding: $padding;
+    background: no-repeat left center #eee;
+    background-size: cover;
+    position: relative;
+
+    @extend .clearfix;
+
+    @media(max-width: 600px) {
+        margin: 0 -40px;
+    }
+}
+
+.spec__traits__tier {
+    display: table;
+    display: flex;
+    float: left;
+    width: 33.33%;
+    justify-content: space-around;
+}
+
+.spec__traits__minor {
+    align-self: center;
+
+    img {
+        clip-path: polygon(16px 1px, 29px 9px, 29px 23px, 16px 31px, 3px 23px, 3px 9px);
+    }
+}
+
+.spec__traits__major {
+    img {
+        clip-path: inset(2px 2px 1px 1px);
+    }
+}
+
+.spec__traits__minor, 
+.spec__traits__major {
+    display: table-cell;
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.spec__trait {
+    line-height: 0;
+
+    &+& { margin-top: 8px; }
+
+    & > img { background: #999; }
+}
+
+.spec__trait--inactive > img {
+    opacity: 0.75;
+    filter: saturate(0.6);
+}
+
+.spec__trait__tooltip {
+    position: absolute;
+    background: white;
+    display: none;
+    padding: 8px;
+    z-index: 2000;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    text-align: left;
+    line-height: 1.5;
+    margin-right: 24px;
+
+    .spec__trait:hover & {
+        display: block;
+    }
+}
+
+.spec__trait__tooltip__name {
+    font-weight: bold;
+    display: block;
+}
+
+.spec__traits__selection {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    padding: $padding;
+    pointer-events: none;
+
+    path {
+        stroke: rgba(255, 255, 255, .6);
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-dasharray: none;
+        fill: none;
+        vector-effect: non-scaling-stroke;
+        animation: spec__traits__selection__reveal 2s .5s linear backwards;
+    }
+}
+
+@keyframes spec__traits__selection__reveal {
+    from { stroke-dasharray:   0 1000 }
+    to { stroke-dasharray: 600 1000 }
+}

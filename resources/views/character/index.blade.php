@@ -23,7 +23,8 @@
         'Story' => action('CharacterController@getStory', $character->getActionData()),
         'Activities' => action('CharacterController@getActivities', $character->getActionData()),
         'Gallery' => null,
-        'Equipment & Inventory' => action('CharacterController@getEquipment', $character->getActionData()),
+        'Equipment' => action('CharacterController@getEquipment', $character->getActionData()),
+        'Specializations' => action('CharacterController@getSpecializations', $character->getActionData()),
         'Crafting Disciplines' => null,
     ]])
 @stop
