@@ -53,6 +53,10 @@ class AccountsController extends Controller {
         $user = Auth::user();
         $account = $this->createAccountFromNewApiKey($api, $apiKey, $user);
 
+        if( !($account instanceof Account) ) {
+            return redirect()->back()->withErrors($account);
+        }
+
         // we redirect new users to /home to continue the tutorial.
         if( $user->accounts()->count() === 1 ) {
             return redirect()->action('HomeController@index')
@@ -183,6 +187,20 @@ class AccountsController extends Controller {
      */
     protected function createAccountFromNewApiKey(GW2Api $api, $apiKey, User $user) {
         $accountData = $api->account($apiKey)->get();
+
+        // existing account
+        /** @var Account $existingAccount */
+        $existingAccount = Account::whereGuid($accountData->id)->first();
+        if( !is_null( $existingAccount )) {
+            if( $existingAccount->user_id === Auth::id() ) {
+                return 'You already added the account '.$existingAccount->name.'.';
+            } else {
+                return 'The account '.$existingAccount->name.' is already linked to another user.
+                    If you think this is an error and you are the legitimate owner of this account, please
+                    contact our support.';
+            }
+        }
+
         $account = Account::createFromApiData($accountData, $apiKey, $user);
         Activity::accountCreated($account);
 
