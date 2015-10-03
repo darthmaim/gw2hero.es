@@ -1,5 +1,7 @@
 @extends('settings.layout')
 
+@section('title', 'Settings (Notifications)')
+
 @section('settings.content')
 
     <h3>Emails</h3>

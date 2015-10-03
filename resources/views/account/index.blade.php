@@ -1,5 +1,7 @@
 @extends('layout.wrapper')
 
+@section('title', e($account->name))
+
 @section('content.left')
     <div class="char-info-box">
         <h2 class="char-info-box__name">{{ $account->name }}</h2>

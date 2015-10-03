@@ -1,5 +1,7 @@
 @extends('account.index')
 
+@section('title', e($account->name).' (Characters)')
+
 @section('content.right')
     <h2>Characters</h2>
 

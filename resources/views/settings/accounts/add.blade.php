@@ -1,5 +1,7 @@
 @extends('settings.layout')
 
+@section('title', 'Settings (Accounts)')
+
 @section('settings.content')
     <h3>Add account</h3>
 

@@ -1,5 +1,7 @@
 @extends('account.index')
 
+@section('title', e($account->name).' (Activities)')
+
 @section('content.right')
     <h2>Activities</h2>
     <ul class="activity-list">

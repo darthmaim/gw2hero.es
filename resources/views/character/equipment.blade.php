@@ -1,5 +1,7 @@
 @extends('character.index')
 
+@section('title', e($character->name).' (Equipment)')
+
 @section('content.right')
     <h2>Equipment</h2>
 

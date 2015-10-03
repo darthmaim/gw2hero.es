@@ -1,5 +1,7 @@
 @extends('search.results')
 
+@section('title', 'Search: '.e($searchTerm).' (Characters)')
+
 @section('content.right')
     <h2>Characters matching "{{ $searchTerm }}"</h2>
     <ul>

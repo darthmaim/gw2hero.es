@@ -1,5 +1,7 @@
 @extends('layout.wrapper')
 
+@section('title', 'Search'.(isset($searchTerm) ? ' '.e($searchTerm):''))
+
 @section('content.left')
     <h2>Search Results</h2>
 

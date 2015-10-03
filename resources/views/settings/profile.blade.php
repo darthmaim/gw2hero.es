@@ -1,5 +1,7 @@
 @extends('settings.layout')
 
+@section('title', 'Settings (Profile)')
+
 @section('settings.content')
     <dl class="settings__definition-list">
         <dt>Username</dt>

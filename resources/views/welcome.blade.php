@@ -1,6 +1,6 @@
 @extends('layout.wrapper')
 
-@section('title', 'gw2hero.es &bull; soon&trade;')
+@section('title', 'GW2Heroes &bull; Tell your story')
 
 @section('class', 'body--red')
 

@@ -1,6 +1,6 @@
 @extends('layout.wrapper')
 
-@section('title', 'home')
+@section('title', 'Home')
 
 @section('content.right')
 	<h2>Home</h2>

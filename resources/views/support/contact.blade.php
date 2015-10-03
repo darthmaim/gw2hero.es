@@ -1,5 +1,7 @@
 @extends('support.index')
 
+@section('title', 'Contact')
+
 @section('content.right')
     <h2>Contact GW2 Heroes</h2>
 

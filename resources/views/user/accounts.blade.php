@@ -1,5 +1,7 @@
 @extends('user.index')
 
+@section('title', e($user->name).' (Accounts)')
+
 @section('content.right')
     <h2>Accounts</h2>
 

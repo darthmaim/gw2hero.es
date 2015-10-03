@@ -1,5 +1,7 @@
 @extends('search.results')
 
+@section('title', 'Search: '.e($searchTerm).' (Accounts)')
+
 @section('content.right')
     <h2>Accounts matching "{{ $searchTerm }}"</h2>
     <ul>

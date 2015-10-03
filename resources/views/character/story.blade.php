@@ -1,5 +1,7 @@
 @extends('character.index')
 
+@section('title', e($character->name).' (Story)')
+
 @section('content.right')
     <h2>Story</h2>
     <p style="font-style: italic">
