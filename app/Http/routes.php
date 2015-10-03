@@ -38,3 +38,8 @@ Route::controller('user/{id}/{name?}', 'UserController');
 
 // search
 Route::get('search', 'SearchController@getIndex');
+
+// support
+Route::get('contact', 'SupportController@getContact');
+Route::post('contact', 'SupportController@postContact');
+Route::get('contact/success', 'SupportController@getContactSuccess');
