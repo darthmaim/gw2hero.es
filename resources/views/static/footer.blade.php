@@ -10,8 +10,8 @@
                title="Follow us on twitter">@gw2heroes</a> &bull;
             <a href="https://www.facebook.com/gw2heroes"
                title="Like us on facebook">facebook</a> &bull;
-            <a href="mailto:info@gw2hero.es"
-               title="Contact us info@gw2hero.es">info@gw2hero.es</a>
+            <a href="{{ action('SupportController@getContact') }}"
+               title="Contact us">Contact</a>
         </div>
     @show
 </footer>
