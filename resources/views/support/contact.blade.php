@@ -3,10 +3,10 @@
 @section('title', 'Contact')
 
 @section('content.right')
-    <h2>Contact GW2 Heroes</h2>
+    <h2>Contact</h2>
 
     <p>
-        We can only help you with GW2 Heroes related problems. If you have trouble with your Guild Wars 2 account,
+        We can only help you with GW2Heroes related problems. If you have trouble with your Guild Wars 2 account,
         please contact the <a href="https://help.guildwars2.com/">Guild Wars 2 Support</a>.
     </p>
 
