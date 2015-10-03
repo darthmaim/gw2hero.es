@@ -43,3 +43,6 @@ Route::get('search', 'SearchController@getIndex');
 Route::get('contact', 'SupportController@getContact');
 Route::post('contact', 'SupportController@postContact');
 Route::get('contact/success', 'SupportController@getContactSuccess');
+
+// sitemap
+Route::controller('sitemap', 'SitemapController');
