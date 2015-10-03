@@ -35,7 +35,7 @@ class SupportController extends Controller {
             ['emails.support_request.html', 'emails.support_request.text'],
             compact(['name', 'email', 'subject', 'body', 'ua', 'ip', 'userId']),
             function(Message $mail) use($name, $email, $subject) {
-                $mail->to('darth.maim@arcor.de', 'GW2Heroes Support')
+                $mail->to('info@gw2hero.es', 'GW2Heroes Support')
                     ->replyTo($email, $name)
                     ->from('info@gw2hero.es', 'GW2Heroes Support Request')
                     ->subject('[Support Request] '.$subject);
