@@ -38,7 +38,7 @@
 
                         <p>
                             Follow other heroes of Tyria and chat with them about their accomplishments.
-                            Never miss what your your friends are doing.
+                            Never miss what your friends are doing.
                         </p>
 
                         <p class="welcome-stats">
