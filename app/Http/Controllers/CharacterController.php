@@ -85,7 +85,7 @@ class CharacterController extends Controller {
         // env -> spec -> tier -> slot -> trait
         // and store selected indexes to generate svg
         $specializations = $specializations->map(function($env) use ($specs) {
-            return collect($env)->map(function($spec) use ($specs) {
+            return collect($env)->filter()->map(function($spec) use ($specs) {
                 // array to store selected trait indexes for the background svg
                 $traitIndexes = [];
 
