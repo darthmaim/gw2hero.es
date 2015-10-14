@@ -51,7 +51,7 @@ class Update extends Command {
         $this->updater->queueScheduledUpdates();
     }
 
-    public function scheduleUpdate($updater, UpdatePayload $payload) {
+    public function scheduleUpdate($updater, UpdatePayload $payload = null) {
         $this->updater->scheduleUpdate( $updater, $payload );
     }
 }
