@@ -1,0 +1,44 @@
+.profile-dropdown__header {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    margin: 0 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-dropdown__user {
+    color: $font;
+    font-weight: bold;
+    flex: 1;
+
+    a {
+        color: $font;
+    }
+}
+
+.profile-dropdown__tools {
+    margin-left: 40px;
+
+    a+a {
+        margin-left: .7em;
+    }
+
+    svg {
+        fill: currentColor;
+        height: 1em;
+        width: 1em;
+        margin-right: .2em;
+        vertical-align: -2px;
+    }
+}
+
+.profile-dropdown__notifications {
+    margin: 0 16px;
+    font-size: 13px;
+
+    &--empty {
+        padding: 16px 0;
+        text-align: center;
+        color: $text;
+    }
+}

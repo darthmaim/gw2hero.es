@@ -21,8 +21,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="header__button__dropdown">
-                            {!! link_to_action('Settings\SettingsController@getIndex', 'Settings') !!}
-                            {!! link_to_action('Auth\AuthController@getLogout', 'Logout') !!}
+                            @include('static.header.profile-dropdown')
                         </div>
                     </div>
                 @else
