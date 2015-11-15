@@ -50,10 +50,10 @@ class ItemUpdater extends Updater {
             $item = Item::findOrNew($id);
 
             $item->id = $id;
-            $item->name_de = $items_de[$id]->name;
-            $item->name_en = $items_en[$id]->name;
-            $item->name_es = $items_es[$id]->name;
-            $item->name_fr = $items_fr[$id]->name;
+            $item->name_de = isset($items_de[$id]) ? $items_de[$id]->name : '';
+            $item->name_en = isset($items_en[$id]) ? $items_en[$id]->name : '';
+            $item->name_es = isset($items_es[$id]) ? $items_es[$id]->name : '';
+            $item->name_fr = isset($items_fr[$id]) ? $items_fr[$id]->name : '';
             $item->data_de = $items_de[$id];
             $item->data_en = $items_en[$id];
             $item->data_es = $items_es[$id];
