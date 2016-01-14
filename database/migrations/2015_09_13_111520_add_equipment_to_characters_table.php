@@ -13,7 +13,7 @@ class AddEquipmentToCharactersTable extends Migration
     public function up()
     {
         Schema::table('characters', function (Blueprint $table) {
-            $table->json('equipment')->nullable()->after('deaths');
+            $table->text('equipment')->nullable()->after('deaths');
         });
     }
 

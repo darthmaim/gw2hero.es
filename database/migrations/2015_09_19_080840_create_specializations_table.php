@@ -23,10 +23,10 @@ class CreateSpecializationsTable extends Migration
             $table->string('name_es');
             $table->string('name_fr');
 
-            $table->json('data_de');
-            $table->json('data_en');
-            $table->json('data_es');
-            $table->json('data_fr');
+            $table->text('data_de');
+            $table->text('data_en');
+            $table->text('data_es');
+            $table->text('data_fr');
 
             $table->timestamps();
 

@@ -4,7 +4,7 @@ namespace GW2Heroes\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Builder;
-use Illuminate\View\Expression;
+use Illuminate\Support\HtmlString;
 
 /**
  * GW2Heroes\Models\Account
@@ -64,7 +64,7 @@ class Account extends Model {
     }
 
     public function getNameHtml() {
-        return new Expression(trim(view('helper.accountName', ['account' => $this])));
+        return new HtmlString(trim(view('helper.accountName', ['account' => $this])));
     }
 
     public function getActionData() {

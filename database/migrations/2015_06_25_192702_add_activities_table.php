@@ -20,7 +20,7 @@ class AddActivitiesTable extends Migration
             $table->integer('character_id')->unsigned()->nullable();
 
             $table->string('type', 127);
-            $table->json('data')->nullable();
+            $table->text('data')->nullable();
 
             $table->timestamps();
 

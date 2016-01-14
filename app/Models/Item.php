@@ -4,7 +4,7 @@ namespace GW2Heroes\Models;
 
 use HTML;
 use Illuminate\Database\Query\Builder;
-use Illuminate\View\Expression;
+use Illuminate\Support\HtmlString;
 
 /**
  * GW2Heroes\Models\Item
@@ -96,7 +96,7 @@ class Item extends Model {
             $attributes['srcset'] = $this->getIconUrl( $size * 2 ).' 2x';
         }
 
-        return new Expression(
+        return new HtmlString(
             HTML::image($this->getIconUrl(32), null, $attributes)
         );
     }
