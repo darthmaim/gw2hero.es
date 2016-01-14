@@ -1,0 +1,35 @@
+.pagination {
+    padding: 0;
+    list-style: none;
+    border: 1px solid #eee;
+    margin: 16px auto 0;
+    display: inline-block;
+    border-radius: 3px;
+    position: relative;
+
+    & > li {
+        display: inline-block;
+        float: left;
+
+        a, span {
+            padding: 8px 16px;
+            display: inline-block;
+        }
+
+        a:hover {
+            background: #fafafa;
+        }
+
+        &.active {
+            font-weight: bold;
+        }
+
+        &.disabled {
+            color: $text;
+        }
+    }
+
+    & > li+li {
+        border-left: 1px solid #eee;
+    }
+}

@@ -1,0 +1,20 @@
+.search-results--character {
+    & > li {
+        display: flex;
+    }
+
+    .character {
+        flex: 1;
+    }
+
+    .character-info {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.8em;
+        color: $text;
+    }
+
+    .account {
+        align-self: center;
+    }
+}

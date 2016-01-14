@@ -7,11 +7,11 @@
 
     @if(isset( $searchTerm ))
         @include('helper.sidebar-nav', ['links' => [
-            'Characters ('.$characters->count().')'
+            'Characters ('.$characters->total().')'
                 => action('SearchController@getIndex', ['q' => $searchTerm, 'tab' => 'characters']),
-            'Accounts ('.$accounts->count().')'
+            'Accounts ('.$accounts->total().')'
                 => action('SearchController@getIndex', ['q' => $searchTerm, 'tab' => 'accounts']),
-            'Users ('.$users->count().')'
+            'Users ('.$users->total().')'
                 => action('SearchController@getIndex', ['q' => $searchTerm, 'tab' => 'users'])
         ]])
     @endif

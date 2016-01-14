@@ -4,7 +4,9 @@ use Cache;
 use GW2Heroes\Models\Account;
 use GW2Heroes\Models\Character;
 use GW2Heroes\Models\User;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Input;
 
@@ -13,19 +15,19 @@ class SearchController extends Controller {
 
     /**
      * @param $searchTerm
-     * @return Collection[]
+     * @return LengthAwarePaginator[]
      */
     protected function getSearchResults($searchTerm) {
         $searchTerm = mb_strtoupper(trim($searchTerm));
         $cacheKey = 'search:'.md5($searchTerm);
 
-        return Cache::remember($cacheKey, 5, function() use ($searchTerm) {
-            $characters = Character::whereStringContains( 'name', $searchTerm )->get();
-            $accounts = Account::whereStringContains( 'name', $searchTerm )->get();
-            $users = User::whereStringContains( 'name', $searchTerm )->get();
+        $appendParameters = Arr::except(Input::query(), 'page');
 
-            return compact('users', 'accounts', 'characters');
-        });
+        $characters = Character::whereStringContains( 'name', $searchTerm )->paginate(15)->appends($appendParameters);
+        $accounts = Account::whereStringContains( 'name', $searchTerm )->paginate()->appends($appendParameters);
+        $users = User::whereStringContains( 'name', $searchTerm )->paginate()->appends($appendParameters);
+
+        return compact('users', 'accounts', 'characters');
     }
 
     public function getIndex() {
@@ -37,10 +39,11 @@ class SearchController extends Controller {
 
             if( is_null( $tab ) || !in_array( $tab, $this->tabs )) {
                 foreach( $this->tabs as $tab ) {
-                    if( $searchResults[$tab]->count() > 0 ) {
+                    if( $searchResults[$tab]->total() > 0 ) {
                         return redirect()->action('SearchController@getIndex', ['q' => $searchTerm, 'tab' => $tab]);
                     }
                 }
+
                 return redirect()->action('SearchController@getIndex', ['tab' => $this->tabs[0], 'q' => $searchTerm]);
             }
 
