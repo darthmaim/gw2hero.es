@@ -10,6 +10,10 @@ use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller {
+    function __construct() {
+        $this->middleware('auth');
+    }
+
     public function getIndex() {
         $this->authorize('admin');
 
