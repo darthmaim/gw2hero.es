@@ -56,7 +56,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['email', 'password', 'remember_token'];
+	protected $hidden = ['email', 'password', 'remember_token', 'is_admin'];
+
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'is_admin' => 'bool'
+	];
 
     public function accounts() {
         return $this->hasMany(Account::class);

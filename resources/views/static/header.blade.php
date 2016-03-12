@@ -4,6 +4,9 @@
             @section('header.left')
                 <a class="header__button">Characters</a>
                 <a class="header__button">Guilds</a>
+                @can('admin')
+                    <a class="header__button" href="{{ action('AdminController@getIndex') }}">Admin</a>
+                @endcan
             @show
         </div>
         <div class="header__center">

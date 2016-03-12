@@ -46,3 +46,6 @@ Route::get('contact/success', 'SupportController@getContactSuccess');
 
 // sitemap
 Route::controller('sitemap', 'SitemapController');
+
+// admin
+Route::controller('admin', 'AdminController');
