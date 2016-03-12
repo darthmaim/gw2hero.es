@@ -32,11 +32,15 @@ class Kernel extends ConsoleKernel {
             ->sendOutputTo(storage_path('logs/last-update.log'));
 
         $schedule->call(function() {
+            \Log::info('Start update...');
+
             $updater = new Updater();
             $updater->scheduleUpdate(ItemUpdater::class);
             $updater->scheduleUpdate(SpecializationUpdater::class);
             $updater->scheduleUpdate(TraitUpdater::class);
             $updater->queueScheduledUpdates();
+
+            \Log::info('finished update...');
         })->everyMinute();
     }
 }
