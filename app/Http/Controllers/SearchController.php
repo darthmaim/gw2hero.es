@@ -12,6 +12,8 @@ use Illuminate\Support\Collection;
 use Input;
 
 class SearchController extends Controller {
+    const RESULTS_PER_PAGE = 15;
+
     protected $tabs = ['characters', 'accounts', 'users', 'guilds'];
 
     /**
@@ -23,10 +25,10 @@ class SearchController extends Controller {
 
         $appendParameters = Arr::except(Input::query(), 'page');
 
-        $characters = Character::whereStringContains( 'name', $searchTerm )->paginate(15)->appends($appendParameters);
-        $accounts = Account::whereStringContains( 'name', $searchTerm )->paginate()->appends($appendParameters);
-        $users = User::whereStringContains( 'name', $searchTerm )->paginate()->appends($appendParameters);
-        $guilds = Guild::whereStringContains( 'name', $searchTerm )->paginate()->appends($appendParameters);
+        $characters = Character::whereStringContains( 'name', $searchTerm )->paginate(self::RESULTS_PER_PAGE)->appends($appendParameters);
+        $accounts = Account::whereStringContains( 'name', $searchTerm )->paginate(self::RESULTS_PER_PAGE)->appends($appendParameters);
+        $users = User::whereStringContains( 'name', $searchTerm )->paginate(self::RESULTS_PER_PAGE)->appends($appendParameters);
+        $guilds = Guild::whereStringContains( 'name', $searchTerm )->paginate(self::RESULTS_PER_PAGE)->appends($appendParameters);
 
         return compact('users', 'accounts', 'characters', 'guilds');
     }

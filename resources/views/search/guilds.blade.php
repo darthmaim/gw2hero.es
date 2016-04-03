@@ -11,4 +11,6 @@
             </a></li>
         @endforeach
     </ul>
+
+    {!! $guilds !!}
 @endsection
