@@ -12,7 +12,9 @@
             'Accounts ('.$accounts->total().')'
                 => action('SearchController@getIndex', ['q' => $searchTerm, 'tab' => 'accounts']),
             'Users ('.$users->total().')'
-                => action('SearchController@getIndex', ['q' => $searchTerm, 'tab' => 'users'])
+                => action('SearchController@getIndex', ['q' => $searchTerm, 'tab' => 'users']),
+            'Guilds ('.$guilds->total().')'
+                => action('SearchController@getIndex', ['q' => $searchTerm, 'tab' => 'guilds'])
         ]])
     @endif
 @endsection

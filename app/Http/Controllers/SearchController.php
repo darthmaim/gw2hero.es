@@ -3,6 +3,7 @@
 use Cache;
 use GW2Heroes\Models\Account;
 use GW2Heroes\Models\Character;
+use GW2Heroes\Models\Guild;
 use GW2Heroes\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,7 +12,7 @@ use Illuminate\Support\Collection;
 use Input;
 
 class SearchController extends Controller {
-    protected $tabs = ['characters', 'accounts', 'users'];
+    protected $tabs = ['characters', 'accounts', 'users', 'guilds'];
 
     /**
      * @param $searchTerm
@@ -19,15 +20,15 @@ class SearchController extends Controller {
      */
     protected function getSearchResults($searchTerm) {
         $searchTerm = mb_strtoupper(trim($searchTerm));
-        $cacheKey = 'search:'.md5($searchTerm);
 
         $appendParameters = Arr::except(Input::query(), 'page');
 
         $characters = Character::whereStringContains( 'name', $searchTerm )->paginate(15)->appends($appendParameters);
         $accounts = Account::whereStringContains( 'name', $searchTerm )->paginate()->appends($appendParameters);
         $users = User::whereStringContains( 'name', $searchTerm )->paginate()->appends($appendParameters);
+        $guilds = Guild::whereStringContains( 'name', $searchTerm )->paginate()->appends($appendParameters);
 
-        return compact('users', 'accounts', 'characters');
+        return compact('users', 'accounts', 'characters', 'guilds');
     }
 
     public function getIndex() {
