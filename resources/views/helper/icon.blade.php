@@ -1,1 +1,1 @@
-<svg class="icon"><use xlink:href="{{ asset('assets/images/icons.svg') }}#{{ $icon }}"/></svg>
+<svg class="icon" aria-hidden="true"><use xlink:href="{{ asset('assets/images/icons.svg') }}#{{ $icon }}"/></svg>
