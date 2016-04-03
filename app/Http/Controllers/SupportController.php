@@ -48,4 +48,20 @@ class SupportController extends Controller {
     public function getContactSuccess() {
         return view('support.contactSuccess');
     }
+
+    public function getAbout() {
+        return view('support.about');
+    }
+
+    public function getTerms() {
+        return view('support.tos');
+    }
+
+    public function getPrivacy() {
+        return view('support.privacy');
+    }
+
+    public function getImpressum() {
+        return view('support.impressum');
+    }
 }
