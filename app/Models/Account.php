@@ -4,7 +4,7 @@ namespace GW2Heroes\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Builder;
-use Illuminate\View\Expression;
+use Illuminate\Support\HtmlString;
 
 /**
  * GW2Heroes\Models\Account
@@ -33,6 +33,7 @@ use Illuminate\View\Expression;
  * @method static Builder|Account whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Account orWhereStringContains($column, $value)
  * @method static Builder|Account random($amount = 1)
+ * @mixin \Eloquent
  */
 class Account extends Model {
     protected $table = 'accounts';
@@ -63,8 +64,12 @@ class Account extends Model {
         return $this->hasMany(Activity::class);
     }
 
+    public function memberOf() {
+        return $this->belongsToMany(Guild::class, 'guild_members');
+    }
+
     public function getNameHtml() {
-        return new Expression(trim(view('helper.accountName', ['account' => $this])));
+        return new HtmlString(trim(view('helper.accountName', ['account' => $this])));
     }
 
     public function getActionData() {

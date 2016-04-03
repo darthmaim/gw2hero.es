@@ -15,7 +15,7 @@ var logger = function( head ) {
 // === IMAGES ===
 
 var images = {
-    src: 'resources/assets/images/**/*.{svg,png,jpg}',
+    src: ['resources/assets/images/**/*.{svg,png,jpg}', '!resources/assets/images/icons{,/**}'],
     dest: 'public/assets/images',
 
     build: function() {
@@ -42,6 +42,31 @@ var images = {
             .pipe( changed( images.dest ))
             .pipe( imagemin( imageminConfig ))
             .pipe( gulp.dest( images.dest ));
+    }
+};
+
+var icons = {
+    src: 'resources/assets/images/icons/**/*.svg',
+    dest: 'public/assets/images',
+
+    build: function() {
+        var files = gulp.src(icons.src);
+        return icons.handle(files);
+    },
+    watch: function() {
+
+    },
+    handle: function(source) {
+        var sprite = require('gulp-svg-sprite');
+
+        return source.pipe(sprite({
+            mode: {
+                symbol: {
+                    dest: '',
+                    sprite: 'icons.svg'
+                }
+            }
+        })).pipe(gulp.dest(icons.dest));
     }
 };
 
@@ -166,6 +191,7 @@ var general = {
 
         return merge(
             images.build(),
+            icons.build(),
             styles.build(),
             js.build()
         );
@@ -181,6 +207,9 @@ var general = {
         images.build();
         images.watch();
 
+        icons.build();
+        icons.watch();
+
         js.watch();
     }
 };
@@ -191,6 +220,7 @@ gulp.task( 'build', general.build );
 gulp.task( 'build:js', js.build );
 gulp.task( 'build:css', styles.build );
 gulp.task( 'build:images', images.build );
+gulp.task( 'build:icons', icons.build );
 gulp.task( 'build-clean', ['clean'], general.build );
 // alias default = build
 gulp.task( 'default', ['build'] );

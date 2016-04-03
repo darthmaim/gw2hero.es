@@ -41,6 +41,12 @@ class AccountController extends Controller {
         return view('account.characters', compact('account'));
     }
 
+    public function getGuilds( Request $request, $id ) {
+        $account = $this->getAccountFromRequest( $request, $id, __FUNCTION__ );
+
+        return view('account.guilds', compact('account'));
+    }
+
     public function getActivities( Request $request, $id ) {
         $account = $this->getAccountFromRequest( $request, $id, __FUNCTION__ );
 

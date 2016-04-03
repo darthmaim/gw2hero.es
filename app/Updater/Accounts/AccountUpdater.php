@@ -6,8 +6,11 @@ use Carbon\Carbon;
 use GW2Heroes\Models\Account;
 use GW2Heroes\Models\Activity;
 use GW2Heroes\Models\Character;
+use GW2Heroes\Models\Guild;
 use GW2Heroes\Updater\Character\CharacterUpdatePayload;
 use GW2Heroes\Updater\Character\UpdatesCharacter;
+use GW2Heroes\Updater\Guilds\GuildUpdatePayload;
+use GW2Heroes\Updater\Guilds\UpdatesGuild;
 use GW2Heroes\Updater\Updater;
 use GW2Treasures\GW2Api\V2\Authentication\Exception\AuthenticationException;
 use Illuminate\Mail\Message;
@@ -15,7 +18,7 @@ use Illuminate\Support\Collection;
 use Mail;
 
 class AccountUpdater extends Updater {
-    use UpdatesCharacter;
+    use UpdatesCharacter, UpdatesGuild;
 
     /**
      * @param AccountUpdatePayload $payload
@@ -30,6 +33,11 @@ class AccountUpdater extends Updater {
         }
 
         try {
+            $accountApi = $api->account($account->api_key)->get();
+            $this->updateGuilds($accountApi->guilds, $account);
+
+
+
             /** @var Collection|Character[] $charactersLocal */
             $charactersLocal = $account->characters;
 
@@ -158,6 +166,15 @@ class AccountUpdater extends Updater {
             Activity::characterRenamed($localChar, $oldName, $apiChar->name);
         }
 
+        // guild
+        if( $apiChar->guild !== null && ($localChar->guild === null || $apiChar->guild !== $localChar->guild->guid)) {
+            $guild = Guild::where('guid', $apiChar->guild)->first();
+            $localChar->guild()->associate($guild);
+            Activity::characterRepresentingGuild($localChar, $guild);
+        } elseif( $apiChar->guild === null && $localChar->guild_id !== null ) {
+            $localChar->guild()->dissociate();
+        }
+
         // update all other changeable properties we don't fire activities for (yet)
         $localChar->gender = $apiChar->gender;
         $localChar->age = $apiChar->age;
@@ -165,11 +182,39 @@ class AccountUpdater extends Updater {
 
         $ageChanged = $localChar->getOriginal('age') !== $localChar->getAttribute('age');
         if( $ageChanged || $localChar->equipment()->count() === 0 || $this->probability(0.05) ) {
-            $this->scheduleCharacterUpdate( new CharacterUpdatePayload($localChar) );
+//            $this->scheduleCharacterUpdate( new CharacterUpdatePayload($localChar) );
         }
 
         if( $localChar->isDirty() ) {
             $localChar->save();
+        }
+    }
+
+    protected function updateGuilds(array $guildIds, Account $account) {
+        foreach($guildIds as $guid) {
+            /** @var Guild $guild */
+            $guild = Guild::where('guid', '=', $guid)->first();
+
+            if($guild === null) {
+                $legacyGuildData = json_decode($this->api()->getClient()->get('https://api.guildwars2.com/v1/guild_details.json?guild_id='.$guid)->getBody()->getContents());
+                $guild = Guild::createFromLegacyApiData($legacyGuildData);
+
+                $this->scheduleGuildUpdate(new GuildUpdatePayload($guild));
+
+                $guild->members()->attach($account->id);
+                Activity::accountJoinedGuild($account, $guild);
+            } else {
+                if(!$guild->members()->where('accounts.id', '=', $account->id)->count() > 0) {
+                    $guild->members()->attach($account->id);
+                    Activity::accountJoinedGuild($account, $guild);
+                }
+            }
+        }
+
+        foreach($account->memberOf()->whereNotIn('guilds.guid', $guildIds)->get() as $guild) {
+            $guild->members()->detach($account->id);
+
+            Activity::accountLeftGuild($account, $guild);
         }
     }
 

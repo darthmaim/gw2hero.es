@@ -21,6 +21,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property string $email
  * @property string $password
  * @property string $remember_token
+ * @property boolean $is_admin
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @method static Builder|User whereId($value)
@@ -28,11 +29,13 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @method static Builder|User whereEmail($value)
  * @method static Builder|User wherePassword($value)
  * @method static Builder|User whereRememberToken($value)
+ * @method static Builder|User whereIsAdmin($value)
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|User orWhereStringContains($column, $value)
  * @method static Builder|User random($amount = 1)
+ * @mixin \Eloquent
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract {
     use Authenticatable, Authorizable, CanResetPassword;
@@ -56,7 +59,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['email', 'password', 'remember_token'];
+	protected $hidden = ['email', 'password', 'remember_token', 'is_admin'];
+
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'is_admin' => 'bool'
+	];
 
     public function accounts() {
         return $this->hasMany(Account::class);

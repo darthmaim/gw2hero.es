@@ -7,9 +7,9 @@
 
     @include('helper.sidebar-nav', ['links' => [
         'Contact' => action('SupportController@getContact'),
-        'About' => null,
-        'Terms of Service' => null,
-        'Privacy' => null,
-        'Impressum' => null,
+        'About' => action('SupportController@getAbout'),
+        'Terms of Service' => action('SupportController@getTerms'),
+        'Privacy Policy' => action('SupportController@getPrivacy'),
+        'Impressum' => action('SupportController@getImpressum'),
     ]])
 @endsection

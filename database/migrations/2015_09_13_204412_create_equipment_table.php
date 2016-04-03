@@ -17,7 +17,7 @@ class CreateEquipmentTable extends Migration
             $table->integer('character_id');
             $table->text('slot');
             $table->integer('item_id');
-            $table->json('data');
+            $table->text('data');
             $table->timestamps();
         });
     }

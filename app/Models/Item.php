@@ -4,7 +4,7 @@ namespace GW2Heroes\Models;
 
 use HTML;
 use Illuminate\Database\Query\Builder;
-use Illuminate\View\Expression;
+use Illuminate\Support\HtmlString;
 
 /**
  * GW2Heroes\Models\Item
@@ -34,6 +34,7 @@ use Illuminate\View\Expression;
  * @method static Builder|Item whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Item orWhereStringContains($column, $value)
  * @method static Builder|Item random($amount = 1)
+ * @mixin \Eloquent
  */
 class Item extends Model {
     protected $table = 'items';
@@ -96,7 +97,7 @@ class Item extends Model {
             $attributes['srcset'] = $this->getIconUrl( $size * 2 ).' 2x';
         }
 
-        return new Expression(
+        return new HtmlString(
             HTML::image($this->getIconUrl(32), null, $attributes)
         );
     }

@@ -47,6 +47,11 @@ class TraitUpdater extends Updater {
 
 
         foreach( $ids as $id ) {
+            if(!$traits_en->has($id)) {
+                // TODO: trait no longer in api -> should be deleted
+                continue;
+            }
+
             /** @var Traits $trait */
             $trait = Traits::findOrNew($id);
 

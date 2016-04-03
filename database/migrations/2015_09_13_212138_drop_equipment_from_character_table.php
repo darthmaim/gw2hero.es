@@ -25,7 +25,7 @@ class DropEquipmentFromCharacterTable extends Migration
     public function down()
     {
         Schema::table('characters', function (Blueprint $table) {
-            $table->json('equipment')->nullable()->after('deaths');
+            $table->text('equipment')->nullable()->after('deaths');
         });
     }
 }

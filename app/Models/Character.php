@@ -39,6 +39,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Character whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Character orWhereStringContains($column, $value)
  * @method static Builder|Character random($amount = 1)
+ * @mixin \Eloquent
  */
 class Character extends Model {
     protected $table = 'characters';
@@ -75,6 +76,10 @@ class Character extends Model {
 
     public function equipment() {
         return $this->hasMany(Equipment::class);
+    }
+
+    public function guild() {
+        return $this->belongsTo(Guild::class);
     }
 
     /**

@@ -26,6 +26,13 @@
 					{!! Form::label('password_confirmation', trans('auth.password.confirm')) !!}
 					{!! Form::password('password_confirmation') !!}
 				</div>
+				<div class="form__field">
+					<label>
+						{!! Form::checkbox('accept_terms') !!}
+						I accept the <a href="{{ action('SupportController@getTerms') }}">Terms of Service</a>
+						and the <a href="{{ action('SupportController@getPrivacy') }}">Privacy Policy</a>.
+					</label>
+				</div>
 
 				<div class="form__field">
 					{!! Form::button(trans('auth.register.button'), ['type' => 'submit']) !!}

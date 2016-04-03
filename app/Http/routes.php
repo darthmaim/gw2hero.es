@@ -36,6 +36,9 @@ Route::controller('account/{id}/{name?}', 'AccountController');
 // user
 Route::controller('user/{id}/{name?}', 'UserController');
 
+// guild
+Route::controller('guild/{id}/{name?}', 'GuildController');
+
 // search
 Route::get('search', 'SearchController@getIndex');
 
@@ -44,5 +47,13 @@ Route::get('contact', 'SupportController@getContact');
 Route::post('contact', 'SupportController@postContact');
 Route::get('contact/success', 'SupportController@getContactSuccess');
 
+Route::get('about', 'SupportController@getAbout');
+Route::get('terms', 'SupportController@getTerms');
+Route::get('privacy', 'SupportController@getPrivacy');
+Route::get('impressum', 'SupportController@getImpressum');
+
 // sitemap
 Route::controller('sitemap', 'SitemapController');
+
+// admin
+Route::controller('admin', 'AdminController');

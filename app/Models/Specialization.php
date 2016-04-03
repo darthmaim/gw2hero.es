@@ -4,11 +4,13 @@ namespace GW2Heroes\Models;
 
 use HTML;
 use Illuminate\Database\Query\Builder;
-use Illuminate\View\Expression;
+use Illuminate\Support\Collection;
+use Illuminate\Support\HtmlString;
 
 /**
  * GW2Heroes\Models\Specialization
  *
+ * @property-read Collection|Traits[] $traits
  * @property integer $id
  * @property string $profession
  * @property boolean $elite
@@ -38,6 +40,7 @@ use Illuminate\View\Expression;
  * @method static Builder|Specialization whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Specialization orWhereStringContains($column, $value)
  * @method static Builder|Specialization random($amount = 1)
+ * @mixin \Eloquent
  */
 class Specialization extends Model {
     protected $table = 'specializations';
@@ -112,7 +115,7 @@ class Specialization extends Model {
             $attributes['srcset'] = $this->getIconUrl( $size * 2 ).' 2x';
         }
 
-        return new Expression(
+        return new HtmlString(
             HTML::image($this->getIconUrl(32), null, $attributes)
         );
     }
