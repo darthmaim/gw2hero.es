@@ -16,11 +16,16 @@
         </div>
         <div class="header__right">
             @section('header.right')
-                <a class="header__button" href="{{ action('SearchController@getIndex') }}">Search</a>
+                <a class="header__button" href="{{ action('SearchController@getIndex') }}">
+                    @include('helper.icon', ['icon' => 'search'])
+                    Search
+                </a>
+
                 @if(Auth::check())
                     <div class="header__button--dropdown" tabindex="0">
                         <a class="header__button--dropdown__link"
                            href="{{ action('UserController@getIndex', Auth::user()->getActionData()) }}">
+                            @include('helper.icon', ['icon' => 'user'])
                             {{ Auth::user()->name }}
                         </a>
                         <div class="header__button__dropdown">
@@ -30,6 +35,7 @@
                 @else
                     <div class="header__button--dropdown" tabindex="0">
                         <a class="header__button--dropdown__link" href="{{ action('Auth\AuthController@getLogin') }}">
+                            @include('helper.icon', ['icon' => 'user'])
                             Login
                         </a>
                         <div class="header__button__dropdown">
