@@ -10,9 +10,11 @@
             <span class="race">{{ $character->race }}</span>
             <span class="profession">{{ $character->profession }}</span>
         </div>
-        <div class="char-info-box__guild">
-            Member of <a>Some Guild [some]</a>
-        </div>
+        @if($character->guild !== null)
+            <div class="char-info-box__guild">
+                <a href="{{ action('GuildController@getIndex', $character->guild->getActionData()) }}">{{ $character->guild->getNameHtml() }}</a>
+            </div>
+        @endif
         <div class="char-info-box__owner">
             <a href="{{ action('AccountController@getIndex', $character->account->getActionData()) }}">
                 {{ $character->account->getNameHtml() }}

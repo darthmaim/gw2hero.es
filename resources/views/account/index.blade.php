@@ -17,7 +17,7 @@
         'Characters ('.$account->characters->count().')'
             => action('AccountController@getCharacters', $account->getActionData()),
         'Activities' => action('AccountController@getActivities', $account->getActionData()),
-        'Guilds' => null,
+        'Guilds' => action('AccountController@getGuilds', $account->getActionData()),
         'Bank' => null,
         'Collections' => null
     ]])

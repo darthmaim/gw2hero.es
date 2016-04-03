@@ -36,6 +36,9 @@ Route::controller('account/{id}/{name?}', 'AccountController');
 // user
 Route::controller('user/{id}/{name?}', 'UserController');
 
+// guild
+Route::controller('guild/{id}/{name?}', 'GuildController');
+
 // search
 Route::get('search', 'SearchController@getIndex');
 

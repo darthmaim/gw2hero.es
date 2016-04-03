@@ -4,11 +4,13 @@ namespace GW2Heroes\Models;
 
 use HTML;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
 
 /**
  * GW2Heroes\Models\Specialization
  *
+ * @property-read Collection|Traits[] $traits
  * @property integer $id
  * @property string $profession
  * @property boolean $elite
@@ -38,6 +40,7 @@ use Illuminate\Support\HtmlString;
  * @method static Builder|Specialization whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Specialization orWhereStringContains($column, $value)
  * @method static Builder|Specialization random($amount = 1)
+ * @mixin \Eloquent
  */
 class Specialization extends Model {
     protected $table = 'specializations';

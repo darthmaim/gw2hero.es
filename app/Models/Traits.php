@@ -9,6 +9,7 @@ use Illuminate\Support\HtmlString;
 /**
  * GW2Heroes\Models\Traits
  *
+ * @property-read Specialization $specialization
  * @property integer $id
  * @property integer $specialization_id
  * @property integer $tier
@@ -40,6 +41,7 @@ use Illuminate\Support\HtmlString;
  * @method static Builder|Traits whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Traits orWhereStringContains($column, $value)
  * @method static Builder|Traits random($amount = 1)
+ * @mixin \Eloquent
  */
 class Traits extends Model {
     protected $table = 'traits';

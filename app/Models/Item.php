@@ -34,6 +34,7 @@ use Illuminate\Support\HtmlString;
  * @method static Builder|Item whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Item orWhereStringContains($column, $value)
  * @method static Builder|Item random($amount = 1)
+ * @mixin \Eloquent
  */
 class Item extends Model {
     protected $table = 'items';

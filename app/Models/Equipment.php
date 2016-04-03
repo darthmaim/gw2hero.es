@@ -26,6 +26,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Equipment whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Equipment orWhereStringContains($column, $value)
  * @method static Builder|Equipment random($amount = 1)
+ * @mixin \Eloquent
  */
 class Equipment extends Model {
     protected $table = 'equipment';

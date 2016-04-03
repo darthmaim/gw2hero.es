@@ -29,20 +29,27 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Activity whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Activity orWhereStringContains($column, $value)
  * @method static Builder|Activity random($amount = 1)
+ * @mixin \Eloquent
  */
 class Activity extends Model {
 
     // account activity types
     const TYPE_ACCOUNT_CREATED = 'account.created';
+    const TYPE_ACCOUNT_GUILD_JOINED = 'account.guild.joined';
+    const TYPE_ACCOUNT_GUILD_LEFT = 'account.guild.left';
 
     // character activity types
     const TYPE_CHARACTER_CREATED = 'character.created';
     const TYPE_CHARACTER_LEVEL   = 'character.level';
     const TYPE_CHARACTER_RENAMED = 'character.renamed';
+    const TYPE_CHARACTER_REPRESENTING_GUILD = 'character.representingGuild';
 
 
     protected $table = 'activities';
     protected $fillable = ['user_id', 'account_id', 'character_id', 'type', 'data'];
+    protected $casts = [
+        'data' => 'object'
+    ];
 
     public static function createForUser( User $user, $type, $data = null ) {
         $activity = $user->activities()->create([
@@ -90,6 +97,24 @@ class Activity extends Model {
     public static function characterRenamed(Character $character, $oldName, $newName) {
         return self::createForCharacter($character, self::TYPE_CHARACTER_RENAMED, [
             'old' => $oldName, 'new' => $newName
+        ]);
+    }
+
+    public static function accountJoinedGuild(Account $account, Guild $guild) {
+        return self::createForAccount($account, self::TYPE_ACCOUNT_GUILD_JOINED, [
+            'guild' => $guild->id
+        ]);
+    }
+
+    public static function accountLeftGuild(Account $account, Guild $guild) {
+        return self::createForAccount($account, self::TYPE_ACCOUNT_GUILD_LEFT, [
+            'guild' => $guild->id
+        ]);
+    }
+
+    public static function characterRepresentingGuild($character, Guild $guild) {
+        return self::createForCharacter($character, self::TYPE_CHARACTER_REPRESENTING_GUILD, [
+            'guild' => $guild->id
         ]);
     }
 

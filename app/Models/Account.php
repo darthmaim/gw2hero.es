@@ -33,6 +33,7 @@ use Illuminate\Support\HtmlString;
  * @method static Builder|Account whereStringContains($column, $value, $boolean = 'and')
  * @method static Builder|Account orWhereStringContains($column, $value)
  * @method static Builder|Account random($amount = 1)
+ * @mixin \Eloquent
  */
 class Account extends Model {
     protected $table = 'accounts';
@@ -61,6 +62,10 @@ class Account extends Model {
 
     public function activities() {
         return $this->hasMany(Activity::class);
+    }
+
+    public function memberOf() {
+        return $this->belongsToMany(Guild::class, 'guild_members');
     }
 
     public function getNameHtml() {
