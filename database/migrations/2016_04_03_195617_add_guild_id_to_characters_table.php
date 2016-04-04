@@ -13,7 +13,7 @@ class AddGuildIdToCharactersTable extends Migration
     public function up()
     {
         Schema::table('characters', function (Blueprint $table) {
-            $table->unsignedInteger('guild_id')->after('account_id');
+            $table->unsignedInteger('guild_id')->default(0)->after('account_id');
         });
     }
 

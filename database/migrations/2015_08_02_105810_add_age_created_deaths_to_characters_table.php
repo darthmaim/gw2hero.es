@@ -13,9 +13,9 @@ class AddAgeCreatedDeathsToCharactersTable extends Migration
     public function up()
     {
         Schema::table('characters', function (Blueprint $table) {
-            $table->integer('age')->unsigned()->after('level');
-            $table->timestamp('created')->after('age');
-            $table->integer('deaths')->after('created');
+            $table->integer('age')->unsigned()->default(0)->after('level');
+            $table->timestamp('created')->nullable()->after('age');
+            $table->integer('deaths')->default(0)->after('created');
         });
     }
 
