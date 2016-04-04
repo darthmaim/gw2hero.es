@@ -1,4 +1,4 @@
-<script async src="{{ asset('/assets/js/gw2heroes.js') }}"></script>
+<script async src="{{ asset2('js/gw2heroes.js') }}"></script>
 
 @yield('scripts')
 

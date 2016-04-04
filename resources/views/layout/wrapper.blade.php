@@ -24,10 +24,10 @@
     <meta name="theme-color" content="#B7000D">
 
 	<link rel="shortcut icon" href="{{ url('favicon.ico') }}" />
-    <link rel="icon" sizes="192x192" type="img/png" href="{{ asset('assets/images/favicon-192x192.png') }}">
+    <link rel="icon" sizes="192x192" type="img/png" href="{{ asset2('images/favicon-192x192.png') }}">
 
-	<link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}" />
-	<link rel="stylesheet" href="{{ asset('assets/css/gw2heroes.css') }}" />
+	<link rel="stylesheet" href="{{ asset2('css/normalize.css') }}" />
+	<link rel="stylesheet" href="{{ asset2('css/gw2heroes.css') }}" />
     <link href='https://fonts.googleapis.com/css?family=Bitter:700|Roboto:700,400' rel='stylesheet' type='text/css'>
 
 	@yield('styles')

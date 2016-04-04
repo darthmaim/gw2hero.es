@@ -222,5 +222,14 @@ gulp.task( 'build:css', styles.build );
 gulp.task( 'build:images', images.build );
 gulp.task( 'build:icons', icons.build );
 gulp.task( 'build-clean', ['clean'], general.build );
+gulp.task( 'version', function() {
+    var rev = require('gulp-rev');
+    return gulp.src('public/assets/**/*.{css,png,jpg,svg,js}')
+        .pipe(rev())
+        .pipe(gulp.dest('public/assets/'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest('public/assets/'));
+
+});
 // alias default = build
 gulp.task( 'default', ['build'] );

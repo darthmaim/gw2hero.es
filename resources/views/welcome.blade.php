@@ -7,7 +7,7 @@
 @section('wrapper')
     <div class="wrapper" id="wrapper" role="main">
         <div class="teaser">
-            <img src="{{ asset('assets/images/teaser.svg') }}" width="1000" height="500">
+            <img src="{{ asset2('images/teaser.svg') }}" width="1000" height="500">
         </div>
         <div class="content">
             @section('content')
@@ -30,7 +30,7 @@
                         </p>
                     </div>
                     <div class="welcome-section__image"
-                         style="background-image: url({{ asset('assets/images/welcome/welcome1.jpg') }})"></div>
+                         style="background-image: url({{ asset2('images/welcome/welcome1.jpg') }})"></div>
                 </section>
                 <section class="welcome-section--right welcome-section--dark">
                     <div class="welcome-section__content">
@@ -52,7 +52,7 @@
                         </p>
                     </div>
                     <div class="welcome-section__image"
-                         style="background-image: url({{ asset('assets/images/welcome/welcome2.jpg') }})"></div>
+                         style="background-image: url({{ asset2('images/welcome/welcome2.jpg') }})"></div>
                 </section>
             @show
         </div>

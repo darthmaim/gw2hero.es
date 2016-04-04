@@ -19,6 +19,9 @@
 		"symfony/css-selector": "~3.0"
 	},
 	"autoload": {
+		"files": [
+			"app/helper.php"
+		],
 		"classmap": [
 			"database"
 		],

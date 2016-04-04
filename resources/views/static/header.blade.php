@@ -11,7 +11,7 @@
         </div>
         <div class="header__center">
             <a class="header__logo" href="{{ url('/') }}">
-                <img src="{{ asset('assets/images/header.svg') }}" width="100" height="48" alt="gw2hero.es">
+                <img src="{{ asset2('images/header.svg') }}" width="100" height="48" alt="gw2hero.es">
             </a>
         </div>
         <div class="header__right">
