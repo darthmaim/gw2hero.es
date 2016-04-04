@@ -16,7 +16,9 @@ input[type="text"],
     max-width: 100%;
 
     @media( max-width: 480px ) {
-        width: 100%;
+        :not(.form--flex) > & {
+            width: 100%;
+        }
     }
 
     &.full-width {
@@ -43,7 +45,9 @@ a.input--button, .input--button {
     }
 
     @media( max-width: 480px ) {
-        width: 100%;
+        :not(.form--flex) > & {
+            width: 100%;
+        }
     }
 }
 

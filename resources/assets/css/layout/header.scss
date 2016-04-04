@@ -49,9 +49,9 @@
             &:after {
                 content: '';
                 display: block;
-                left: -5px;
+                left: 0;
                 bottom: -5px;
-                right: -5px;
+                right: 0;
                 height: 5px;
                 background: linear-gradient(rgba(0,0,0,.1), transparent);
                 position: absolute;
