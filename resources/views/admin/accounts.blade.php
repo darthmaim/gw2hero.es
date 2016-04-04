@@ -27,7 +27,10 @@
                             {{ $account->user->name }} [{{ $account->user->id }}]
                         </a></td>
                     <td>
-                        {{ $account->api_key_valid ? '🙂' : '❌' }}
+                        @include('helper.icon', [
+                            'icon' => $account->api_key_valid ? 'check' : 'close',
+                            'style' => $account->api_key_valid ? 'color: green' : 'color: red'
+                        ])
                         <a href="javascript:alert('{{ $account->api_key }}')">View</a>
                     </td>
                     <td>

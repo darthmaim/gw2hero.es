@@ -3,6 +3,8 @@
 @section('title', 'Settings (Profile)')
 
 @section('content.right')
+    <h2>Profile</h2>
+
     <dl class="settings__definition-list">
         <dt>Username</dt>
         <dd>{{ Auth::user()->name }}</dd>
