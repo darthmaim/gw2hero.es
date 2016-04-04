@@ -25,6 +25,7 @@
 
 	<link rel="shortcut icon" href="{{ url('favicon.ico') }}" />
     <link rel="icon" sizes="192x192" type="img/png" href="{{ asset2('images/favicon-192x192.png') }}">
+	<link rel="manifest" href="manifest.json">
 
 	<link rel="stylesheet" href="{{ asset2('css/normalize.css') }}" />
 	<link rel="stylesheet" href="{{ asset2('css/gw2heroes.css') }}" />
