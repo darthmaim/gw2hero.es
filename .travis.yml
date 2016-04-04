@@ -10,6 +10,8 @@ script: vendor/bin/phpunit --configuration phpunit.xml --coverage-clover clover.
 
 after_script: bash <(curl -s https://codecov.io/bash)
 
+after_failure: cat storage/logs/laravel.log
+
 notifications:
   webhooks:
     urls:
