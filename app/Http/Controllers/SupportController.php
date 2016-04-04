@@ -64,4 +64,8 @@ class SupportController extends Controller {
     public function getImpressum() {
         return view('support.impressum');
     }
+
+    public function getOffline() {
+        return view('errors.offline');
+    }
 }

@@ -52,6 +52,8 @@ Route::get('terms', 'SupportController@getTerms');
 Route::get('privacy', 'SupportController@getPrivacy');
 Route::get('impressum', 'SupportController@getImpressum');
 
+Route::get('offline', 'SupportController@getOffline');
+
 // sitemap
 Route::controller('sitemap', 'SitemapController');
 
