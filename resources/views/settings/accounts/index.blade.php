@@ -1,9 +1,9 @@
-@extends('settings.layout')
+@extends('settings.index')
 
 @section('title', 'Settings (Accounts)')
 
-@section('settings.content')
-    <h3>Accounts</h3>
+@section('content.right')
+    <h2>Accounts</h2>
 
     <a href="{{ action('Settings\AccountsController@getAdd') }}">+ Add account</a>
 
@@ -27,7 +27,8 @@
                         <dt>API key:</dt>
                         <dd class="settings__accounts__account__api-key" title="{{ $acc->api_key }}">{{ $acc->api_key }}</dd>
                     </dl>
-                    <a href="{{ action('Settings\AccountsController@getEdit', [$acc->id]) }}">Edit</a>
+                    <a href="{{ action('Settings\AccountsController@getEdit', [$acc->id]) }}">
+                        @include('helper.icon', ['icon' => 'manage']) Edit</a>
                 </div>
             </li>
         @endforeach

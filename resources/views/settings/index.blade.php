@@ -2,14 +2,9 @@
 
 @section('title', 'Settings')
 
-@section('content.right')
+@section('content.left')
     <h2>Settings</h2>
 
-    @yield('settings.content')
-@stop
-
-
-@section('content.left')
     @include('helper.sidebar-nav', ['links' => [
         'Profile' => action('Settings\SettingsController@getProfile'),
         'Accounts' => action('Settings\AccountsController@getIndex'),

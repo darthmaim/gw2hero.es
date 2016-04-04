@@ -1,10 +1,9 @@
-@extends('settings.layout')
+@extends('settings.index')
 
 @section('title', 'Settings (Notifications)')
 
-@section('settings.content')
-
-    <h3>Emails</h3>
+@section('content.right')
+    <h2>Emails</h2>
 
     {!! Form::open([/*'action' => 'Settings\SettingsController@postNotifications'*/]) !!}
 
@@ -36,7 +35,7 @@
     {!! Form::close() !!}
 
 
-    <h3>Notifications</h3>
+    <h2>Notifications</h2>
 
     {!! Form::open([/*'action' => 'Settings\SettingsController@postNotifications'*/]) !!}
 

@@ -1,9 +1,9 @@
-@extends('settings.layout')
+@extends('settings.index')
 
 @section('title', 'Settings (Accounts)')
 
-@section('settings.content')
-    <h3>Change API key of {{ $account->name }}</h3>
+@section('content.right')
+    <h2>Change API key of {{ $account->name }}</h2>
 
     @foreach($errors->all() as $error)
         <div style="color:red">{{ $error }}</div>

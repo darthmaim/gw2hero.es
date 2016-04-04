@@ -1,8 +1,8 @@
-@extends('settings.layout')
+@extends('settings.index')
 
 @section('title', 'Settings (Profile)')
 
-@section('settings.content')
+@section('content.right')
     <dl class="settings__definition-list">
         <dt>Username</dt>
         <dd>{{ Auth::user()->name }}</dd>

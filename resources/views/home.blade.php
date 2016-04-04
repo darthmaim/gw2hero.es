@@ -47,7 +47,7 @@
 @stop
 
 @section('content.left')
-    <h3>Accounts <a href="{{ action('Settings\AccountsController@getIndex') }}">Manage Accounts</a></h3>
+    <h2>Accounts <a href="{{ action('Settings\AccountsController@getIndex') }}">@include('helper.icon', ['icon' => 'manage'])</a></h2>
     <ul class="home-account-list">
         @forelse($accounts as $acc)
             <li>
