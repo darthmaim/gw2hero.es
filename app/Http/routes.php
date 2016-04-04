@@ -53,6 +53,7 @@ Route::get('privacy', 'SupportController@getPrivacy');
 Route::get('impressum', 'SupportController@getImpressum');
 
 Route::get('offline', 'SupportController@getOffline');
+Route::get('sw.js', 'SupportController@getServiceWorker');
 
 // sitemap
 Route::controller('sitemap', 'SitemapController');

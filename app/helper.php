@@ -17,7 +17,7 @@ function asset2($file)
     if (isset($manifest[$file])) {
         return asset('/assets/'.$manifest[$file]);
     } else {
-        return '/assets/'.$file;
+        return asset('/assets/'.$file);
     }
 }
 

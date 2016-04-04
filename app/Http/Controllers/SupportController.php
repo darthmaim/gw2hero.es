@@ -68,4 +68,8 @@ class SupportController extends Controller {
     public function getOffline() {
         return view('errors.offline');
     }
+
+    public function getServiceWorker() {
+        return response(view('errors.serviceworker'), 200, ['Content-Type' => 'application/javascript']);
+    }
 }
