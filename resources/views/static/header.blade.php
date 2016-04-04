@@ -1,5 +1,9 @@
 <nav id="header" class="header" role="banner">
     <div class="header__content">
+        <input type="checkbox" aria-hidden="true" id="menu_visible" value="1">
+        <label class="header__menu-button" for="menu_visible">
+            @include('helper.icon', ['icon' => 'menu']) Menu
+        </label>
         <div class="header__left">
             @section('header.left')
                 <a class="header__button">Characters</a>
