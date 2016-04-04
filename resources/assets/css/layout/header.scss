@@ -29,8 +29,9 @@
             top: $height;
             right: 0;
             margin-right: 0;
-            background: $brand;
-            box-shadow: inset 0 5px 5px -5px rgba(0,0,0,.2);
+            background-color: #fff;
+            background-image: linear-gradient(rgba(0,0,0,.1), transparent 5px);
+            color: $font;
             display: none;
 
             #menu_visible:checked ~ & {
@@ -39,6 +40,21 @@
 
             & .header__button {
                 display: block;
+
+                &:hover {
+                    background: rgba(0,0,0,.05);
+                }
+            }
+
+            &:after {
+                content: '';
+                display: block;
+                left: -5px;
+                bottom: -5px;
+                right: -5px;
+                height: 5px;
+                background: linear-gradient(rgba(0,0,0,.1), transparent);
+                position: absolute;
             }
         }
     }
