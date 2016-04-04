@@ -51,4 +51,10 @@ class Handler extends ExceptionHandler{
 		return parent::render($request, $e);
 	}
 
+	protected function convertExceptionToResponse(Exception $e) {
+		$status = ($e instanceof HttpException) ? $e->getStatusCode() : 500;
+		$header = ($e instanceof HttpException) ? $e->getHeaders() : [];
+
+		return response()->view("errors.500", ['exception' => $e], $status, $header);
+	}
 }
