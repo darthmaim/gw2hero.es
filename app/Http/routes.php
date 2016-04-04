@@ -52,8 +52,10 @@ Route::get('terms', 'SupportController@getTerms');
 Route::get('privacy', 'SupportController@getPrivacy');
 Route::get('impressum', 'SupportController@getImpressum');
 
-Route::get('offline', 'SupportController@getOffline');
-Route::get('sw.js', 'SupportController@getServiceWorker');
+// misc
+Route::get('offline', 'MiscController@getOffline');
+Route::get('sw.js', 'MiscController@getServiceWorker');
+Route::get('manifest.json', 'MiscController@getManifest');
 
 // sitemap
 Route::controller('sitemap', 'SitemapController');

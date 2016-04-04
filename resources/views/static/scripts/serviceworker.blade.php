@@ -2,7 +2,7 @@
 
 var version = '2016-04-04';
 
-var offlinePage = '{{ action('SupportController@getOffline') }}';
+var offlinePage = '{{ action('MiscController@getOffline') }}';
 
 var assets = [
     offlinePage,
