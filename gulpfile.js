@@ -19,10 +19,12 @@ var images = {
     dest: 'public/assets/images',
 
     build: function() {
+        log('images', 'build');
         var files = gulp.src( images.src );
         return images.handle( files );
     },
     watch: function() {
+        log('images', 'watching…');
         var watch = require( 'gulp-watch' );
         var plumber = require('gulp-plumber');
 
@@ -50,11 +52,15 @@ var icons = {
     dest: 'public/assets/images',
 
     build: function() {
+        log('icons', 'build');
         var files = gulp.src(icons.src);
         return icons.handle(files);
     },
     watch: function() {
+        log('icons', 'watching…');
 
+        var watch = require('gulp-watch');
+        return watch(icons.src, icons.handle);
     },
     handle: function(source) {
         var sprite = require('gulp-svg-sprite');
@@ -113,6 +119,7 @@ var styles = {
             .pipe( gulp.dest( styles.paths.dest ));
     },
     watch: function() {
+        log('css', 'watching…');
         var watch = require('gulp-watch');
         return watch( styles.paths.watch, styles.buildCss );
     }
@@ -135,6 +142,7 @@ var js = {
     },
 
     build: function() {
+        log('icons', 'build');
         var browserify = require('browserify');
         var babelify = require('babelify');
 
@@ -144,6 +152,7 @@ var js = {
         return js.handle( bundle, js.config );
     },
     watch: function() {
+        log('js', 'watching…');
         var browserify = require('browserify');
         var watchify = require('watchify');
         var babelify = require('babelify');
@@ -201,16 +210,20 @@ var general = {
         return del( general.dest );
     },
     watch: function() {
-        styles.build();
-        styles.watch();
+        var merge = require('merge-stream');
 
-        images.build();
-        images.watch();
+        return merge(
+            styles.build(),
+            styles.watch(),
 
-        icons.build();
-        icons.watch();
+            images.build(),
+            images.watch(),
 
-        js.watch();
+            icons.build(),
+            icons.watch(),
+
+            js.watch()
+        );
     }
 };
 
