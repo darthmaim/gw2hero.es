@@ -124,9 +124,9 @@ class AccountUpdater extends Updater {
      * @param Account $account
      * @param Character $char
      */
-    protected function deletedChar( Account $account, Character $char ) {
-        // we don't do anything with this yet.
-        echo 'processing '.$char->name.'...deleted'.PHP_EOL;
+    protected function deletedChar(Account $account, Character $char) {
+        $char->delete();
+        Activity::characterDeleted($char);
     }
 
     /**

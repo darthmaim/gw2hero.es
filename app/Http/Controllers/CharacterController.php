@@ -15,7 +15,7 @@ class CharacterController extends Controller {
 
         /** @var Character $character */
         $character = Cache::remember('character.'.$id, 1, function() use ($id) {
-            return Character::with('account', 'account.user', 'guild')->find($id);
+            return Character::with('account', 'account.user', 'guild')->withTrashed()->find($id);
         });
 
         $actionName = '\\'.__CLASS__.'@'.$function;

@@ -4,7 +4,7 @@
 
 @section('content.left')
     <div class="char-info-box">
-        <h2 class="char-info-box__name">{{ $character->name }}</h2>
+        <h2 class="char-info-box__name {{ $character->trashed() ? 'char-info-box__name--deleted' : '' }}">{{ $character->name }}</h2>
         <div class="char-info-box__char">
             <span class="level">{{ $character->level }}</span>
             <span class="race">{{ $character->race }}</span>

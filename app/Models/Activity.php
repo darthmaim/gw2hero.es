@@ -40,6 +40,7 @@ class Activity extends Model {
 
     // character activity types
     const TYPE_CHARACTER_CREATED = 'character.created';
+    const TYPE_CHARACTER_DELETED = 'character.deleted';
     const TYPE_CHARACTER_LEVEL   = 'character.level';
     const TYPE_CHARACTER_RENAMED = 'character.renamed';
     const TYPE_CHARACTER_REPRESENTING_GUILD = 'character.representingGuild';
@@ -90,6 +91,10 @@ class Activity extends Model {
         return self::createForCharacter($character, self::TYPE_CHARACTER_CREATED);
     }
 
+    public static function characterDeleted(Character $character) {
+        return self::createForCharacter($character, self::TYPE_CHARACTER_DELETED);
+    }
+
     public static function characterLevel(Character $character, $level) {
         return self::createForCharacter($character, self::TYPE_CHARACTER_LEVEL, $level);
     }
@@ -127,6 +132,6 @@ class Activity extends Model {
     }
 
     public function character() {
-        return $this->belongsTo(Character::class);
+        return $this->belongsTo(Character::class)->withTrashed();
     }
 }
