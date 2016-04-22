@@ -93,29 +93,32 @@ class CharacterController extends Controller {
                 $specialization = $specs[$spec->id];
 
                 // transform traits (group by tier -> slot)
-                $traits = $specialization->traits->groupBy('tier')->map(function($traits, $tier) use ($spec, $specialization, &$traitIndexes) {
-                    return $traits->groupBy('slot')->map(function($traits, $slot) use ($spec, $tier, $specialization, &$traitIndexes) {
-                        return $traits->sortBy(function($trait) use ($specialization) {
-                            // sort traits in the order they appear in spec->data->major_traits
-                            // this also works for minor traits, because there is only one
-                            return array_search($trait->id, $specialization->data_en->major_traits);
-                        })->values()->map(function($trait, $index) use ($spec, $tier, $slot, &$traitIndexes) {
-                            // the trait is selected if its minor or if its in character->specializations->traits
-                            $selected = $slot === 'Minor' || in_array($trait->id, $spec->traits);
-                            if( $selected ) {
-                                $traitIndexes[$tier.'-'.$slot] = $index;
-                            }
+                $traits = $specialization->traits
+                    ->filter(function($trait) { return $trait->tier > 0; })
+                    ->groupBy('tier')
+                    ->map(function($traits, $tier) use ($spec, $specialization, &$traitIndexes) {
+                        return $traits->groupBy('slot')->map(function($traits, $slot) use ($spec, $tier, $specialization, &$traitIndexes) {
+                            return $traits->sortBy(function($trait) use ($specialization) {
+                                // sort traits in the order they appear in spec->data->major_traits
+                                // this also works for minor traits, because there is only one
+                                return array_search($trait->id, $specialization->data_en->major_traits);
+                            })->values()->map(function($trait, $index) use ($spec, $tier, $slot, &$traitIndexes) {
+                                // the trait is selected if its minor or if its in character->specializations->traits
+                                $selected = $slot === 'Minor' || in_array($trait->id, $spec->traits);
+                                if( $selected ) {
+                                    $traitIndexes[$tier.'-'.$slot] = $index;
+                                }
 
-                            return (object)[
-                                'selected' => $selected,
-                                'trait' => $trait
-                            ];
+                                return (object)[
+                                    'selected' => $selected,
+                                    'trait' => $trait
+                                ];
+                            });
+                        })->sortBy(function($_, $key) {
+                            // make sure we return minor slot first
+                            return array_search($key, ['Minor', 'Major']);
                         });
-                    })->sortBy(function($_, $key) {
-                        // make sure we return minor slot first
-                        return array_search($key, ['Minor', 'Major']);
                     });
-                });
 
                 return (object)[
                     'specialization' => $specialization,
