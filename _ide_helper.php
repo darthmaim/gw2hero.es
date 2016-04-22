@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.22 on 2016-03-12.
+ * Generated for Laravel 5.2.30 on 2016-04-22.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -107,6 +107,16 @@ namespace {
          */
         public static function basePath(){
             return \Illuminate\Foundation\Application::basePath();
+        }
+        
+        /**
+         * Get the path to the bootstrap directory.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function bootstrapPath(){
+            return \Illuminate\Foundation\Application::bootstrapPath();
         }
         
         /**
@@ -224,10 +234,20 @@ namespace {
         }
         
         /**
+         * Get the fully qualified path to the environment file.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function environmentFilePath(){
+            return \Illuminate\Foundation\Application::environmentFilePath();
+        }
+        
+        /**
          * Get or check the current application environment.
          *
          * @param mixed
-         * @return string 
+         * @return string|bool 
          * @static 
          */
         public static function environment(){
@@ -649,6 +669,17 @@ namespace {
          */
         public static function setLocale($locale){
             \Illuminate\Foundation\Application::setLocale($locale);
+        }
+        
+        /**
+         * Determine if application locale is the given locale.
+         *
+         * @param string $locale
+         * @return bool 
+         * @static 
+         */
+        public static function isLocale($locale){
+            return \Illuminate\Foundation\Application::isLocale($locale);
         }
         
         /**
@@ -1091,6 +1122,18 @@ namespace {
         public static function terminate($input, $status){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
             \GW2Heroes\Console\Kernel::terminate($input, $status);
+        }
+        
+        /**
+         * Register the given command with the console application.
+         *
+         * @param \Symfony\Component\Console\Command\Command $command
+         * @return void 
+         * @static 
+         */
+        public static function registerCommand($command){
+            //Method inherited from \Illuminate\Foundation\Console\Kernel            
+            \GW2Heroes\Console\Kernel::registerCommand($command);
         }
         
         /**
@@ -3428,7 +3471,7 @@ namespace {
          *
          * @param mixed $id
          * @param array $columns
-         * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|null 
+         * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null 
          * @static 
          */
         public static function find($id, $columns = array()){
@@ -3436,7 +3479,7 @@ namespace {
         }
         
         /**
-         * Find a model by its primary key.
+         * Find multiple models by their primary keys.
          *
          * @param array $ids
          * @param array $columns
@@ -3561,6 +3604,19 @@ namespace {
          */
         public static function chunk($count, $callback){
             return \Illuminate\Database\Eloquent\Builder::chunk($count, $callback);
+        }
+        
+        /**
+         * Chunk the results of a query by comparing numeric IDs.
+         *
+         * @param int $count
+         * @param callable $callback
+         * @param string $column
+         * @return bool 
+         * @static 
+         */
+        public static function chunkById($count, $callback, $column = 'id'){
+            return \Illuminate\Database\Eloquent\Builder::chunkById($count, $callback, $column);
         }
         
         /**
@@ -4028,6 +4084,32 @@ namespace {
          */
         public static function rightJoinWhere($table, $one, $operator, $two){
             return \Illuminate\Database\Query\Builder::rightJoinWhere($table, $one, $operator, $two);
+        }
+        
+        /**
+         * Add a "cross join" clause to the query.
+         *
+         * @param string $table
+         * @param string $first
+         * @param string $operator
+         * @param string $second
+         * @return \Illuminate\Database\Query\Builder|static 
+         * @static 
+         */
+        public static function crossJoin($table, $first = null, $operator = null, $second = null){
+            return \Illuminate\Database\Query\Builder::crossJoin($table, $first, $operator, $second);
+        }
+        
+        /**
+         * Apply the callback's query changes if the given "value" is true.
+         *
+         * @param bool $value
+         * @param \Closure $callback
+         * @return \Illuminate\Database\Query\Builder 
+         * @static 
+         */
+        public static function when($value, $callback){
+            return \Illuminate\Database\Query\Builder::when($value, $callback);
         }
         
         /**
@@ -4546,6 +4628,19 @@ namespace {
         }
         
         /**
+         * Constrain the query to the next "page" of results after a given ID.
+         *
+         * @param int $perPage
+         * @param int $lastId
+         * @param string $column
+         * @return \Illuminate\Database\Query\Builder|static 
+         * @static 
+         */
+        public static function forPageAfterId($perPage = 15, $lastId = 0, $column = 'id'){
+            return \Illuminate\Database\Query\Builder::forPageAfterId($perPage, $lastId, $column);
+        }
+        
+        /**
          * Add a union statement to the query.
          *
          * @param \Illuminate\Database\Query\Builder|\Closure $query
@@ -4741,6 +4836,18 @@ namespace {
          */
         public static function insertGetId($values, $sequence = null){
             return \Illuminate\Database\Query\Builder::insertGetId($values, $sequence);
+        }
+        
+        /**
+         * Insert or update a record matching the attributes, and fill it with values.
+         *
+         * @param array $attributes
+         * @param array $values
+         * @return bool 
+         * @static 
+         */
+        public static function updateOrInsert($attributes, $values = array()){
+            return \Illuminate\Database\Query\Builder::updateOrInsert($attributes, $values);
         }
         
         /**
@@ -5070,12 +5177,24 @@ namespace {
          * Get the contents of a file.
          *
          * @param string $path
+         * @param bool $lock
          * @return string 
          * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
          * @static 
          */
-        public static function get($path){
-            return \Illuminate\Filesystem\Filesystem::get($path);
+        public static function get($path, $lock = false){
+            return \Illuminate\Filesystem\Filesystem::get($path, $lock);
+        }
+        
+        /**
+         * Get contents of a file with shared access.
+         *
+         * @param string $path
+         * @return string 
+         * @static 
+         */
+        public static function sharedGet($path){
+            return \Illuminate\Filesystem\Filesystem::sharedGet($path);
         }
         
         /**
@@ -5182,6 +5301,28 @@ namespace {
          */
         public static function name($path){
             return \Illuminate\Filesystem\Filesystem::name($path);
+        }
+        
+        /**
+         * Extract the trailing name component from a file path.
+         *
+         * @param string $path
+         * @return string 
+         * @static 
+         */
+        public static function basename($path){
+            return \Illuminate\Filesystem\Filesystem::basename($path);
+        }
+        
+        /**
+         * Extract the parent directory from a file path.
+         *
+         * @param string $path
+         * @return string 
+         * @static 
+         */
+        public static function dirname($path){
+            return \Illuminate\Filesystem\Filesystem::dirname($path);
         }
         
         /**
@@ -5846,6 +5987,17 @@ namespace {
          */
         public static function except($keys){
             return \Illuminate\Http\Request::except($keys);
+        }
+        
+        /**
+         * Intersect an array of items with the input data.
+         *
+         * @param array|mixed $keys
+         * @return array 
+         * @static 
+         */
+        public static function intersect($keys){
+            return \Illuminate\Http\Request::intersect($keys);
         }
         
         /**
@@ -7915,6 +8067,17 @@ namespace {
         }
         
         /**
+         * Register an event listener for the exception occurred job event.
+         *
+         * @param mixed $callback
+         * @return void 
+         * @static 
+         */
+        public static function exceptionOccurred($callback){
+            \Illuminate\Queue\QueueManager::exceptionOccurred($callback);
+        }
+        
+        /**
          * Register an event listener for the daemon queue loop.
          *
          * @param mixed $callback
@@ -8565,6 +8728,17 @@ namespace {
          */
         public static function except($keys){
             return \Illuminate\Http\Request::except($keys);
+        }
+        
+        /**
+         * Intersect an array of items with the input data.
+         *
+         * @param array|mixed $keys
+         * @return array 
+         * @static 
+         */
+        public static function intersect($keys){
+            return \Illuminate\Http\Request::intersect($keys);
         }
         
         /**
@@ -10594,7 +10768,7 @@ namespace {
         }
         
         /**
-         * Alias for the "currentRouteNamed" method.
+         * Alias for the "currentRouteName" method.
          *
          * @param mixed  string
          * @return bool 
@@ -12119,6 +12293,41 @@ namespace {
          */
         public static function yieldContent($section, $default = ''){
             return \Illuminate\View\Factory::yieldContent($section, $default);
+        }
+        
+        /**
+         * Start injecting content into a push section.
+         *
+         * @param string $section
+         * @param string $content
+         * @return void 
+         * @static 
+         */
+        public static function startPush($section, $content = ''){
+            \Illuminate\View\Factory::startPush($section, $content);
+        }
+        
+        /**
+         * Stop injecting content into a push section.
+         *
+         * @return string 
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function stopPush(){
+            return \Illuminate\View\Factory::stopPush();
+        }
+        
+        /**
+         * Get the string contents of a push section.
+         *
+         * @param string $section
+         * @param string $default
+         * @return string 
+         * @static 
+         */
+        public static function yieldPushContent($section, $default = ''){
+            return \Illuminate\View\Factory::yieldPushContent($section, $default);
         }
         
         /**
