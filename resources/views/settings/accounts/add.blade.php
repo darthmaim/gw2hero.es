@@ -5,9 +5,7 @@
 @section('content.right')
     <h2>Add account</h2>
 
-    @foreach($errors->all() as $error)
-        <div style="color:red">{{ $error }}</div>
-    @endforeach
+    @include('layout.form-errors')
 
     <p>
         Go to your Guild Wars 2 account page to

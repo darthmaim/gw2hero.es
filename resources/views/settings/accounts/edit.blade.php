@@ -5,9 +5,7 @@
 @section('content.right')
     <h2>Change API key of {{ $account->name }}</h2>
 
-    @foreach($errors->all() as $error)
-        <div style="color:red">{{ $error }}</div>
-    @endforeach
+    @include('layout.form-errors')
 
     {!! Form::open(['action' => ['Settings\AccountsController@postEdit', $account->id]]) !!}
     {!! Form::hidden('api_key_name', $apiKeyName ) !!}

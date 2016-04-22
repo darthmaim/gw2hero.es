@@ -89,3 +89,12 @@ textarea,
         flex: 1;
     }
 }
+
+.form-errors {
+    color: red;
+
+    margin: 16px 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.8;
+}
