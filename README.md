@@ -6,6 +6,8 @@
 
 # Requirements
 
+[![Join the chat at https://gitter.im/chillerlan/gw2hero.es](https://badges.gitter.im/chillerlan/gw2hero.es.svg)](https://gitter.im/chillerlan/gw2hero.es?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 - **[PHP](http://php.net/)** >=5.5
 - **[MySQL](http://www.mysql.com/)** or **[MariaDB](https://mariadb.org/)**
 - **[composer](https://getcomposer.org/)** for PHP dependency management.
